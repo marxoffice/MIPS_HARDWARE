@@ -1,2 +1,2 @@
 # MIPS_HARDWARE
-MipsVerilog
+MipsVerilog.
