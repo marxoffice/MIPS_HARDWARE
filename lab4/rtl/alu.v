@@ -49,7 +49,7 @@ module alu(
             `EXE_NOR_OP     :ans <= ~(num1 | num2)      ;
             `EXE_ANDI_OP    :ans <= num1 & num2         ;
             `EXE_XORI_OP    :ans <= num1 ^ num2         ;
-            `EXE_LUI_OP     :ans <= {num2[15:0],num2[31:16]}  ;
+            `EXE_LUI_OP     :ans <= {num2[15:0],{16{1'b0}}};
             `EXE_ORI_OP     :ans <= num1 | num2         ;
 
             //shift inst
