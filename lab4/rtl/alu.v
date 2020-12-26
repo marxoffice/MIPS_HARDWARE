@@ -18,12 +18,13 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+`include "defines.vh"
 
 module alu(
     input wire [31:0] num1,
     input wire [31:0] num2,
-    input wire [2:0] op,
-    output wire [31:0] ans,
+    input wire [7:0] alucontrol,
+    output reg [31:0] ans,
     output wire zero
     );
 
@@ -33,11 +34,45 @@ module alu(
     // assign zero = 1'b0;
     assign zero = (ans == 32'b0);
 
-    assign ans = (op == 3'b010) ? num1 + num2 :            // + add
-           (op == 3'b110) ? num1 - num2 :                  // - sub
-           (op == 3'b000) ? num1 & num2 :                  // & and
-           (op == 3'b001) ? num1 | num2 :                  // | or
-           (op == 3'b100) ? ~num1 :                        // ! not
-           (op == 3'b111) ? (num1 < num2) : 32'h00000000;  // slt if(num1 < num2) ans = 1; ans = 0;
+    // assign ans = (op == 3'b010) ? num1 + num2 :            // + add
+    //        (op == 3'b110) ? num1 - num2 :                  // - sub
+    //        (op == 3'b000) ? num1 & num2 :                  // & and
+    //        (op == 3'b001) ? num1 | num2 :                  // | or
+    //        (op == 3'b100) ? ~num1 :                        // ! not
+    //        (op == 3'b111) ? (num1 < num2) : 32'h00000000;  // slt if(num1 < num2) ans = 1; ans = 0;
+    always @(*) begin
+        case (alucontrol)
+            //logic op
+            `EXE_AND_OP     :ans <= num1 & num2         ;
+            `EXE_OR_OP      :ans <= num1 | num2         ;
+            `EXE_XOR_OP     :ans <= num1 ^ num2         ;
+            `EXE_NOR_OP     :ans <= ~(num1 | num2)      ;
+            `EXE_ANDI_OP    :ans <= num1 & num2         ;
+            `EXE_XORI_OP    :ans <= num1 ^ num2         ;
+            `EXE_LUI_OP     :ans <= {num2[15:0],num2[31:16]}  ;
+            `EXE_ORI_OP     :ans <= num1 | num2         ;
+
+            //shift inst
+            //move inst
+            // Arithmetic inst
+            `EXE_ADD_OP     :ans <= num1 + num2         ;
+            `EXE_SUB_OP     :ans <= num1 - num2         ;
+            `EXE_SLT_OP     :ans <= num1 < num2         ;
+            `EXE_ADDI_OP    :ans <= num1 + num2         ;
+
+            //J type
+            `EXE_J_OP       :ans <= num1 + num2         ;
+            `EXE_BEQ_OP     :ans <= num1 - num2         ;
+
+            // memory insts
+            `EXE_LW_OP      :ans <= num1 + num2         ;
+            `EXE_SW_OP      :ans <= num1 + num2         ;
+
+            // sink in inst
+            default: ans <= 32'b0;
+        endcase
+        //logic op
+    end
+
 
 endmodule

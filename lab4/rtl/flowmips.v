@@ -82,7 +82,7 @@ module flowmips(
     assign flush_endE = flushE | (predict_wrong & branchE);
 
     // flopr 3
-    floprc #(8) fp3_1(clk,rst,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
+    floprc #(13) fp3_1(clk,rst,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
     floprc #(32) fp3_2(clk,rst,flush_endE,SrcAD,defaultSrcAE);
     floprc #(32) fp3_3(clk,rst,flush_endE,writedataD,defaultWriteDataE);
     floprc #(5) fp3_4(clk,rst,flush_endE,rsD,rsE);

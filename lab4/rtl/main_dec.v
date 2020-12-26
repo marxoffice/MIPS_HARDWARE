@@ -19,13 +19,14 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+`include "defines.vh"
 
 module main_dec(
 	input wire [5:0] op,
     input wire[5:0] funct,
     output wire regwrite,regdst,alusrc,branch,
     output wire memwrite,memtoreg,
-	output wire jump,
+	output wire jump
     // output wire [1:0] aluop
     );
 
@@ -44,7 +45,7 @@ module main_dec(
     always@(*) begin
         case(op)
             `EXE_NOP: main_signal <= 7'b1100000; // R-type
-            `EXE_ANDI `EXE_XORI `EXE_LUI `EXE_ORI `EXE_ADDI `EXE_ADDIU `EXE_SLTI `EXE_SLTIU: main_signal <= 7'b1010000; // Immediate
+            `EXE_ANDI ,`EXE_XORI, `EXE_LUI, `EXE_ORI ,`EXE_ADDI, `EXE_ADDIU ,`EXE_SLTI, `EXE_SLTIU: main_signal <= 7'b1010000; // Immediate
             `EXE_BEQ: main_signal <= 7'b0001000; // lab4 beq
             `EXE_LW: main_signal <= 7'b1010010;  // lab4 lw
             `EXE_SW: main_signal <= 7'b0010100;  // lab4 sw
