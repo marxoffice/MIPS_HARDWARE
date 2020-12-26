@@ -28,7 +28,7 @@ module alu_dec(
 	input wire [5:0] funct,
 	// input wire [1:0] aluop,
     input wire [5:0] op,
-	output wire [7:0] alucontrol
+	output reg [7:0] alucontrol
     );
 
     // wire [2:0] func_tran;
