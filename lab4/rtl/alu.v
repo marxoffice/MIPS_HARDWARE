@@ -23,6 +23,7 @@
 module alu(
     input wire [31:0] num1,
     input wire [31:0] num2,
+    input wire [5:0] sa,
     input wire [7:0] alucontrol,
     output reg [31:0] ans,
     output wire zero
@@ -53,6 +54,15 @@ module alu(
             `EXE_ORI_OP     :ans <= num1 | num2         ;
 
             //shift inst
+            //TODO 注意算术右移指令 这里不确定vivado的signed是否可以通过
+            //TODO 需要测试 使用31bit和32bit的数字来测试一下
+            `EXE_SLL_OP     :ans <= num2 << sa;
+            `EXE_SRL_OP     :ans <= num2 >> sa;
+            `EXE_SRA_OP     :ans <= ($signed(num2)) >>> sa;
+            `EXE_SLLV_OP    :ans <= num2 << num1;
+            `EXE_SRLV_OP    :ans <= num2 >> num1;
+            `EXE_SRAV_OP    :ans <= ($signed(num2)) >>> num1;
+
             //move inst
             // Arithmetic inst
             `EXE_ADD_OP     :ans <= num1 + num2         ;

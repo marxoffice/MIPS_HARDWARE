@@ -23,7 +23,7 @@ module flowmips(
     wire regwriteW,zeroE,memtoregW;
     wire [4:0] WriteRegE,WriteRegM,WriteRegW;
 	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,readdataW,aluoutW;
-    wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD;
+    wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE;
 
     wire stallF,stallD,flushE,EqualD;
     wire [31:0] eq1,eq2;
@@ -96,11 +96,14 @@ module flowmips(
     flopenrc #(1) fp3_12(clk, rst, 1'b1, flush_endE, predictD, predictE);
     flopenrc #(1) fp3_13(clk, rst, 1'b1, flush_endE, branchD, branchE);
     flopenrc #(32) fp3_14(clk,rst, 1'b1, flush_endE, pcD, pcE);
+    flopenrc #(32) fp3_15(clk, rst, 1'b1, flush_endE, saD, saE);
+
 
     // 信号数据
     assign rsD = instrD[25:21];
     assign rtD = instrD[20:16];
     assign rdD = instrD[15:11];
+    assign saD = instrD[10:6];
 
     // 是否真的跳转了
     assign actual_takeE = zeroE;
@@ -111,7 +114,7 @@ module flowmips(
 
     mux2 #(5) after_regfile(WriteRegE,RtE,RdE,regdstE);
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
-    alu my_alu(SrcAE,SrcBE,alucontrolE,aluoutE,zeroE);
+    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,aluoutE,zeroE);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
