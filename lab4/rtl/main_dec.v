@@ -44,7 +44,11 @@ module main_dec(
     
     always@(*) begin
         case(op)
-            `EXE_NOP: main_signal <= 7'b1100000; // R-type
+            `EXE_NOP: case(funct)
+                `EXE_AND, `EXE_OR, `EXE_XOR, `EXE_NOR, `EXE_SLL, `EXE_SRL, `EXE_SRA, `EXE_SLLV, `EXE_SRLV, `EXE_SRAV, `EXE_ADD, `EXE_ADDU, `EXE_SUB, `EXE_SUBU, `EXE_SLT, `EXE_SLTU, `EXE_MULT, `EXE_MULTU, `EXE_DIV, `EXE_DIVU: main_signal <= 7'b1100000; // R-type
+                //TODO `EXE_MFHI `EXE_MTHI `EXE_MFLO `EXE_MTLO
+                default: main_signal <= 7'b0000000;
+            endcase
             `EXE_ANDI ,`EXE_XORI, `EXE_LUI, `EXE_ORI ,`EXE_ADDI, `EXE_ADDIU ,`EXE_SLTI, `EXE_SLTIU: main_signal <= 7'b1010000; // Immediate
             `EXE_BEQ: main_signal <= 7'b0001000; // lab4 beq
             `EXE_LW: main_signal <= 7'b1010010;  // lab4 lw
