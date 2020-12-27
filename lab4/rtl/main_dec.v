@@ -41,6 +41,10 @@ module main_dec(
     
     reg [6:0] main_signal;
     assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = main_signal;
+    // regwrite  写寄存器堆        regdst  选择rd还是rt作为写的目标(一般只有immediate需要选rt:0)
+    // alusrc  选择立即数还是reg输入alu(一般只有immediate需要选立即数:1)
+    // branch  branch指令          memwrite  写内存           memtoreg 内存写到寄存器堆
+    // jump    j跳转指令
     
     always@(*) begin
         case(op)
@@ -53,6 +57,9 @@ module main_dec(
                 // Arithmetic inst
                 `EXE_ADD, `EXE_ADDU, `EXE_SUB, `EXE_SUBU, `EXE_SLT, `EXE_SLTU, `EXE_MULT, `EXE_MULTU, `EXE_DIV, `EXE_DIVU: main_signal <= 7'b1100000; // R-type
                 
+                `EXE_MFHI, `EXE_MFLO: main_signal <= 7'b1100000;
+                `EXE_MTHI, `EXE_MTLO: main_signal <= 7'b0000000;
+
                 default: main_signal <= 7'b0000000;
             endcase
             //logic inst

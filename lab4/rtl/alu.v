@@ -25,6 +25,8 @@ module alu(
     input wire [31:0] num2,
     input wire [5:0] sa,
     input wire [7:0] alucontrol,
+    input wire [31:0] hi,
+    input wire [31:0] lo,
     output reg [31:0] ans,
     output wire zero
     );
@@ -65,6 +67,11 @@ module alu(
             `EXE_SRAV_OP    :ans <= ($signed(num2)) >>> num1;
 
             //move inst
+            `EXE_MFHI_OP    :ans <= hi;
+            `EXE_MTHI_OP    :ans <= num1;
+            `EXE_MFLO_OP    :ans <= lo;
+            `EXE_MTLO_OP    :ans <= num1;
+
             // Arithmetic inst
             `EXE_ADD_OP     :ans <= num1 + num2         ;
             `EXE_SUB_OP     :ans <= num1 - num2         ;

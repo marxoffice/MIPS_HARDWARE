@@ -126,6 +126,8 @@ module flowmips(
     flopr #(32) fp4_7(clk,rst,pcE,pcM);
     flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
     flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);
+    
+    // hilo_reg hilo_at4();
 
     // flopr 5
     flopr #(2) fp5_1(clk,rst,{regwriteM,memtoregM},{regwriteW,memtoregW});
