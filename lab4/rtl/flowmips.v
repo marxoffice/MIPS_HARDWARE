@@ -16,7 +16,7 @@ module flowmips(
     wire [31:0] pc_branchD, pc_branchE;
 
 	wire[31:0] instrD,aluoutE;
-    wire [2:0] alucontrolD,alucontrolE;
+    wire [7:0] alucontrolD,alucontrolE;
     wire branchD,branchE,branchM,jumpD,memtoregD,memwriteD,alusrcD,regdstD,regwriteD;
     wire regwriteE,memtoregE,memwriteE,alusrcE,regdstE;
     wire regwriteM,memtoregM;

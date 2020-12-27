@@ -23,7 +23,8 @@
 module top(
 	input wire clk,rst,
 	output wire[31:0] writedata,dataadr,
-	output wire memwrite
+	output wire memwrite,
+	output wire [39:0] ascii
     );
 
 	// 实验包里面已经给top文件
@@ -44,7 +45,7 @@ module top(
 	flowmips flowmipsInstance(clk,rst,pc,instr,memwrite,dataadr,writedata,readdata);
 	inst_mem imem(~clk,pc[7:2],instr);
 	data_mem dmem(~clk,memwrite,dataadr[9:0],writedata,readdata); // 只生成了1024条存储位的数据存储器
-
+	instdec my_instdec(instr,ascii);
 //	wire [31:0] inputInst;
 //	adder my_add(pc,32'hfffffff8,inputInst);
 

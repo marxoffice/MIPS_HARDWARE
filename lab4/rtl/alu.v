@@ -48,16 +48,17 @@ module alu(
             `EXE_OR_OP      :ans <= num1 | num2         ;
             `EXE_XOR_OP     :ans <= num1 ^ num2         ;
             `EXE_NOR_OP     :ans <= ~(num1 | num2)      ;
-            `EXE_ANDI_OP    :ans <= num1 & num2         ;
-            `EXE_XORI_OP    :ans <= num1 ^ num2         ;
-            `EXE_LUI_OP     :ans <= {num2[15:0],{16{1'b0}}};
-            `EXE_ORI_OP     :ans <= num1 | num2         ;
+            //TODO 由于传进来的immediate是有符号扩展，这里为了节省一个zero_extend,直接在alu中修改高16位
+            `EXE_ANDI_OP    :ans <= num1 & { {16{1'b0}} , num2[15:0]}   ;
+            `EXE_XORI_OP    :ans <= num1 ^ { {16{1'b0}} , num2[15:0]}   ;
+            `EXE_LUI_OP     :ans <= {num2[15:0] , {16{1'b0}} }          ;
+            `EXE_ORI_OP     :ans <= num1 | { {16{1'b0}} , num2[15:0]}   ;
 
             //shift inst
             //TODO 注意算术右移指令 这里不确定vivado的signed是否可以通过
             //TODO 需要测试 使用31bit和32bit的数字来测试一下
-            `EXE_SLL_OP     :ans <= num2 << sa;
-            `EXE_SRL_OP     :ans <= num2 >> sa;
+            `EXE_SLL_OP     :ans <= num2 << sa          ;
+            `EXE_SRL_OP     :ans <= num2 >> sa          ;
             `EXE_SRA_OP     :ans <= ($signed(num2)) >>> sa;
             `EXE_SLLV_OP    :ans <= num2 << num1;
             `EXE_SRLV_OP    :ans <= num2 >> num1;
