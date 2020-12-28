@@ -23,7 +23,7 @@
 module alu(
     input wire [31:0] num1,
     input wire [31:0] num2,
-    input wire [5:0] sa,
+    input wire [4:0] sa,
     input wire [7:0] alucontrol,
     input wire [31:0] hi,
     input wire [31:0] lo,

@@ -96,7 +96,7 @@ module flowmips(
     flopenrc #(1) fp3_12(clk, rst, 1'b1, flush_endE, predictD, predictE);
     flopenrc #(1) fp3_13(clk, rst, 1'b1, flush_endE, branchD, branchE);
     flopenrc #(32) fp3_14(clk,rst, 1'b1, flush_endE, pcD, pcE);
-    flopenrc #(32) fp3_15(clk, rst, 1'b1, flush_endE, saD, saE);
+    flopenrc #(5) fp3_15(clk, rst, 1'b1, flush_endE, saD, saE);
 
 
     // 信号数据
@@ -114,7 +114,7 @@ module flowmips(
 
     mux2 #(5) after_regfile(WriteRegE,RtE,RdE,regdstE);
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
-    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,aluoutE,zeroE);
+    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,32'b0,32'b0,aluoutE,zeroE);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
@@ -127,7 +127,12 @@ module flowmips(
     flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
     flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);
     
-    // hilo_reg hilo_at4();
+    wire we;
+    assign we = 1'b0;
+    wire [31:0] hi,lo,hi_o,lo_o;
+    assign hi = 32'b0;
+    assign lo = 32'b0;
+    hilo_reg hilo_at4(clk,rst,we,hi,lo,hi_o,lo_o);
 
     // flopr 5
     flopr #(2) fp5_1(clk,rst,{regwriteM,memtoregM},{regwriteW,memtoregW});
