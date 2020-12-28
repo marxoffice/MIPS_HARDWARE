@@ -28,6 +28,7 @@ module alu(
     input wire [31:0] hi,
     input wire [31:0] lo,
     output reg [31:0] ans,
+    output reg [63:0] hilo_out,
     output wire zero
     );
 
@@ -43,6 +44,14 @@ module alu(
     //        (op == 3'b001) ? num1 | num2 :                  // | or
     //        (op == 3'b100) ? ~num1 :                        // ! not
     //        (op == 3'b111) ? (num1 < num2) : 32'h00000000;  // slt if(num1 < num2) ans = 1; ans = 0;
+    always@(*) begin
+        if(alucontrol == `EXE_MTHI_OP) begin
+            hilo_out <= {num1,lo};
+        end else if(alucontrol == `EXE_MTLO_OP) begin
+            hilo_out <= {hi,num1};
+        end else hilo_out <= {hi,lo};
+    end
+
     always @(*) begin
         case (alucontrol)
             //logic op

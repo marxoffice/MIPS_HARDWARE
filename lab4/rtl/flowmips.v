@@ -108,13 +108,21 @@ module flowmips(
     // 是否真的跳转了
     assign actual_takeE = zeroE;
 
+
+    wire we;
+    assign we = 1'b0;
+    wire [31:0] hi,lo,hi_o,lo_o;
+    wire [63:0] hilo_o;
+    assign hi = 32'b0;
+    assign lo = 32'b0;
+
     // 数据前推补充
     mux3 #(32) forward2_1(SrcAE,defaultSrcAE,ResultW,aluoutM,forwardAE);
     mux3 #(32) forward2_2(WriteDataE,defaultWriteDataE,ResultW,aluoutM,forwardBE);
 
     mux2 #(5) after_regfile(WriteRegE,RtE,RdE,regdstE);
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
-    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,32'b0,32'b0,aluoutE,zeroE);
+    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0],aluoutE,hilo_o,zeroE);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
@@ -127,11 +135,6 @@ module flowmips(
     flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
     flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);
     
-    wire we;
-    assign we = 1'b0;
-    wire [31:0] hi,lo,hi_o,lo_o;
-    assign hi = 32'b0;
-    assign lo = 32'b0;
     hilo_reg hilo_at4(clk,rst,we,hi,lo,hi_o,lo_o);
 
     // flopr 5
