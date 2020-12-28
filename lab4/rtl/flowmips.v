@@ -32,6 +32,9 @@ module flowmips(
 
     wire [31:0] pcF,pcD,pcE,pcM;
 
+    wire overflowE; // 溢出信号
+    wire div_stall; // div运算stallE信号
+
     // 预测模块
     wire predictF,predictD, predictE, predict_wrong,predict_wrongM;
     wire actual_takeM, actual_takeE;
@@ -47,7 +50,7 @@ module flowmips(
     mux2 #(32) before_pc_jump(pc_in,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
 	
     
-    pc my_pc(clk,rst,~stallF,pc_in,pc,inst_ce);
+    pc my_pc(clk,rst,~stallF | div_stall,pc_in,pc,inst_ce);
 	adder my_adder_pc(inst_ce,32'b100,pc_add4F);
     assign pcF = pc;
 
@@ -56,9 +59,9 @@ module flowmips(
     // 若当前预测要跳, 则flushD
     assign flushD = (branchE & predict_wrong) | (predictD & branchD);
 	// flopr 2
-	flopenrc #(32) fp2_1(clk,rst,~stallD,flushD,instr,instrD);
-	flopenrc #(32) fp2_2(clk,rst,~stallD,flushD,pc_add4F,pc_add4D);
-    flopenrc #(32) fp2_3(clk, rst, ~stallD, flushD, pcF, pcD);
+	flopenrc #(32) fp2_1(clk,rst,~stallD | div_stall,flushD,instr,instrD);
+	flopenrc #(32) fp2_2(clk,rst,~stallD | div_stall,flushD,pc_add4F,pc_add4D);
+    flopenrc #(32) fp2_3(clk, rst, ~stallD | div_stall, flushD, pcF, pcD);
 
     controller c(instrD[31:26],instrD[5:0],memtoregD,
 	memwriteD,branchD,alusrcD,regdstD,regwriteD,jumpD,alucontrolD);
@@ -122,7 +125,9 @@ module flowmips(
 
     mux2 #(5) after_regfile(WriteRegE,RtE,RdE,regdstE);
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
-    alu my_alu(SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0],aluoutE,hilo_o,zeroE);
+
+    alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
+                aluoutE,hilo_o,overflowE,zeroE,div_stall);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
