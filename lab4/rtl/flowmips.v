@@ -54,7 +54,7 @@ module flowmips(
     mux2 #(32) before_pc_jump(pc_in,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
 	
     
-    pc my_pc(clk,rst,~stallF | div_stall,pc_in,pc,inst_ce);
+    pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
 	adder my_adder_pc(inst_ce,32'b100,pc_add4F);
     assign pcF = pc;
 
@@ -63,9 +63,9 @@ module flowmips(
     // 若当前预测要跳, 则flushD
     assign flushD = (branchE & predict_wrong) | (predictD & branchD);
 	// flopr 2
-	flopenrc #(32) fp2_1(clk,rst,~stallD | div_stall,flushD,instr,instrD);
-	flopenrc #(32) fp2_2(clk,rst,~stallD | div_stall,flushD,pc_add4F,pc_add4D);
-    flopenrc #(32) fp2_3(clk, rst, ~stallD | div_stall, flushD, pcF, pcD);
+	flopenrc #(32) fp2_1(clk,rst,~stallD & ~div_stall,flushD,instr,instrD);
+	flopenrc #(32) fp2_2(clk,rst,~stallD & ~div_stall,flushD,pc_add4F,pc_add4D);
+    flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD, pcF, pcD);
 
     controller c(instrD[31:26],instrD[5:0],rtD,memtoregD,
 	memwriteD,branchD,alusrcD,regdstD,regwriteD,jumpD,alucontrolD);
@@ -90,21 +90,21 @@ module flowmips(
     assign flush_endE = flushE | (predict_wrong & branchE);
 
     // flopr 3
-    floprc #(13) fp3_1(clk,rst,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
-    floprc #(32) fp3_2(clk,rst,flush_endE,SrcAD,defaultSrcAE);
-    floprc #(32) fp3_3(clk,rst,flush_endE,writedataD,defaultWriteDataE);
-    floprc #(5) fp3_4(clk,rst,flush_endE,rsD,rsE);
-    floprc #(5) fp3_5(clk,rst,flush_endE,rtD,RtE);
-    floprc #(5) fp3_6(clk,rst,flush_endE,rdD,RdE);
-    floprc #(32) fp3_7(clk,rst,flush_endE,SignImmD,SignImmE);
-    flopenrc #(32) fp3_8(clk,rst,1'b1,flush_endE,pc_add4D,pc_add4E);
-    flopenrc #(1) fp3_9(clk,rst,1'b1,flush_endE,pcsrcD,pcsrcE);
-    flopenrc #(32) fp3_10(clk,rst,1'b1,flush_endE,pc_branchD,pc_branchE);
-    flopenrc #(1) fp3_11(clk, rst, 1'b1, flush_endE, EqualD, EqualE);
-    flopenrc #(1) fp3_12(clk, rst, 1'b1, flush_endE, predictD, predictE);
-    flopenrc #(1) fp3_13(clk, rst, 1'b1, flush_endE, branchD, branchE);
-    flopenrc #(32) fp3_14(clk,rst, 1'b1, flush_endE, pcD, pcE);
-    flopenrc #(5) fp3_15(clk, rst, 1'b1, flush_endE, saD, saE);
+    flopenrc #(13) fp3_1(clk,rst,~div_stall,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
+    flopenrc #(32) fp3_2(clk,rst,~div_stall,flush_endE,SrcAD,defaultSrcAE);
+    flopenrc #(32) fp3_3(clk,rst,~div_stall,flush_endE,writedataD,defaultWriteDataE);
+    flopenrc #(5) fp3_4(clk,rst,~div_stall,flush_endE,rsD,rsE);
+    flopenrc #(5) fp3_5(clk,rst,~div_stall,flush_endE,rtD,RtE);
+    flopenrc #(5) fp3_6(clk,rst,~div_stall,flush_endE,rdD,RdE);
+    flopenrc #(32) fp3_7(clk,rst,~div_stall,flush_endE,SignImmD,SignImmE);
+    flopenrc #(32) fp3_8(clk,rst,~div_stall,flush_endE,pc_add4D,pc_add4E);
+    flopenrc #(1) fp3_9(clk,rst,~div_stall,flush_endE,pcsrcD,pcsrcE);
+    flopenrc #(32) fp3_10(clk,rst,~div_stall,flush_endE,pc_branchD,pc_branchE);
+    flopenrc #(1) fp3_11(clk, rst, ~div_stall, flush_endE, EqualD, EqualE);
+    flopenrc #(1) fp3_12(clk, rst, ~div_stall, flush_endE, predictD, predictE);
+    flopenrc #(1) fp3_13(clk, rst, ~div_stall, flush_endE, branchD, branchE);
+    flopenrc #(32) fp3_14(clk,rst, ~div_stall, flush_endE, pcD, pcE);
+    flopenrc #(5) fp3_15(clk, rst, ~div_stall, flush_endE, saD, saE);
 
 
     // 信号数据

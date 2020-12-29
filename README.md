@@ -100,11 +100,12 @@ MipsVerilog
 
 ## 测试日志
 
-|    时间    |  人员  |           测试            |
-| :--------: | :----: | :-----------------------: |
-| 2020.12.27 | 屈湘钧 | logic8条指令部分测试完成  |
-| 2020.12.28 | 朱海龙 | shift6条指令部分测试完成  |
-| 2020.12.28 | 朱海龙 | move_hilo四条指令测试完成 |
+|    时间    |  人员  |                  测试                  |
+| :--------: | :----: | :------------------------------------: |
+| 2020.12.27 | 屈湘钧 |        logic8条指令部分测试完成        |
+| 2020.12.28 | 朱海龙 |        shift6条指令部分测试完成        |
+| 2020.12.28 | 朱海龙 |       move_hilo四条指令测试完成        |
+| 2020.12.29 | 屈湘钧 | 简单运算指令（不包含除法）12条测试完毕 |
 
 
 
@@ -168,9 +169,85 @@ MipsVerilog
 
 ![TestShift](./imgs/数据移动测试20201228102906.png)
 
+#### 简单算术指令测试（包含乘法，不包含除法）
 
+```assembly
+   ######### add\addi\addiu\addu\sub\subu ##########
 
+   ori  $1,$0,0x8000           # $1 = 0x8000
+   sll  $1,$1,16               # $1 = 0x80000000
+   ori  $1,$1,0x0010           # $1 = 0x80000010
 
+   ori  $2,$0,0x8000           # $2 = 0x8000
+   sll  $2,$2,16               # $2 = 0x80000000
+   ori  $2,$2,0x0001           # $2 = 0x80000001
+
+   ori  $3,$0,0x0000           # $3 = 0x00000000
+   addu $3,$2,$1               # $3 = 0x00000011
+   ori  $3,$0,0x0000           # $3 = 0x00000000
+   add  $3,$2,$1               # overflow,$3 keep 0x00000000
+
+   sub   $3,$1,$3              # $3 = 0x80000010         
+   subu  $3,$3,$2              # $3 = 0xF
+
+   addi $3,$3,2                # $3 = 0x11
+   ori  $3,$0,0x0000           # $3 = 0x00000000
+   addiu $3,$3,0x8000          # $3 = 0xffff8000
+
+   #########     slt\sltu\slti\sltiu     ##########
+
+   ori   $1,$0,0xffff           # $1 = 0xffff
+   sll  $1,$1,16               # $1 = 0xffff0000
+   slt  $2,$1,$0               # $2 = 1
+   sltu $2,$1,$0               # $2 = 0
+   slti $2,$1,0x8000           # $2 = 1
+   sltiu $2,$1,0x8000          # $2 = 1
+
+   #########          mult/multu          ##########
+
+   ori  $1,$0,0xffff           # $1 = 0xffff
+   sll  $1,$1,16               # $1 = 0xffff0000
+   ori  $1,$1,0xfffb           # $1 = -5
+   ori  $2,$0,6                # $2 = 6  
+   mult $1,$2                  # hi = 0xffffffff
+                               # lo = 0xffffffe2
+
+   multu $1,$2                 # hi = 0x5
+                               # lo = 0xffffffe2
+   nop
+   nop
+```
+
+![image-20201229142339508](./imgs/简单算术指令测试20201229142339508.png)
+
+![image-20201229142736599](./imgs/乘法算术指令测试20201229142339508.png)
+
+#### 除法运算指令测试
+
+```assembly
+   ori  $2,$0,0xffff                  
+   sll  $2,$2,16
+   ori  $2,$2,0xfff1           # $2 = -15
+   ori  $3,$0,0x11             # $3 = 17
+
+   div $zero,$2,$3             # hi = 0xfffffff1            
+                               # lo = 0x0
+   divu $zero,$2,$3            # hi = 0x00000003
+                               # lo = 0x0f0f0f0e
+
+   div  $zero,$3,$2            # hi = 2
+                               # lo = 0xffffffff
+```
+
+图1为DIV和DIVU的结果，图2位DIVU和DIV的结果。
+
+图3为DIV与DIVU指令间，需要stall流水线的信号和结果ok的信号。
+
+![image-20201229152854065](C:\Users\49393\AppData\Roaming\Typora\typora-user-images\image-20201229152854065.png)
+
+![image-20201229152758889](C:\Users\49393\AppData\Roaming\Typora\typora-user-images\image-20201229152758889.png)
+
+![image-20201229153015814](C:\Users\49393\AppData\Roaming\Typora\typora-user-images\image-20201229153015814.png)
 
 ## 错误日志
 
@@ -182,13 +259,17 @@ MipsVerilog
 
 解决方案：修改alucontroller涉及的中间寄存器和转存信号的位数，如alucontrollerD、alucontrollerE。
 
-##### 2020.12.28
+##### 2020.12.29
 
 ###### 错误1
 
-错误描述:结果输出滞后了
+错误描述：ALU_OP字符复制粘贴错误，导致计算未正确执行，使用了default的0结果。
 
-![image-20201229010446974](./imgs/errorimage-20201229010446974.png)
+解决方案：对照alu_dec文件逐一检查更新字符。
+
+###### 错误2
+
+错误描述
 
 ## 引用说明
 

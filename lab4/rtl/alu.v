@@ -115,16 +115,16 @@ module alu(
 
             // Arithmetic inst
             `EXE_ADD_OP     :ans <= num1 + num2;
-            `EXE_ADDU       :ans <= num1 + num2                     ;
+            `EXE_ADDU_OP    :ans <= num1 + num2                     ;
             `EXE_SUB_OP     :ans <= num1 - num2;
-            `EXE_SUBU       :ans <= num1 - num2                     ;
+            `EXE_SUBU_OP    :ans <= num1 - num2                     ;
             `EXE_SLT_OP     :ans <= $signed(num1) < $signed(num2)   ;
-            `EXE_SLTU       :ans <= num1 < num2                     ;
+            `EXE_SLTU_OP    :ans <= num1 < num2                     ;
             // 注意这个所有立即数都是有符号扩展得出来的再做有无溢出区别的相加
             `EXE_ADDI_OP    :ans <= num1 + num2                     ;
-            `EXE_ADDIU      :ans <= num1 + num2                     ;
-            `EXE_SLTI       :ans <= $signed(num1) < $signed(num2)   ;
-            `EXE_SLTIU      :ans <= num1 < num2                     ;
+            `EXE_ADDIU_OP   :ans <= num1 + num2                     ;
+            `EXE_SLTI_OP    :ans <= $signed(num1) < $signed(num2)   ;
+            `EXE_SLTIU_OP   :ans <= num1 < num2                     ;
 
             //J type
             `EXE_J_OP       :ans <= num1 + num2         ;
@@ -146,7 +146,9 @@ module alu(
 
     //multiply
     wire mul_sign;
-	assign mul_sign = (alucontrol == `EXE_MULT);
+	assign mul_sign = (alucontrol == `EXE_MULT_OP);
+    wire mul_valid;  // 用于判断是否为乘法
+    assign mul_valid = (alucontrol == `EXE_MULT_OP || alucontrol == `EXE_MULTU_OP);
 	mul_booth2 MUL(
 		.a(num1),
 		.b(num2),
@@ -157,8 +159,8 @@ module alu(
     //divide
     wire div_sign;
     wire div_valid;
-    assign div_sign  = (alucontrol == `EXE_DIV);
-	assign div_valid = (alucontrol == `EXE_DIV || alucontrol == `EXE_DIVU);
+    assign div_sign  = (alucontrol == `EXE_DIV_OP);
+	assign div_valid = (alucontrol == `EXE_DIV_OP || alucontrol == `EXE_DIVU_OP);
 
     wire div_res_valid;
     wire div_res_ready;
@@ -179,9 +181,9 @@ module alu(
 		.result(hilo_out_div)  // 计算结果
 	);
 
-    always@(hilo_out_div,hilo_out_mul,hilo_out_move) begin
+    always@(hilo_out_div,hilo_out_mul,hilo_out_move,div_res_valid) begin
         hilo_out = (div_res_valid == 1)? hilo_out_div :
-                        (div_valid == 1)   ? hilo_out_mul :
+                        (mul_valid == 1)   ? hilo_out_mul :
                         hilo_out_move;
     end
 
