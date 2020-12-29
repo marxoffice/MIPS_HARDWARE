@@ -32,6 +32,10 @@ module flowmips(
 
     wire [31:0] pcF,pcD,pcE,pcM;
 
+    // 解决al型指令
+    wire [31:0] pc_al_value; // 针对al型指令的PC值 例如jal bltzal等
+    wire write_al;
+
     wire overflowE; // 溢出信号
     wire div_stall; // div运算stallE信号
 
@@ -63,7 +67,7 @@ module flowmips(
 	flopenrc #(32) fp2_2(clk,rst,~stallD | div_stall,flushD,pc_add4F,pc_add4D);
     flopenrc #(32) fp2_3(clk, rst, ~stallD | div_stall, flushD, pcF, pcD);
 
-    controller c(instrD[31:26],instrD[5:0],memtoregD,
+    controller c(instrD[31:26],instrD[5:0],rtD,memtoregD,
 	memwriteD,branchD,alusrcD,regdstD,regwriteD,jumpD,alucontrolD);
 
 	signext my_sign_extend(instrD[15:0],SignImmD);
@@ -72,6 +76,7 @@ module flowmips(
     sl2 my_shift_left(SignImmD,after_shift);
 
 	adder my_adder_branch(after_shift,pc_add4D,pc_branchD);
+    adder my_adder_al(32'b100,pc_add4D,pc_al_value);
 
     // 分支预判 + 数据前推 注意这里是预判不是预测
     equalCMP #(32) cmp1(eq1,eq2,EqualD);

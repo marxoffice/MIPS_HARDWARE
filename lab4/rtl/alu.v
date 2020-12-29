@@ -34,7 +34,7 @@ module alu(
     output wire [31:0] real_ans,
     output reg [63:0] hilo_out,
     output wire overflowE,
-    output wire zero,
+    output wire zero,     // zero为1表示跳转 否则不跳
     output wire div_stallE  // 除法运算的停顿
     );
     reg [31:0] ans;
@@ -44,9 +44,17 @@ module alu(
 
     // 根据实验图的要求.在实验1的alu基础上增加 zero值
 
-    // 重要错误 zero = (ans == 32'b0);
-    // assign zero = 1'b0;
-    assign zero = (ans == 32'b0);
+    // TODO 可以考虑将此功能独立成模块 branch_judge
+    assign zero = (alucontrol == `EXE_BEQ_OP) ? (num1 == num2):                       // == 0
+                  (alucontrol == `EXE_BNE_OP) ? (num1 != num2):                       // != 0
+                  (alucontrol == `EXE_BGTZ_OP) ? ((num1[31]==1'b0) && (num1!=32'b0)): // > 0 
+                  (alucontrol == `EXE_BLEZ_OP) ? ((num1[31]==1'b1) || (num1==32'b0)): // <= 0
+                  (alucontrol == `EXE_BLTZ_OP) ? (num1[31] == 1'b1):                  // < 0
+                  (alucontrol == `EXE_BGEZ_OP) ? (num1[31] == 1'b0):                  // >= 0
+                  // 下面两条是特殊指令 无论是否跳转 必须写GHR[31]
+                  (alucontrol == `EXE_BLTZAL_OP) ? (num1[31] == 1'b1):                // < 0
+                  (alucontrol == `EXE_BGEZAL_OP) ? (num1[31] == 1'b0):                // >= 0
+                  (ans == 32'b0);
 
     // assign ans = (op == 3'b010) ? num1 + num2 :            // + add
     //        (op == 3'b110) ? num1 - num2 :                  // - sub
@@ -121,6 +129,10 @@ module alu(
             //J type
             `EXE_J_OP       :ans <= num1 + num2         ;
             `EXE_BEQ_OP     :ans <= num1 - num2         ;
+
+            //b type
+            `EXE_BEQ_OP     :ans <= num1 - num2         ;
+            `EXE_BNE_OP     :ans <= num1 - num2         ;
 
             // memory insts
             `EXE_LW_OP      :ans <= num1 + num2         ;

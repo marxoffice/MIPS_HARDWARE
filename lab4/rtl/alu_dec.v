@@ -28,6 +28,7 @@ module alu_dec(
 	input wire [5:0] funct,
 	// input wire [1:0] aluop,
     input wire [5:0] op,
+    input wire [4:0] rt,
 	output reg [7:0] alucontrol
     );
 
@@ -102,10 +103,13 @@ module alu_dec(
             `EXE_BGTZ   :alucontrol <= `EXE_BGTZ_OP     ;
             `EXE_BLEZ   :alucontrol <= `EXE_BLEZ_OP     ;
             `EXE_BNE    :alucontrol <= `EXE_BNE_OP      ;
-            `EXE_BLTZ   :alucontrol <= `EXE_BLTZ_OP     ;
-            `EXE_BLTZAL :alucontrol <= `EXE_BLTZAL_OP   ;
-            `EXE_BGEZ   :alucontrol <= `EXE_BGEZ_OP     ;
-            `EXE_BGEZAL :alucontrol <= `EXE_BGEZAL_OP   ;
+            
+            `EXE_REGIMM_INST: case(rt)
+                `EXE_BLTZ   :alucontrol <= `EXE_BLTZ_OP     ;
+                `EXE_BLTZAL :alucontrol <= `EXE_BLTZAL_OP   ;
+                `EXE_BGEZ   :alucontrol <= `EXE_BGEZ_OP     ;
+                `EXE_BGEZAL :alucontrol <= `EXE_BGEZAL_OP   ;
+            endcase
             // memory insts
             `EXE_LB     :alucontrol <= `EXE_LB_OP   ;
             `EXE_LBU    :alucontrol <= `EXE_LBU_OP  ;

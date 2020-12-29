@@ -24,6 +24,7 @@
 module main_dec(
 	input wire [5:0] op,
     input wire[5:0] funct,
+    input wire[4:0] rt,
     output wire regwrite,regdst,alusrc,branch,
     output wire memwrite,memtoreg,
 	output wire jump
@@ -66,7 +67,16 @@ module main_dec(
             `EXE_ANDI ,`EXE_XORI, `EXE_LUI, `EXE_ORI: main_signal <= 7'b1010000; // Immediate
             
             `EXE_ADDI, `EXE_ADDIU ,`EXE_SLTI, `EXE_SLTIU: main_signal <= 7'b1010000; // Immediate
-            `EXE_BEQ: main_signal <= 7'b0001000; // lab4 beq
+            
+            // branch inst
+            `EXE_BEQ, `EXE_BGTZ, `EXE_BLEZ, `EXE_BNE    :main_signal <= 7'b0001000    ;
+            
+            `EXE_REGIMM_INST: case(rt)
+                `EXE_BLTZ   :main_signal <= 7'b0      ;
+                `EXE_BLTZAL :main_signal <= 7'b0      ;
+                `EXE_BGEZ   :main_signal <= 7'b0      ;
+                `EXE_BGEZAL :main_signal <= 7'b0      ;
+            endcase
             `EXE_LW: main_signal <= 7'b1010010;  // lab4 lw
             `EXE_SW: main_signal <= 7'b0010100;  // lab4 sw
             `EXE_J: main_signal <= 7'b0000001;   // lab4 j
