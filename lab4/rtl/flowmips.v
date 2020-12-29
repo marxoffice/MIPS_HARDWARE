@@ -21,7 +21,7 @@ module flowmips(
     wire regwriteE,memtoregE,memwriteE,alusrcE,regdstE;
     wire regwriteM,memtoregM;
     wire regwriteW,zeroE,memtoregW;
-    wire [4:0] WriteRegE,WriteRegM,WriteRegW;
+    wire [4:0] WriteRegTemp,WriteRegE,WriteRegM,WriteRegW;
 	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,readdataW,aluoutW;
     wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE;
 
@@ -32,9 +32,9 @@ module flowmips(
 
     wire [31:0] pcF,pcD,pcE,pcM;
 
-    // 解决al型指令
-    wire [31:0] pc_al_value; // 针对al型指令的PC值 例如jal bltzal等
-    wire write_al;
+    // 针对al型指令的PC值 例如jal bltzal等
+    wire [4:0] pc_al_dst;
+    wire write_alD,write_alE;
 
     wire overflowE; // 溢出信号
     wire div_stall; // div运算stallE信号
@@ -68,7 +68,7 @@ module flowmips(
     flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD, pcF, pcD);
 
     controller c(instrD[31:26],instrD[5:0],rtD,memtoregD,
-	memwriteD,branchD,alusrcD,regdstD,regwriteD,jumpD,alucontrolD);
+	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,alucontrolD);
 
 	signext my_sign_extend(instrD[15:0],SignImmD);
 	regfile my_register_file(clk,regwriteW,instrD[25:21],instrD[20:16],WriteRegW,ResultW,SrcAD,writedataD);
@@ -76,7 +76,6 @@ module flowmips(
     sl2 my_shift_left(SignImmD,after_shift);
 
 	adder my_adder_branch(after_shift,pc_add4D,pc_branchD);
-    adder my_adder_al(32'b100,pc_add4D,pc_al_value);
 
     // 分支预判 + 数据前推 注意这里是预判不是预测
     equalCMP #(32) cmp1(eq1,eq2,EqualD);
@@ -105,6 +104,7 @@ module flowmips(
     flopenrc #(1) fp3_13(clk, rst, ~div_stall, flush_endE, branchD, branchE);
     flopenrc #(32) fp3_14(clk,rst, ~div_stall, flush_endE, pcD, pcE);
     flopenrc #(5) fp3_15(clk, rst, ~div_stall, flush_endE, saD, saE);
+    flopenrc #(1) fp3_16(clk, rst, ~div_stall, flush_endE, write_alD, write_alE);
 
 
     // 信号数据
@@ -128,11 +128,15 @@ module flowmips(
     mux3 #(32) forward2_1(SrcAE,defaultSrcAE,ResultW,aluoutM,forwardAE);
     mux3 #(32) forward2_2(WriteDataE,defaultWriteDataE,ResultW,aluoutM,forwardBE);
 
-    mux2 #(5) after_regfile(WriteRegE,RtE,RdE,regdstE);
+    mux2 #(5) after_regfile(WriteRegTemp,RtE,RdE,regdstE);
+
+    // 处理al型指令的选择
+    mux2 #(5) mux_for_al(WriteRegE,WriteRegTemp,pc_al_dst,write_alE);
+
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
 
     alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
-                aluoutE,hilo_o,overflowE,zeroE,div_stall);
+                pc_add4E,aluoutE,hilo_o,overflowE,zeroE,div_stall);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
@@ -140,7 +144,7 @@ module flowmips(
     flopr #(32) fp4_3(clk,rst,WriteDataE,WriteDataM);
     flopr #(5) fp4_4(clk,rst,WriteRegE,WriteRegM);
     // flopr #(32) fp4_5(clk,rst,pc_branchE,pc_branchM);
-    flopr #(5) fp4_6(clk, rst, branchE, branchM);
+    flopr #(1) fp4_6(clk, rst, branchE, branchM);
     flopr #(32) fp4_7(clk,rst,pcE,pcM);
     flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
     flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);

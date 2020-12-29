@@ -2,7 +2,7 @@
 //description:  booth-2 code multiplier
 //version:      1.0
 
-module mul_booth2(
+module my_mul(
     // input               clk,
     // input               rst,
     input [31:0]        a,

@@ -31,6 +31,7 @@ module alu(
     input wire [31:0] lo,
     input wire flush_endE,  // 清除D->E阶段寄存器的信号，同时用于打断清除DIV的运算
     input wire stallM, // E->M中间寄存器的停顿信号，用于div的接收信号
+    input wire [31:0] pc_add4E,
     output wire [31:0] real_ans,
     output reg [63:0] hilo_out,
     output wire overflowE,
@@ -133,6 +134,7 @@ module alu(
             //b type
             `EXE_BEQ_OP     :ans <= num1 - num2         ;
             `EXE_BNE_OP     :ans <= num1 - num2         ;
+            `EXE_BLTZAL_OP  :ans <= + 32'b100;
 
             // memory insts
             `EXE_LW_OP      :ans <= num1 + num2         ;
@@ -149,7 +151,7 @@ module alu(
 	assign mul_sign = (alucontrol == `EXE_MULT_OP);
     wire mul_valid;  // 用于判断是否为乘法
     assign mul_valid = (alucontrol == `EXE_MULT_OP || alucontrol == `EXE_MULTU_OP);
-	mul_booth2 MUL(
+	my_mul MUL(
 		.a(num1),
 		.b(num2),
 		.sign(mul_sign),   //1:signed
