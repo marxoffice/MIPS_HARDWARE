@@ -81,13 +81,20 @@ module main_dec(
             
             `EXE_REGIMM_INST: case(rt)
                 `EXE_BLTZ   :main_signal <= 6'b000100      ;
-                `EXE_BLTZAL :main_signal <= 6'b000100      ;
+                `EXE_BLTZAL :main_signal <= 6'b100100      ;
                 `EXE_BGEZ   :main_signal <= 6'b000100      ;
-                `EXE_BGEZAL :main_signal <= 6'b000100      ;
+                `EXE_BGEZAL :main_signal <= 6'b100100      ;
             endcase
+            
+            // j inst
+            `EXE_J:   main_signal <= 6'b000000;
+            `EXE_JAL: main_signal <= 6'b100000;
+            `EXE_JR:  main_signal <= 6'b0;
+            `EXE_JALR:main_signal <= 6'b0;
+
+
             `EXE_LW: main_signal <= 6'b101001;  // lab4 lw
             `EXE_SW: main_signal <= 6'b001010;  // lab4 sw
-            `EXE_J: main_signal <= 6'b000000;   // lab4 j
             default: main_signal <= 6'b000000;  // error op
         endcase
     end

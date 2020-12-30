@@ -14,6 +14,7 @@ module flowmips(
 	wire [31:0] SrcAD,SrcAE,SrcBE,defaultSrcAE;
 	wire [31:0]	SignImmD,SignImmE;
     wire [31:0] pc_branchD, pc_branchE;
+    wire [31:0] ra;
 
 	wire[31:0] instrD,aluoutE;
     wire [7:0] alucontrolD,alucontrolE;
@@ -34,6 +35,7 @@ module flowmips(
 
     // 针对al型指令的PC值 例如jal bltzal等
     wire [4:0] pc_al_dst;
+    assign pc_al_dst = 5'b11111;
     wire write_alD,write_alE;
 
     wire overflowE; // 溢出信号
@@ -71,7 +73,7 @@ module flowmips(
 	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,alucontrolD);
 
 	signext my_sign_extend(instrD[15:0],SignImmD);
-	regfile my_register_file(clk,regwriteW,instrD[25:21],instrD[20:16],WriteRegW,ResultW,SrcAD,writedataD);
+	regfile my_register_file(clk,regwriteW,instrD[25:21],instrD[20:16],WriteRegW,ResultW,SrcAD,writedataD,ra);
     // regfile(i clk,i we3,i w[4:0] ra1,ra2,wa3, i w[31:0] wd3,o w[31:0] rd1,rd2);
     sl2 my_shift_left(SignImmD,after_shift);
 
@@ -96,7 +98,7 @@ module flowmips(
     flopenrc #(5) fp3_5(clk,rst,~div_stall,flush_endE,rtD,RtE);
     flopenrc #(5) fp3_6(clk,rst,~div_stall,flush_endE,rdD,RdE);
     flopenrc #(32) fp3_7(clk,rst,~div_stall,flush_endE,SignImmD,SignImmE);
-    flopenrc #(32) fp3_8(clk,rst,~div_stall,flush_endE,pc_add4D,pc_add4E);
+    flopenrc #(32) fp3_8(clk,rst,~div_stall,1'b0,pc_add4D,pc_add4E); // 不受flush影响
     flopenrc #(1) fp3_9(clk,rst,~div_stall,flush_endE,pcsrcD,pcsrcE);
     flopenrc #(32) fp3_10(clk,rst,~div_stall,flush_endE,pc_branchD,pc_branchE);
     flopenrc #(1) fp3_11(clk, rst, ~div_stall, flush_endE, EqualD, EqualE);

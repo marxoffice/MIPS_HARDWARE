@@ -25,7 +25,7 @@ module regfile(
 	input wire we3,
 	input wire[4:0] ra1,ra2,wa3,
 	input wire[31:0] wd3,
-	output wire[31:0] rd1,rd2
+	output wire[31:0] rd1,rd2,ra
     );
 
 	// 实验包里已给出
@@ -47,4 +47,5 @@ module regfile(
 
 	assign rd1 = (ra1 != 0) ? rf[ra1] : 0;
 	assign rd2 = (ra2 != 0) ? rf[ra2] : 0;
+	assign ra = rf[32'b11111];
 endmodule

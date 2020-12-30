@@ -134,7 +134,8 @@ module alu(
             //b type
             `EXE_BEQ_OP     :ans <= num1 - num2         ;
             `EXE_BNE_OP     :ans <= num1 - num2         ;
-            `EXE_BLTZAL_OP  :ans <= + 32'b100;
+            `EXE_BLTZAL_OP  :ans <= pc_add4E + 32'b100  ;
+            `EXE_BGEZAL_OP  :ans <= pc_add4E + 32'b100  ;
 
             // memory insts
             `EXE_LW_OP      :ans <= num1 + num2         ;
