@@ -29,6 +29,7 @@ module main_dec(
     output wire memwrite,memtoreg,
     output wire al_regdst,
 	output wire jump,jumpr     // 地址jump和寄存器值jump
+    // output reg [3:0] sel    // 写字节选 sw1111, lh 1100 or 0011 ,lb 1000 0100 0010 0001
     // output wire [1:0] aluop
     );
 
@@ -56,6 +57,8 @@ module main_dec(
     assign al_regdst = (((op == `EXE_REGIMM_INST) && (rt == `EXE_BLTZAL || rt == `EXE_BGEZAL)) // 两条bzal指令
                         || (op == `EXE_JAL)) ? 1 : 0;  // jal指令
     
+
+
     always@(*) begin
         case(op)
             `EXE_NOP: case(funct)
@@ -92,12 +95,19 @@ module main_dec(
             endcase
             
             // j inst
-            `EXE_J:   main_signal <= 6'b000000;
+            `EXE_J  : main_signal <= 6'b000000;
             `EXE_JAL: main_signal <= 6'b100000;
 
+            // memory insts
+            `EXE_LB : main_signal <= 6'b101001;
+            `EXE_LBU: main_signal <= 6'b101001;
+            `EXE_LH : main_signal <= 6'b101001;
+            `EXE_LHU: main_signal <= 6'b101001;
+            `EXE_LW : main_signal <= 6'b101001;  // lab4 lw
+            `EXE_SB : main_signal <= 6'b001010;  
+            `EXE_SH : main_signal <= 6'b001010;  
+            `EXE_SW : main_signal <= 6'b001010;  // lab4 sw
 
-            `EXE_LW: main_signal <= 6'b101001;  // lab4 lw
-            `EXE_SW: main_signal <= 6'b001010;  // lab4 sw
             default: main_signal <= 6'b000000;  // error op
         endcase
     end

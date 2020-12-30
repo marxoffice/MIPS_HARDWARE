@@ -4,7 +4,8 @@ module flowmips(
 	input wire[31:0] instr,
 	output wire memwriteM,
 	output wire[31:0] aluoutM,WriteDataM,
-	input wire[31:0] readdata 
+	input wire[31:0] readdata,
+    output wire [3:0] selM // 写存储的字节选择 
     );
 
     // 将datapath和controller直接合并起来
@@ -15,18 +16,17 @@ module flowmips(
 	wire [31:0]	SignImmD,SignImmE;
     wire [31:0] pc_branchD, pc_branchE;
     wire [31:0] ra;
-
 	wire[31:0] instrD,aluoutE;
-    wire [7:0] alucontrolD,alucontrolE;
+    wire [7:0] alucontrolD,alucontrolE,alucontrolM,alucontrolW;
     wire branchD,branchE,branchM,jumpD,memtoregD,memwriteD,alusrcD,regdstD,regwriteD;
     wire jumprD;
     wire regwriteE,memtoregE,memwriteE,alusrcE,regdstE;
     wire regwriteM,memtoregM;
     wire regwriteW,zeroE,memtoregW;
     wire [4:0] WriteRegTemp,WriteRegE,WriteRegM,WriteRegW;
-	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,readdataW,aluoutW;
+	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,handled_WriteDataE,readdataW,aluoutW;
     wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE;
-
+    wire [3:0] selE;
     wire stallF,stallD,flushE,EqualD;
     wire [31:0] eq1,eq2;
     wire [1:0] forwardAE,forwardBE;
@@ -41,6 +41,8 @@ module flowmips(
 
     wire overflowE; // 溢出信号
     wire div_stall; // div运算stallE信号
+    wire laddressError;  // 读地址错误例外
+    wire saddressError;  // 写地址错误例外
 
     // 预测模块
     wire predictF,predictD, predictE, predict_wrong,predict_wrongM;
@@ -55,7 +57,7 @@ module flowmips(
     //mux2 #(32) before_pc_predict(pc_temp3,pc_add4F,pc_temp2,pcsrcD);
     mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
     mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
-    mux2 #(32) before_pc_jumpr(pc_in,pc_temp4,eq1,jumprD);   // 注意这里可能有数据冒险 eq1是数据前推
+    mux2 #(32) before_pc_jumpr(pc_in,pc_temp4,eq1,jumprD);   // 注意这里可能有数据冒�? eq1是数据前�?
 	
     
     pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
@@ -117,7 +119,7 @@ module flowmips(
     assign rdD = instrD[15:11];
     assign saD = instrD[10:6];
 
-    // 是否真的跳转了
+    // 是否真的跳转
     assign actual_takeE = zeroE;
 
 
@@ -139,19 +141,26 @@ module flowmips(
 
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
 
+    
+
     alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
-                pc_add4E,aluoutE,hilo_o,overflowE,zeroE,div_stall);
+                pc_add4E,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
+
+    // 处理写入SH、SB
+    WriteData_handle my_WriteData_handle(alucontrolE,WriteDataE,selE,handled_WriteDataE);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
     flopr #(32) fp4_2(clk,rst,aluoutE,aluoutM);
-    flopr #(32) fp4_3(clk,rst,WriteDataE,WriteDataM);
+    flopr #(32) fp4_3(clk,rst,handled_WriteDataE,WriteDataM);
     flopr #(5) fp4_4(clk,rst,WriteRegE,WriteRegM);
     // flopr #(32) fp4_5(clk,rst,pc_branchE,pc_branchM);
     flopr #(1) fp4_6(clk, rst, branchE, branchM);
     flopr #(32) fp4_7(clk,rst,pcE,pcM);
     flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
     flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);
+    flopr #(4) fp4_10(clk, rst, selE,selM);
+    flopr #(8) fp4_11(clk, rst, alucontrolE,alucontrolM);
     
     hilo_reg hilo_at4(clk,rst,we,hi,lo,hi_o,lo_o);
 
@@ -160,7 +169,12 @@ module flowmips(
 	flopr #(32) fp5_2(clk,rst,aluoutM,aluoutW);
     flopr #(32) fp5_3(clk,rst,readdata,readdataW);
     flopr #(5) fp5_4(clk,rst,WriteRegM,WriteRegW);
-    mux2 #(32) afer_data_mem(ResultW,aluoutW,readdataW,memtoregW);
+    flopr #(8) fp5_5(clk,rst,alucontrolM,alucontrolW);
+
+    // 处理lh lhu lbu lb lw
+    ReadData_handle my_ReadData_handle(alucontrolW,readdataW,aluoutW,handled_readdataW);
+
+    mux2 #(32) afer_data_mem(ResultW,aluoutW,handled_readdataW,memtoregW);
 
     hazard my_hazard_unit(rsD, rtD, rsE, RtE, WriteRegE, WriteRegM, WriteRegW,
     regwriteE, regwriteM, regwriteW, memtoregE, branchD,

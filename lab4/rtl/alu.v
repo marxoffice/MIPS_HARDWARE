@@ -36,7 +36,9 @@ module alu(
     output reg [63:0] hilo_out,
     output wire overflowE,
     output wire zero,     // zero为1表示跳转 否则不跳
-    output wire div_stallE  // 除法运算的停顿
+    output wire div_stallE,  // 除法运算的停顿
+    output wire laddressError,  // 读地址错误例外
+    output wire saddressError  // 写地址错误例外
     );
     reg [31:0] ans;
     wire [63:0] hilo_out_mul; // 用于连接mul、div模块结果
@@ -84,6 +86,12 @@ module alu(
     //     if(overflowE == 1) ans = 0;
     // end
     assign real_ans = (overflowE == 1) ? 0:ans;
+
+    // addressError
+    assign laddressError = ( (alucontrol == `EXE_LH || alucontrol == `EXE_LHU) && (ans[0] != 0) )? 1:
+                            (alucontrol == `EXE_LW && ans[1:0] != 2'b00)? 1: 0;
+    assign saddressError = ( (alucontrol == `EXE_SH) && (ans[0] != 0) )? 1:
+                            (alucontrol == `EXE_SW && ans[1:0] != 2'b00)? 1: 0;
 
     always @(*) begin
         case (alucontrol)
@@ -139,7 +147,13 @@ module alu(
             `EXE_BGEZAL_OP  :ans <= pc_add4E + 32'b100  ;   // 需要写pc+8到31号ra寄存器
 
             // memory insts
+            `EXE_LB_OP      :ans <= num1 + num2         ;
+            `EXE_LBU_OP     :ans <= num1 + num2         ;
+            `EXE_LH_OP      :ans <= num1 + num2         ;
+            `EXE_LHU_OP     :ans <= num1 + num2         ;
             `EXE_LW_OP      :ans <= num1 + num2         ;
+            `EXE_SB_OP      :ans <= num1 + num2         ;
+            `EXE_SH_OP      :ans <= num1 + num2         ;
             `EXE_SW_OP      :ans <= num1 + num2         ;
 
             // sink in inst
