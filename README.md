@@ -112,6 +112,7 @@ MipsVerilog
 | 2020.12.28 | 朱海龙 |       move_hilo四条指令测试完成        |
 | 2020.12.29 | 屈湘钧 | 简单运算指令（不包含除法）12条测试完毕 |
 | 2020.12.29 | 朱海龙 |           分支指令branch测试           |
+| 2020.12.30 | 朱海龙 |            跳转指令jump测试            |
 
 ## 添加指令过程截图
 
@@ -347,6 +348,61 @@ _loop:
 ```
 
 ![BranchTest](./imgs/BranchTest202012291113033.png)
+
+#### 跳转jump指令测试
+
+```assembly
+   .org 0x0
+   .set noat
+   .set noreorder
+   .set nomacro
+   .global _start
+_start:
+   addiu  $1,$0,0x0001   ## $1 = 0x1                
+   j    0x20
+   addiu  $1,$1,0x0001   ## $1 = 0x2
+   addiu  $1,$1,0x1111
+   addiu  $1,$1,0x1100
+
+   .org 0x20
+   addiu  $1,$1,0x0001   ## $1 = 0x3               
+   jal  0x40
+   nop
+   addiu  $1,$1,0x0001   ## r1 = 0x4
+   addiu  $1,$1,0x0001   ## r1 = 0x5
+   j    0x60
+   nop
+
+   .org 0x40
+               
+   jalr $2,$31           
+   or   $3,$2,$0          ## $3 = 0xb0000048
+   addiu  $1,$1,0x0001    ## $1 = 0x8
+   addiu  $1,$1,0x0001    ## $1 = 0x9
+   addiu  $1,$1,0x0001    ## $1 = 0xa
+   j 0x80
+   nop
+
+   .org 0x60
+   addiu  $1,$1,0x0001    ## $1 = 0x6              
+   jr   $3          
+   addiu  $1,$1,0x0001    ## $1 = 0x7
+   addiu  $1,$1,0x1111
+   addiu  $1,$1,0x1100
+
+   .org 0x80
+   nop
+    
+_loop:
+   j _loop
+   nop
+
+## 注意jal 以及 jalr类型的指令需要进行数据前推
+## 注意j型指令延迟槽的设计
+## ra是第31号寄存器，这里为了测试把它放出来，正常情况不能允许访问，由于数据前推机制，更新会在WB，但是可以正常读正确ra出来
+```
+
+![JinstTest](./imgs/JinstTest202012301052.png)
 
 ## 错误日志
 
