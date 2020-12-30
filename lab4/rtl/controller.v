@@ -26,14 +26,14 @@ module controller(
     output wire branch,alusrc,
     output wire regdst,regwrite,
 	output wire write_al,
-	output wire jump,
+	output wire jump,jumpr,
 	output wire[7:0] alucontrol
     );
 
 	// wire[1:0] aluop;
 
 	main_dec my_maindec(.op(op),.funct(funct),.rt(rt),.regwrite(regwrite),.regdst(regdst),.alusrc(alusrc),.branch(branch),
-    			.memwrite(memwrite),.memtoreg(memtoreg),.al_regdst(write_al),.jump(jump));
+    			.memwrite(memwrite),.memtoreg(memtoreg),.al_regdst(write_al),.jump(jump),.jumpr(jumpr));
 	
 	alu_dec my_aludec(.funct(funct),.op(op),.rt(rt),.alucontrol(alucontrol));
 

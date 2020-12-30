@@ -28,7 +28,7 @@ module main_dec(
     output wire regwrite,regdst,alusrc,branch,
     output wire memwrite,memtoreg,
     output wire al_regdst,
-	output wire jump
+	output wire jump,jumpr     // 地址jump和寄存器值jump
     // output wire [1:0] aluop
     );
 
@@ -50,7 +50,8 @@ module main_dec(
     // al_regdst 指令BLTZAL BGEZAL和jal 需要写31号寄存器
 
     // 将jump信号分出来
-    assign jump = (op == `EXE_J) ? 1 : 0;
+    assign jump = ((op == `EXE_J) || (op == `EXE_JAL)) ? 1 : 0;
+    assign jumpr = ((op == `EXE_NOP) && ((funct == `EXE_JR) || (funct == `EXE_JALR))) ? 1 : 0;
 
     assign al_regdst = (((op == `EXE_REGIMM_INST) && (rt == `EXE_BLTZAL || rt == `EXE_BGEZAL)) // 两条bzal指令
                         || (op == `EXE_JAL)) ? 1 : 0;  // jal指令
@@ -68,6 +69,10 @@ module main_dec(
                 
                 `EXE_MFHI, `EXE_MFLO: main_signal <= 6'b110000;
                 `EXE_MTHI, `EXE_MTLO: main_signal <= 6'b000000;
+
+                // j inst
+                `EXE_JR:  main_signal <= 6'b000000;
+                `EXE_JALR:main_signal <= 6'b110000;  // 选择rd作为写寄存器位置
 
                 default: main_signal <= 6'b000000;
             endcase
@@ -89,8 +94,6 @@ module main_dec(
             // j inst
             `EXE_J:   main_signal <= 6'b000000;
             `EXE_JAL: main_signal <= 6'b100000;
-            `EXE_JR:  main_signal <= 6'b0;
-            `EXE_JALR:main_signal <= 6'b0;
 
 
             `EXE_LW: main_signal <= 6'b101001;  // lab4 lw

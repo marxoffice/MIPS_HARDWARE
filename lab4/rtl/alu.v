@@ -129,13 +129,14 @@ module alu(
 
             //J type
             `EXE_J_OP       :ans <= num1 + num2         ;
-            `EXE_BEQ_OP     :ans <= num1 - num2         ;
+            `EXE_JAL_OP     :ans <= pc_add4E + 32'b100  ;   // 需要写pc+8到31号ra寄存器
+            `EXE_JALR_OP    :ans <= pc_add4E + 32'b100  ;   // 需要写pc+8到31号rd寄存器 注意这里是rd寄存器
 
             //b type
             `EXE_BEQ_OP     :ans <= num1 - num2         ;
             `EXE_BNE_OP     :ans <= num1 - num2         ;
-            `EXE_BLTZAL_OP  :ans <= pc_add4E + 32'b100  ;
-            `EXE_BGEZAL_OP  :ans <= pc_add4E + 32'b100  ;
+            `EXE_BLTZAL_OP  :ans <= pc_add4E + 32'b100  ;   // 需要写pc+8到31号ra寄存器
+            `EXE_BGEZAL_OP  :ans <= pc_add4E + 32'b100  ;   // 需要写pc+8到31号ra寄存器
 
             // memory insts
             `EXE_LW_OP      :ans <= num1 + num2         ;

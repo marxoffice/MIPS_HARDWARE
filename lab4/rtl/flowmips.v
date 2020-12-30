@@ -9,7 +9,7 @@ module flowmips(
 
     // 将datapath和controller直接合并起来
     wire pcsrcD,pcsrcE;
-    wire [31:0] pc_in,pc_add4F,pc_add4D,pc_add4E,inst_ce,pc_temp1,pc_temp2,pc_temp3;
+    wire [31:0] pc_in,pc_add4F,pc_add4D,pc_add4E,inst_ce,pc_temp1,pc_temp2,pc_temp3,pc_temp4;
 	wire [31:0] after_shift;
 	wire [31:0] SrcAD,SrcAE,SrcBE,defaultSrcAE;
 	wire [31:0]	SignImmD,SignImmE;
@@ -19,6 +19,7 @@ module flowmips(
 	wire[31:0] instrD,aluoutE;
     wire [7:0] alucontrolD,alucontrolE;
     wire branchD,branchE,branchM,jumpD,memtoregD,memwriteD,alusrcD,regdstD,regwriteD;
+    wire jumprD;
     wire regwriteE,memtoregE,memwriteE,alusrcE,regdstE;
     wire regwriteM,memtoregM;
     wire regwriteW,zeroE,memtoregW;
@@ -53,7 +54,8 @@ module flowmips(
     mux2 #(32) before_pc_wrong(pc_temp2,pc_add4F,pc_branchD, branchD & predictD);
     //mux2 #(32) before_pc_predict(pc_temp3,pc_add4F,pc_temp2,pcsrcD);
     mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
-    mux2 #(32) before_pc_jump(pc_in,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
+    mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
+    mux2 #(32) before_pc_jumpr(pc_in,pc_temp4,eq1,jumprD);   // 注意这里可能有数据冒险 eq1是数据前推
 	
     
     pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
@@ -70,7 +72,7 @@ module flowmips(
     flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD, pcF, pcD);
 
     controller c(instrD[31:26],instrD[5:0],rtD,memtoregD,
-	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,alucontrolD);
+	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,jumprD,alucontrolD);
 
 	signext my_sign_extend(instrD[15:0],SignImmD);
 	regfile my_register_file(clk,regwriteW,instrD[25:21],instrD[20:16],WriteRegW,ResultW,SrcAD,writedataD,ra);
@@ -106,7 +108,7 @@ module flowmips(
     flopenrc #(1) fp3_13(clk, rst, ~div_stall, flush_endE, branchD, branchE);
     flopenrc #(32) fp3_14(clk,rst, ~div_stall, flush_endE, pcD, pcE);
     flopenrc #(5) fp3_15(clk, rst, ~div_stall, flush_endE, saD, saE);
-    flopenrc #(1) fp3_16(clk, rst, ~div_stall, flush_endE, write_alD, write_alE);
+    flopenrc #(1) fp3_16(clk, rst, ~div_stall, 1'b0, write_alD, write_alE); // 不受flush影响
 
 
     // 信号数据

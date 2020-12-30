@@ -99,6 +99,7 @@ module alu_dec(
             //J type
             `EXE_J      :alucontrol <= `EXE_J_OP        ;
             `EXE_JAL    :alucontrol <= `EXE_JAL_OP      ;
+            // 还有两条j指令在rtype里面
             `EXE_BEQ    :alucontrol <= `EXE_BEQ_OP      ;
             `EXE_BGTZ   :alucontrol <= `EXE_BGTZ_OP     ;
             `EXE_BLEZ   :alucontrol <= `EXE_BLEZ_OP     ;
