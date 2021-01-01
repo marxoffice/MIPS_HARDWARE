@@ -67,7 +67,8 @@ module flowmips(
     wire flushD;
     // 前一条为branch 且 预测错误，则需要flushD
     // 若当前预测要跳, 则flushD
-    assign flushD = (branchE & predict_wrong) | (predictD & branchD);
+    assign flushD = (branchE & predict_wrong);// | (predictD & branchD);
+    // ! 修复分支预测模块忽略延迟槽的问题
 	// flopr 2
     // TODO: 若有延迟槽，则这里不能flush
 	flopenrc #(32) fp2_1(clk,rst,~stallD & ~div_stall,flushD,instr,instrD);
@@ -93,7 +94,8 @@ module flowmips(
 
 
     wire flush_endE;
-    assign flush_endE = flushE | (predict_wrong & branchE);
+    assign flush_endE = flushE;// | (predict_wrong & branchE);
+    // ! 修复分支预测模块忽略延迟槽的问题
 
     // flopr 3
     flopenrc #(13) fp3_1(clk,rst,~div_stall,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
