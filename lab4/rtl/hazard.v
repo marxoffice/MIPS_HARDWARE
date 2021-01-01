@@ -22,7 +22,7 @@
 
 module hazard(
     input wire[4:0] rsD, rtD, rsE, rtE, writeregE, writeregM, writeregW,
-    input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE, branchD,
+    input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,
     output wire[1:0] forwardAE, forwardBE,
     output wire forwardAD, forwardBD,
     output wire stallF, stallD, flushE
@@ -38,12 +38,13 @@ module hazard(
                         ((rtE != 5'b0) & (rtE == writeregW) & regwriteW) ? 2'b01: 2'b00;
 
     assign forwardAD = (rsD != 5'b0) & (rsD == writeregM) & regwriteM;
-    assign forwardBD = (rtD != 5'b0) & (rtD == writeregM) & regwriteW;
+    assign forwardBD = (rtD != 5'b0) & (rtD == writeregM) & regwriteM;
 
 
     // 流水线暂停 lw操作需要读存储器 所以必须进行暂停操作
     wire lwstall, branchstall;
-    assign lwstall = ((rsD == rtE) | (rtD == rtE)) & memtoregE & ~memtoregD;
+    // TODO 增加 lw--jumprD型指令的二次stall，未经测试
+    assign lwstall = (((rsD == rtE) | (rtD == rtE)) & memtoregE & ~memtoregD) | ((rsD != 5'b0) & (rsD == writeregM) & memtoregM & jumprD);
     assign branchstall = branchD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
                          branchD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
 

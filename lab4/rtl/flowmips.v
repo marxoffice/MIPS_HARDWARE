@@ -180,7 +180,7 @@ module flowmips(
     mux2 #(32) afer_data_mem(ResultW,aluoutW,handled_readdataW,memtoregW);
 
     hazard my_hazard_unit(rsD, rtD, rsE, RtE, WriteRegE, WriteRegM, WriteRegW,
-    regwriteE, regwriteM, regwriteW, memtoregD, memtoregE, branchD,
+    regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,
     forwardAE, forwardBE, forwardAD, forwardBD,
     stallF, stallD, flushE);
 
