@@ -22,11 +22,12 @@
 
 module hazard(
     input wire[4:0] rsD, rtD, rsE, rtE, writeregE, writeregM, writeregW,
-    input wire regwriteE, regwriteM, regwriteW, memtoregE, branchD,
+    input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE, branchD,
     output wire[1:0] forwardAE, forwardBE,
     output wire forwardAD, forwardBD,
     output wire stallF, stallD, flushE
     );
+    // TODO: 注意Load指令后面加jr、branch类型指令的数据前推未解决
 
     // 数据前推处理 如果寄存器号对上了就可以前推 
     // 注意：如果寄存器号为0 不需要前推
@@ -42,7 +43,7 @@ module hazard(
 
     // 流水线暂停 lw操作需要读存储器 所以必须进行暂停操作
     wire lwstall, branchstall;
-    assign lwstall = ((rsD == rtE) | (rtD == rtE)) & memtoregE;
+    assign lwstall = ((rsD == rtE) | (rtD == rtE)) & memtoregE & ~memtoregD;
     assign branchstall = branchD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
                          branchD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
 

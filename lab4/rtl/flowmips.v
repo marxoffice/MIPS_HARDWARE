@@ -24,7 +24,7 @@ module flowmips(
     wire regwriteM,memtoregM;
     wire regwriteW,zeroE,memtoregW;
     wire [4:0] WriteRegTemp,WriteRegE,WriteRegM,WriteRegW;
-	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,handled_WriteDataE,readdataW,aluoutW;
+	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,handled_WriteDataE,readdataW,handled_readdataW,aluoutW;
     wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE;
     wire [3:0] selE;
     wire stallF,stallD,flushE,EqualD;
@@ -69,6 +69,7 @@ module flowmips(
     // 若当前预测要跳, 则flushD
     assign flushD = (branchE & predict_wrong) | (predictD & branchD);
 	// flopr 2
+    // TODO: 若有延迟槽，则这里不能flush
 	flopenrc #(32) fp2_1(clk,rst,~stallD & ~div_stall,flushD,instr,instrD);
 	flopenrc #(32) fp2_2(clk,rst,~stallD & ~div_stall,flushD,pc_add4F,pc_add4D);
     flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD, pcF, pcD);
@@ -147,7 +148,7 @@ module flowmips(
                 pc_add4E,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
 
     // 处理写入SH、SB
-    WriteData_handle my_WriteData_handle(alucontrolE,WriteDataE,selE,handled_WriteDataE);
+    WriteData_handle my_WriteData_handle(alucontrolE,aluoutE,WriteDataE,selE,handled_WriteDataE);
 
     // flopr 4
     flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
@@ -177,7 +178,7 @@ module flowmips(
     mux2 #(32) afer_data_mem(ResultW,aluoutW,handled_readdataW,memtoregW);
 
     hazard my_hazard_unit(rsD, rtD, rsE, RtE, WriteRegE, WriteRegM, WriteRegW,
-    regwriteE, regwriteM, regwriteW, memtoregE, branchD,
+    regwriteE, regwriteM, regwriteW, memtoregD, memtoregE, branchD,
     forwardAE, forwardBE, forwardAD, forwardBD,
     stallF, stallD, flushE);
 

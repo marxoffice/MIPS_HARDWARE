@@ -99,11 +99,11 @@ module main_dec(
             `EXE_JAL: main_signal <= 6'b100000;
 
             // memory insts
-            `EXE_LB : main_signal <= 6'b101001;
-            `EXE_LBU: main_signal <= 6'b101001;
-            `EXE_LH : main_signal <= 6'b101001;
-            `EXE_LHU: main_signal <= 6'b101001;
-            `EXE_LW : main_signal <= 6'b101001;  // lab4 lw
+            `EXE_LB : main_signal <= 6'b101011;
+            `EXE_LBU: main_signal <= 6'b101011;
+            `EXE_LH : main_signal <= 6'b101011;
+            `EXE_LHU: main_signal <= 6'b101011;
+            `EXE_LW : main_signal <= 6'b101011;  // lab4 lw
             `EXE_SB : main_signal <= 6'b001010;  
             `EXE_SH : main_signal <= 6'b001010;  
             `EXE_SW : main_signal <= 6'b001010;  // lab4 sw

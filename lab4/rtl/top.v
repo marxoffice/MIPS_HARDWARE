@@ -45,7 +45,7 @@ module top(
 
 	flowmips flowmipsInstance(clk,rst,pc,instr,memwrite,dataadr,writedata,readdata,selM);
 	inst_mem imem(~clk,pc[11:2],instr);
-	data_mem dmem(~clk,memwrite,selM,dataadr[9:0],writedata,readdata); // 只生成了1024条存储位的数据存储器
+	data_mem dmem(~clk,memwrite,selM,dataadr[11:2],writedata,readdata); // 只生成了1024条存储位的数据存储器
 	instdec my_instdec(instr,ascii);
 //	wire [31:0] inputInst;
 //	adder my_add(pc,32'hfffffff8,inputInst);
