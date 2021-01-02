@@ -179,21 +179,21 @@ module flowmips(
     WriteData_handle my_WriteData_handle(alucontrolE,aluoutE,WriteDataE,selE,handled_WriteDataE);
 
     // flopr 4
-    flopenrc #(3)  fp4_1(clk,  rst, 1'b0, exceptionoccur,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
-    flopenrc #(32) fp4_2(clk,  rst, 1'b0, exceptionoccur,aluoutE,aluoutM);
-    flopenrc #(32) fp4_3(clk,  rst, 1'b0, exceptionoccur,handled_WriteDataE,WriteDataM);
-    flopenrc #(5)  fp4_4(clk,  rst, 1'b0, exceptionoccur,WriteRegE,WriteRegM);
-    // flopr #(32) fp4_5(clk,  rst, 1'b0, exceptionoccur,pc_branchE,pc_branchM);
-    flopenrc #(1)  fp4_6(clk,  rst, 1'b0, exceptionoccur, branchE, branchM);
-    flopenrc #(32) fp4_7(clk,  rst, 1'b0, exceptionoccur,pcE,pcM);
-    flopenrc #(1)  fp4_8(clk,  rst, 1'b0, exceptionoccur, actual_takeE, actual_takeM);
-    flopenrc #(1)  fp4_9(clk,  rst, 1'b0, exceptionoccur, predict_wrong,predict_wrongM);
-    flopenrc #(4)  fp4_10(clk, rst, 1'b0, exceptionoccur, selE,selM);
-    flopenrc #(8)  fp4_11(clk, rst, 1'b0, exceptionoccur, alucontrolE,alucontrolM);
-    flopenrc #(8)  fp4_12(clk, rst, 1'b0, exceptionoccur,{exceptE[7:3],overflow,laddressError,saddressError},exceptM);
-    flopenrc #(1)  fp4_13(clk, rst, 1'b0, exceptionoccur, is_in_delayslotE,is_in_delayslotM);
-    flopenrc #(5)  fp4_14(clk, rst, 1'b0, exceptionoccur,RdE,RdM);
-    flopenrc #(1)  fp4_15(clk, rst, 1'b0, exceptionoccur,cp0writeE,cp0writeM);
+    flopenrc #(3)  fp4_1(clk,  rst, 1'b1, exceptionoccur,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
+    flopenrc #(32) fp4_2(clk,  rst, 1'b1, exceptionoccur,aluoutE,aluoutM);
+    flopenrc #(32) fp4_3(clk,  rst, 1'b1, exceptionoccur,handled_WriteDataE,WriteDataM);
+    flopenrc #(5)  fp4_4(clk,  rst, 1'b1, exceptionoccur,WriteRegE,WriteRegM);
+    // flopr #(32) fp4_5(clk,  rst, 1'b1, exceptionoccur,pc_branchE,pc_branchM);
+    flopenrc #(1)  fp4_6(clk,  rst, 1'b1, exceptionoccur, branchE, branchM);
+    flopenrc #(32) fp4_7(clk,  rst, 1'b1, exceptionoccur,pcE,pcM);
+    flopenrc #(1)  fp4_8(clk,  rst, 1'b1, exceptionoccur, actual_takeE, actual_takeM);
+    flopenrc #(1)  fp4_9(clk,  rst, 1'b1, exceptionoccur, predict_wrong,predict_wrongM);
+    flopenrc #(4)  fp4_10(clk, rst, 1'b1, exceptionoccur, selE,selM);
+    flopenrc #(8)  fp4_11(clk, rst, 1'b1, exceptionoccur, alucontrolE,alucontrolM);
+    flopenrc #(8)  fp4_12(clk, rst, 1'b1, exceptionoccur,{exceptE[7:3],overflow,laddressError,saddressError},exceptM);
+    flopenrc #(1)  fp4_13(clk, rst, 1'b1, exceptionoccur, is_in_delayslotE,is_in_delayslotM);
+    flopenrc #(5)  fp4_14(clk, rst, 1'b1, exceptionoccur,RdE,RdM);
+    flopenrc #(1)  fp4_15(clk, rst, 1'b1, exceptionoccur,cp0writeE,cp0writeM);
 
     // 异常处理模块
     exceptiondec exceptiondec (rst,exceptM,exceptM[1],exceptM[0],statusout,
@@ -234,11 +234,11 @@ module flowmips(
     hilo_reg hilo_at4(clk,rst,we,hi,lo,hi_o,lo_o);
 
     // flopr 5
-    flopenrc #(2)  fp5_1(clk,rst,1'b0,exceptionoccur,{regwriteM,memtoregM},{regwriteW,memtoregW});
-	flopenrc #(32) fp5_2(clk,rst,1'b0,exceptionoccur,aluoutM,aluoutW);
-    flopenrc #(32) fp5_3(clk,rst,1'b0,exceptionoccur,readdata,readdataW);
-    flopenrc #(5)  fp5_4(clk,rst,1'b0,exceptionoccur,WriteRegM,WriteRegW);
-    flopenrc #(8)  fp5_5(clk,rst,1'b0,exceptionoccur,alucontrolM,alucontrolW);
+    flopenrc #(2)  fp5_1(clk,rst,1'b1,exceptionoccur,{regwriteM,memtoregM},{regwriteW,memtoregW});
+	flopenrc #(32) fp5_2(clk,rst,1'b1,exceptionoccur,aluoutM,aluoutW);
+    flopenrc #(32) fp5_3(clk,rst,1'b1,exceptionoccur,readdata,readdataW);
+    flopenrc #(5)  fp5_4(clk,rst,1'b1,exceptionoccur,WriteRegM,WriteRegW);
+    flopenrc #(8)  fp5_5(clk,rst,1'b1,exceptionoccur,alucontrolM,alucontrolW);
 
     // 处理lh lhu lbu lb lw
     ReadData_handle my_ReadData_handle(alucontrolW,readdataW,aluoutW,handled_readdataW);

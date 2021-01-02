@@ -17,7 +17,7 @@ module WriteData_handle(
 			begin 
 				case (aluoutE[1:0])
 					2'b00: sel <= 4'b1111;
-					default: 
+					default:  // 错误地址
 					begin 
 						sel <= 4'b0000;
 					end
@@ -28,7 +28,7 @@ module WriteData_handle(
 				case (aluoutE[1:0])
 					2'b10: sel <= 4'b1100;
 					2'b00: sel <= 4'b0011;
-					default:
+					default:// 错误地址
 					begin 
 						sel <= 4'b0000;
 					end 
