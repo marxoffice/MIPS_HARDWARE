@@ -109,12 +109,12 @@ module alu(
             //shift inst
             //TODO 注意算术右移指令 这里不确定vivado的signed是否可以通过
             //TODO 需要测试 使用31bit和32bit的数字来测试一下
-            `EXE_SLL_OP     :ans <= num2 << sa              ;
-            `EXE_SRL_OP     :ans <= num2 >> sa              ;
-            `EXE_SRA_OP     :ans <= ($signed(num2)) >>> sa  ;
-            `EXE_SLLV_OP    :ans <= num2 << num1            ;
-            `EXE_SRLV_OP    :ans <= num2 >> num1            ;
-            `EXE_SRAV_OP    :ans <= ($signed(num2)) >>> num1;
+            `EXE_SLL_OP     :ans <= num2 << sa                   ;
+            `EXE_SRL_OP     :ans <= num2 >> sa                   ;
+            `EXE_SRA_OP     :ans <= ($signed(num2)) >>> sa       ;
+            `EXE_SLLV_OP    :ans <= num2 << num1[4:0]            ;
+            `EXE_SRLV_OP    :ans <= num2 >> num1[4:0]            ;
+            `EXE_SRAV_OP    :ans <= ($signed(num2)) >>> num1[4:0];
 
             //move inst
             `EXE_MFHI_OP    :ans <= hi  ;
