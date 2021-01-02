@@ -10,7 +10,7 @@ module flowmips(
 
     // 将datapath和controller直接合并起来
     wire pcsrcD,pcsrcE;
-    wire [31:0] pc_in,pc_add4F,pc_add4D,pc_add4E,inst_ce,pc_temp1,pc_temp2,pc_temp3,pc_temp4;
+    wire [31:0] pc_in,pc_add4F,pc_add4D,pc_add4E,inst_ce,pc_temp1,pc_temp2,pc_temp3,pc_temp4,pc_temp5;
 	wire [31:0] after_shift;
 	wire [31:0] SrcAD,SrcAE,SrcBE,defaultSrcAE;
 	wire [31:0]	SignImmD,SignImmE;
@@ -25,7 +25,7 @@ module flowmips(
     wire regwriteW,zeroE,memtoregW;
     wire [4:0] WriteRegTemp,WriteRegE,WriteRegM,WriteRegW;
 	wire [31:0] ResultW,writedataD,WriteDataE,defaultWriteDataE,handled_WriteDataE,readdataW,handled_readdataW,aluoutW;
-    wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE;
+    wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE,RdM;
     wire [3:0] selE;
     wire stallF,stallD,flushE,EqualD;
     wire [31:0] eq1,eq2;
@@ -43,6 +43,16 @@ module flowmips(
     wire div_stall; // div运算stallE信号
     wire laddressError;  // 读地址错误例外
     wire saddressError;  // 写地址错误例外
+    wire [7:0] exceptF,exceptD,exceptE,exceptM;
+	wire is_in_delayslotF,is_in_delayslotD,is_in_delayslotE,is_in_delayslotM;//CP0 delaysolt  
+    wire invalidD;
+    wire [31:0] exceptiontypeM;
+    wire cp0writeD,cp0writeE,cp0writeM;
+	wire [31:0] cp0dataoutE;
+	wire [31:0] statusout;
+	wire [31:0] causeout;
+	wire [31:0] epcout;
+    wire [31:0] pcexceptionM;
 
     // 预测模块
     wire predictF,predictD, predictE, predict_wrong,predict_wrongM;
@@ -57,12 +67,16 @@ module flowmips(
     //mux2 #(32) before_pc_predict(pc_temp3,pc_add4F,pc_temp2,pcsrcD);
     mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
     mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
-    mux2 #(32) before_pc_jumpr(pc_in,pc_temp4,eq1,jumprD);   // 注意这里可能有数据冒�? eq1是数据前�?
+    mux2 #(32) before_pc_jumpr(pc_temp5,pc_temp4,eq1,jumprD);   // 注意这里可能有数据冒�? eq1是数据前�?
+    mux2 #(32) before_pc_exception(pc_in,pc_temp5,pcexceptionM,exceptionoccur);
 	
     
     pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
 	adder my_adder_pc(inst_ce,32'b100,pc_add4F);
     assign pcF = pc;
+
+    assign exceptF = (pc_in[1:0] == 2'b00) ? 8'b00000000 : 8'b10000000;//the addr error
+	assign is_in_delayslotF = (jumpD|jumprD|branchD);
 
     wire flushD;
     // 前一条为branch 且 预测错误，则需要flushD
@@ -71,12 +85,15 @@ module flowmips(
     // ! 修复分支预测模块忽略延迟槽的问题
 	// flopr 2
     // TODO: 若有延迟槽，则这里不能flush
-	flopenrc #(32) fp2_1(clk,rst,~stallD & ~div_stall,flushD,instr,instrD);
-	flopenrc #(32) fp2_2(clk,rst,~stallD & ~div_stall,flushD,pc_add4F,pc_add4D);
-    flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD, pcF, pcD);
+	flopenrc #(32) fp2_1(clk,rst,~stallD & ~div_stall,flushD | exceptionoccur,instr,instrD);
+	flopenrc #(32) fp2_2(clk,rst,~stallD & ~div_stall,flushD | exceptionoccur,pc_add4F,pc_add4D);
+    flopenrc #(32) fp2_3(clk, rst, ~stallD & ~div_stall, flushD | exceptionoccur, pcF, pcD);
+    flopenrc #(8)  fp2_4(clk,rst, ~stallD & ~div_stall,flushD | exceptionoccur,exceptF,exceptD);
+	flopenrc #(1)  fp2_5(clk,rst, ~stallD & ~div_stall,flushD | exceptionoccur,is_in_delayslotF,is_in_delayslotD);
 
-    controller c(instrD[31:26],instrD[5:0],rtD,memtoregD,
-	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,jumprD,alucontrolD);
+    controller c(instrD[31:26],instrD[5:0],rsD,rtD,memtoregD,
+	memwriteD,branchD,alusrcD,regdstD,regwriteD,write_alD,jumpD,
+    jumprD,alucontrolD,invalidD,cp0writeD);
 
 	signext my_sign_extend(instrD[15:0],SignImmD);
 	regfile my_register_file(clk,regwriteW,instrD[25:21],instrD[20:16],WriteRegW,ResultW,SrcAD,writedataD,ra);
@@ -92,28 +109,37 @@ module flowmips(
     mux2 #(32) forward1_1(eq1,SrcAD,aluoutM,forwardAD);
     mux2 #(32) forward1_2(eq2,writedataD,aluoutM,forwardBD);
 
+    // 异常判断
+    assign syscallD = (instrD[31:26] == 6'b000000 && instrD[31:26] == 6'b001100);
+	assign breakD = (instrD[31:26] == 6'b000000 && instrD[31:26] == 6'b001101);
+	assign eretD = (instrD == 32'b01000010000000000000000000011000);
+
 
     wire flush_endE;
     assign flush_endE = flushE;// | (predict_wrong & branchE);
     // ! 修复分支预测模块忽略延迟槽的问题
 
     // flopr 3
-    flopenrc #(13) fp3_1(clk,rst,~div_stall,flush_endE,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
-    flopenrc #(32) fp3_2(clk,rst,~div_stall,flush_endE,SrcAD,defaultSrcAE);
-    flopenrc #(32) fp3_3(clk,rst,~div_stall,flush_endE,writedataD,defaultWriteDataE);
-    flopenrc #(5) fp3_4(clk,rst,~div_stall,flush_endE,rsD,rsE);
-    flopenrc #(5) fp3_5(clk,rst,~div_stall,flush_endE,rtD,RtE);
-    flopenrc #(5) fp3_6(clk,rst,~div_stall,flush_endE,rdD,RdE);
-    flopenrc #(32) fp3_7(clk,rst,~div_stall,flush_endE,SignImmD,SignImmE);
-    flopenrc #(32) fp3_8(clk,rst,~div_stall,1'b0,pc_add4D,pc_add4E); // 不受flush影响
-    flopenrc #(1) fp3_9(clk,rst,~div_stall,flush_endE,pcsrcD,pcsrcE);
-    flopenrc #(32) fp3_10(clk,rst,~div_stall,flush_endE,pc_branchD,pc_branchE);
-    flopenrc #(1) fp3_11(clk, rst, ~div_stall, flush_endE, EqualD, EqualE);
-    flopenrc #(1) fp3_12(clk, rst, ~div_stall, flush_endE, predictD, predictE);
-    flopenrc #(1) fp3_13(clk, rst, ~div_stall, flush_endE, branchD, branchE);
-    flopenrc #(32) fp3_14(clk,rst, ~div_stall, flush_endE, pcD, pcE);
-    flopenrc #(5) fp3_15(clk, rst, ~div_stall, flush_endE, saD, saE);
-    flopenrc #(1) fp3_16(clk, rst, ~div_stall, 1'b0, write_alD, write_alE); // 不受flush影响
+    flopenrc #(13) fp3_1(clk,rst,~div_stall,flush_endE | exceptionoccur,{regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
+    flopenrc #(32) fp3_2(clk,rst,~div_stall,flush_endE | exceptionoccur,SrcAD,defaultSrcAE);
+    flopenrc #(32) fp3_3(clk,rst,~div_stall,flush_endE | exceptionoccur,writedataD,defaultWriteDataE);
+    flopenrc #(5) fp3_4(clk,rst,~div_stall, flush_endE | exceptionoccur,rsD,rsE);
+    flopenrc #(5) fp3_5(clk,rst,~div_stall, flush_endE | exceptionoccur,rtD,RtE);
+    flopenrc #(5) fp3_6(clk,rst,~div_stall, flush_endE | exceptionoccur,rdD,RdE);
+    flopenrc #(32) fp3_7(clk,rst,~div_stall,flush_endE | exceptionoccur,SignImmD,SignImmE);
+    flopenrc #(32) fp3_8(clk,rst,~div_stall,1'b0 | exceptionoccur,pc_add4D,pc_add4E); // 不受flush影响
+    flopenrc #(1) fp3_9(clk,rst,~div_stall,flush_endE | exceptionoccur,pcsrcD,pcsrcE);
+    flopenrc #(32) fp3_10(clk,rst,~div_stall,flush_endE | exceptionoccur,pc_branchD,pc_branchE);
+    flopenrc #(1) fp3_11(clk, rst, ~div_stall, flush_endE | exceptionoccur, EqualD, EqualE);
+    flopenrc #(1) fp3_12(clk, rst, ~div_stall, flush_endE | exceptionoccur, predictD, predictE);
+    flopenrc #(1) fp3_13(clk, rst, ~div_stall, flush_endE | exceptionoccur, branchD, branchE);
+    flopenrc #(32) fp3_14(clk,rst, ~div_stall, flush_endE | exceptionoccur, pcD, pcE);
+    flopenrc #(5) fp3_15(clk, rst, ~div_stall, flush_endE | exceptionoccur, saD, saE);
+    flopenrc #(1) fp3_16(clk, rst, ~div_stall, 1'b0 | exceptionoccur, write_alD, write_alE); // 不受flush影响
+	flopenrc #(8) fp3_17(clk, rst, ~div_stall, flush_endE | exceptionoccur,
+		{exceptD[7],syscallD,breakD,eretD,invalidD,exceptD[2:0]},exceptE);
+    flopenrc #(1) fp3_18(clk, rst, ~div_stall, flush_endE | exceptionoccur, is_in_delayslotD, is_in_delayslotE); // 不受flush影响
+    flopenrc #(1) fp3_19(clk,rst, ~div_stall, flush_endE | exceptionoccur, cp0writeD, cp0writeE);
 
 
     // 信号数据
@@ -153,26 +179,66 @@ module flowmips(
     WriteData_handle my_WriteData_handle(alucontrolE,aluoutE,WriteDataE,selE,handled_WriteDataE);
 
     // flopr 4
-    flopr #(3) fp4_1(clk,rst,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
-    flopr #(32) fp4_2(clk,rst,aluoutE,aluoutM);
-    flopr #(32) fp4_3(clk,rst,handled_WriteDataE,WriteDataM);
-    flopr #(5) fp4_4(clk,rst,WriteRegE,WriteRegM);
-    // flopr #(32) fp4_5(clk,rst,pc_branchE,pc_branchM);
-    flopr #(1) fp4_6(clk, rst, branchE, branchM);
-    flopr #(32) fp4_7(clk,rst,pcE,pcM);
-    flopr #(1) fp4_8(clk, rst, actual_takeE, actual_takeM);
-    flopr #(1) fp4_9(clk, rst, predict_wrong,predict_wrongM);
-    flopr #(4) fp4_10(clk, rst, selE,selM);
-    flopr #(8) fp4_11(clk, rst, alucontrolE,alucontrolM);
+    flopenrc #(3)  fp4_1(clk,  rst, 1'b0, exceptionoccur,{regwriteE,memtoregE,memwriteE},{regwriteM,memtoregM,memwriteM});
+    flopenrc #(32) fp4_2(clk,  rst, 1'b0, exceptionoccur,aluoutE,aluoutM);
+    flopenrc #(32) fp4_3(clk,  rst, 1'b0, exceptionoccur,handled_WriteDataE,WriteDataM);
+    flopenrc #(5)  fp4_4(clk,  rst, 1'b0, exceptionoccur,WriteRegE,WriteRegM);
+    // flopr #(32) fp4_5(clk,  rst, 1'b0, exceptionoccur,pc_branchE,pc_branchM);
+    flopenrc #(1)  fp4_6(clk,  rst, 1'b0, exceptionoccur, branchE, branchM);
+    flopenrc #(32) fp4_7(clk,  rst, 1'b0, exceptionoccur,pcE,pcM);
+    flopenrc #(1)  fp4_8(clk,  rst, 1'b0, exceptionoccur, actual_takeE, actual_takeM);
+    flopenrc #(1)  fp4_9(clk,  rst, 1'b0, exceptionoccur, predict_wrong,predict_wrongM);
+    flopenrc #(4)  fp4_10(clk, rst, 1'b0, exceptionoccur, selE,selM);
+    flopenrc #(8)  fp4_11(clk, rst, 1'b0, exceptionoccur, alucontrolE,alucontrolM);
+    flopenrc #(8)  fp4_12(clk, rst, 1'b0, exceptionoccur,{exceptE[7:3],overflow,laddressError,saddressError},exceptM);
+    flopenrc #(1)  fp4_13(clk, rst, 1'b0, exceptionoccur, is_in_delayslotE,is_in_delayslotM);
+    flopenrc #(5)  fp4_14(clk, rst, 1'b0, exceptionoccur,RdE,RdM);
+    flopenrc #(1)  fp4_15(clk, rst, 1'b0, exceptionoccur,cp0writeE,cp0writeM);
+
+    // 异常处理模块
+    exceptiondec exceptiondec (rst,exceptM,exceptM[1],exceptM[0],statusout,
+                causeout,epcout, exceptionoccur,exceptiontypeM,pcexceptionM);
+    
+    cp0_reg cp0 (
+        // input
+		.clk 				(clk 			    ),
+		.rst 				(rst 			    ),
+		.we_i 				(cp0writeM 		    ),  // 写cp0，maindec中判断
+		.waddr_i 			(RdM 			    ),
+		.raddr_i 			(RdE 			    ),
+		.data_i 			(aluoutM 		    ),
+		.int_i 				(6'b0 			    ),
+		.excepttype_i 		(exceptiontypeM	    ),
+		.current_inst_addr_i(pcM 			    ),
+		.is_in_delayslot_i	(is_in_delayslotM   ),
+		.bad_addr_i			(aluoutM		    ), // 出错的虚地址（load store)均为alu计算出的结果
+        // output
+		.data_o				(cp0dataoutE 	    ),
+		.count_o			(),//countout 		    
+		.compare_o			(),//compareout 	    
+        
+		.status_o			(statusout 		    ),    	
+		.cause_o			(causeout 		    ),
+		.epc_o				(epcout 		    ),
+
+		.config_o			(),//configout 		    
+		.prid_o				(),//pridout 		    
+		.badvaddr			(),//badvaddrout 	    
+		.timer_int_o		()//timerintout	    
+	);
+
+
+
+    // cp0
     
     hilo_reg hilo_at4(clk,rst,we,hi,lo,hi_o,lo_o);
 
     // flopr 5
-    flopr #(2) fp5_1(clk,rst,{regwriteM,memtoregM},{regwriteW,memtoregW});
-	flopr #(32) fp5_2(clk,rst,aluoutM,aluoutW);
-    flopr #(32) fp5_3(clk,rst,readdata,readdataW);
-    flopr #(5) fp5_4(clk,rst,WriteRegM,WriteRegW);
-    flopr #(8) fp5_5(clk,rst,alucontrolM,alucontrolW);
+    flopenrc #(2)  fp5_1(clk,rst,1'b0,exceptionoccur,{regwriteM,memtoregM},{regwriteW,memtoregW});
+	flopenrc #(32) fp5_2(clk,rst,1'b0,exceptionoccur,aluoutM,aluoutW);
+    flopenrc #(32) fp5_3(clk,rst,1'b0,exceptionoccur,readdata,readdataW);
+    flopenrc #(5)  fp5_4(clk,rst,1'b0,exceptionoccur,WriteRegM,WriteRegW);
+    flopenrc #(8)  fp5_5(clk,rst,1'b0,exceptionoccur,alucontrolM,alucontrolW);
 
     // 处理lh lhu lbu lb lw
     ReadData_handle my_ReadData_handle(alucontrolW,readdataW,aluoutW,handled_readdataW);

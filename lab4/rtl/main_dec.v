@@ -24,13 +24,14 @@
 module main_dec(
 	input wire [5:0] op,
     input wire[5:0] funct,
+    input wire [4:0] rs,
     input wire[4:0] rt,
     output wire regwrite,regdst,alusrc,branch,
     output wire memwrite,memtoreg,
     output wire al_regdst,
-	output wire jump,jumpr     // 地址jump和寄存器值jump
-    // output reg [3:0] sel    // 写字节选 sw1111, lh 1100 or 0011 ,lb 1000 0100 0010 0001
-    // output wire [1:0] aluop
+	output wire jump,jumpr,     // 地址jump和寄存器值jump
+    output reg invalid, // 保留地址异常
+    output reg cp0write // 写入cp0
     );
 
     // assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,aluop,jump}
@@ -56,10 +57,10 @@ module main_dec(
 
     assign al_regdst = (((op == `EXE_REGIMM_INST) && (rt == `EXE_BLTZAL || rt == `EXE_BGEZAL)) // 两条bzal指令
                         || (op == `EXE_JAL)) ? 1 : 0;  // jal指令
-    
-
 
     always@(*) begin
+        invalid = 0;
+        cp0write = 0;
         case(op)
             `EXE_NOP: case(funct)
                 //logic inst
@@ -77,7 +78,10 @@ module main_dec(
                 `EXE_JR:  main_signal <= 6'b000000;
                 `EXE_JALR:main_signal <= 6'b110000;  // 选择rd作为写寄存器位置
 
-                default: main_signal <= 6'b000000;
+                default:begin
+                    main_signal <= 6'b000000;
+                    invalid = 1;
+                end 
             endcase
             //logic inst
             `EXE_ANDI ,`EXE_XORI, `EXE_LUI, `EXE_ORI: main_signal <= 6'b101000; // Immediate
@@ -92,6 +96,7 @@ module main_dec(
                 `EXE_BLTZAL :main_signal <= 6'b100100      ;
                 `EXE_BGEZ   :main_signal <= 6'b000100      ;
                 `EXE_BGEZAL :main_signal <= 6'b100100      ;
+                default: invalid = 1;
             endcase
             
             // j inst
@@ -108,7 +113,24 @@ module main_dec(
             `EXE_SH : main_signal <= 6'b001010;  
             `EXE_SW : main_signal <= 6'b001010;  // lab4 sw
 
-            default: main_signal <= 6'b000000;  // error op
+            // priority instr
+            6'b010000 : case(rs)
+                5'b00100:begin  // mtc0
+                    cp0write = 1;
+                    main_signal <= 6'b000000;
+                end 
+                5'b00000: main_signal <= 6'b000000; // mtfc0
+                5'b00001: main_signal <= 6'b000000; // eret
+                default: begin
+                    invalid = 1;
+                    main_signal <= 6'b000000;  // error op
+                end 
+            endcase
+
+            default:begin
+                invalid = 1;
+                main_signal <= 6'b000000;  // error op
+            end 
         endcase
     end
 endmodule
