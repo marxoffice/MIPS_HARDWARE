@@ -32,6 +32,7 @@ module alu(
     input wire flush_endE,  // 清除D->E阶段寄存器的信号，同时用于打断清除DIV的运算
     input wire stallM, // E->M中间寄存器的停顿信号，用于div的接收信号
     input wire [31:0] pc_add4E,
+	input  wire [31:0] cp0aluin,  // mfc0的输入
     output wire [31:0] real_ans,
     output reg [63:0] hilo_out,
     output wire overflowE,
@@ -157,6 +158,9 @@ module alu(
             `EXE_SW_OP      :ans <= num1 + num2         ;
 
             // sink in inst
+            `EXE_MTC0_OP : ans <= num2      ;
+            `EXE_MFC0_OP : ans <= cp0aluin  ;
+            `EXE_ERET_OP : ans <= 32'b0     ;
             default: ans <= 32'b0;
         endcase
         //logic op

@@ -38,6 +38,6 @@ module controller(
 	main_dec my_maindec(.op(op),.funct(funct),.rs(rs),.rt(rt),.regwrite(regwrite),.regdst(regdst),.alusrc(alusrc),.branch(branch),
     			.memwrite(memwrite),.memtoreg(memtoreg),.al_regdst(write_al),.jump(jump),.jumpr(jumpr),.invalid(invalid),.cp0write(cp0write));
 	
-	alu_dec my_aludec(.funct(funct),.op(op),.rt(rt),.alucontrol(alucontrol));
+	alu_dec my_aludec(.funct(funct),.op(op),.rs(rs),.rt(rt),.alucontrol(alucontrol));
 
 endmodule

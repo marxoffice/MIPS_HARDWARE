@@ -31,6 +31,7 @@ module flowmips(
     wire [31:0] eq1,eq2;
     wire [1:0] forwardAE,forwardBE;
     wire forwardAD,forwardBD;
+	wire forwardcp0dataE;
 
     wire [31:0] pcF,pcD,pcE,pcM;
 
@@ -48,11 +49,13 @@ module flowmips(
     wire invalidD;
     wire [31:0] exceptiontypeM;
     wire cp0writeD,cp0writeE,cp0writeM;
+    wire exceptionoccur;
 	wire [31:0] cp0dataoutE;
 	wire [31:0] statusout;
 	wire [31:0] causeout;
 	wire [31:0] epcout;
     wire [31:0] pcexceptionM;
+    wire [31:0] cp0aluin;  // mfc0的输入
 
     // 预测模块
     wire predictF,predictD, predictE, predict_wrong,predict_wrongM;
@@ -110,8 +113,8 @@ module flowmips(
     mux2 #(32) forward1_2(eq2,writedataD,aluoutM,forwardBD);
 
     // 异常判断
-    assign syscallD = (instrD[31:26] == 6'b000000 && instrD[31:26] == 6'b001100);
-	assign breakD = (instrD[31:26] == 6'b000000 && instrD[31:26] == 6'b001101);
+    assign syscallD = (instrD[31:26] == 6'b000000 && instrD[5:0] == 6'b001100);
+	assign breakD = (instrD[31:26] == 6'b000000 && instrD[5:0] == 6'b001101);
 	assign eretD = (instrD == 32'b01000010000000000000000000011000);
 
 
@@ -170,10 +173,12 @@ module flowmips(
 
 	mux2 #(32) before_alu(SrcBE,WriteDataE,SignImmE,alusrcE);
 
-    
+
+    mux2 #(32) forwardcp0datamux (cp0aluin,cp0dataoutE,aluoutM,forwardcp0dataE);
+
 
     alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
-                pc_add4E,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
+                pc_add4E,cp0aluin,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
 
     // 处理写入SH、SB
     WriteData_handle my_WriteData_handle(alucontrolE,aluoutE,WriteDataE,selE,handled_WriteDataE);
@@ -190,7 +195,7 @@ module flowmips(
     flopenrc #(1)  fp4_9(clk,  rst, 1'b1, exceptionoccur, predict_wrong,predict_wrongM);
     flopenrc #(4)  fp4_10(clk, rst, 1'b1, exceptionoccur, selE,selM);
     flopenrc #(8)  fp4_11(clk, rst, 1'b1, exceptionoccur, alucontrolE,alucontrolM);
-    flopenrc #(8)  fp4_12(clk, rst, 1'b1, exceptionoccur,{exceptE[7:3],overflow,laddressError,saddressError},exceptM);
+    flopenrc #(8)  fp4_12(clk, rst, 1'b1, exceptionoccur,{exceptE[7:3],overflowE,laddressError,saddressError},exceptM);
     flopenrc #(1)  fp4_13(clk, rst, 1'b1, exceptionoccur, is_in_delayslotE,is_in_delayslotM);
     flopenrc #(5)  fp4_14(clk, rst, 1'b1, exceptionoccur,RdE,RdM);
     flopenrc #(1)  fp4_15(clk, rst, 1'b1, exceptionoccur,cp0writeE,cp0writeM);
@@ -245,9 +250,9 @@ module flowmips(
 
     mux2 #(32) afer_data_mem(ResultW,aluoutW,handled_readdataW,memtoregW);
 
-    hazard my_hazard_unit(rsD, rtD, rsE, RtE, WriteRegE, WriteRegM, WriteRegW,
-    regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,
-    forwardAE, forwardBE, forwardAD, forwardBD,
+    hazard my_hazard_unit(rsD, rtD, rsE, RtE, RdE, RdM, WriteRegE, WriteRegM, WriteRegW,
+    regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,cp0writeM,
+    forwardAE, forwardBE, forwardAD, forwardBD, forwardcp0dataE,
     stallF, stallD, flushE);
 
     compete_predict branch_predict(clk, rst, flushD, stallD, pcF, pcM,

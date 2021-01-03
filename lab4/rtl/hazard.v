@@ -21,10 +21,10 @@
 
 
 module hazard(
-    input wire[4:0] rsD, rtD, rsE, rtE, writeregE, writeregM, writeregW,
-    input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,
+    input wire[4:0] rsD, rtD, rsE, rtE, rdE, rdM, writeregE, writeregM, writeregW,
+    input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,cp0writeM,
     output wire[1:0] forwardAE, forwardBE,
-    output wire forwardAD, forwardBD,
+    output wire forwardAD, forwardBD, forwardcp0dataE,
     output wire stallF, stallD, flushE
     );
     // TODO: 注意Load指令后面加jr、branch类型指令的数据前推未解决
@@ -40,6 +40,9 @@ module hazard(
     assign forwardAD = (rsD != 5'b0) & (rsD == writeregM) & regwriteM;
     assign forwardBD = (rtD != 5'b0) & (rtD == writeregM) & regwriteM;
 
+    // mtc0 mfc0冲突
+	assign forwardcp0dataE = (rdE && (rdE == rdM) && cp0writeM);
+
 
     // 流水线暂停 lw操作需要读存储器 所以必须进行暂停操作
     wire lwstall, branchstall;
@@ -47,8 +50,10 @@ module hazard(
     assign lwstall = (((rsD == rtE) | (rtD == rtE)) & memtoregE & ~memtoregD) | ((rsD != 5'b0) & (rsD == writeregM) & memtoregM & jumprD);
     assign branchstall = branchD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
                          branchD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
-
-    assign stallD = lwstall;
-    assign stallF = lwstall;
-    assign flushE = lwstall;
+    
+    assign jrstall = jumprD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
+                         jumprD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
+    assign stallD = lwstall | jrstall;
+    assign stallF = lwstall | jrstall;
+    assign flushE = lwstall | jrstall;
 endmodule

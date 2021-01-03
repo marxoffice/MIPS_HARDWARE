@@ -28,6 +28,7 @@ module alu_dec(
 	input wire [5:0] funct,
 	// input wire [1:0] aluop,
     input wire [5:0] op,
+    input wire [4:0] rs,
     input wire [4:0] rt,
 	output reg [7:0] alucontrol
     );
@@ -84,7 +85,7 @@ module alu_dec(
                 // sink in inst
                 `EXE_BREAK  :alucontrol <= `EXE_BREAK_OP    ;
                 `EXE_SYSCALL:alucontrol <= `EXE_SYSCALL_OP  ;
-                default     : alucontrol <= `EXE_NOP_OP     ;
+                default     :alucontrol <= `EXE_NOP_OP      ;
             endcase
             //logic inst
             `EXE_ANDI   :alucontrol <= `EXE_ANDI_OP     ;
@@ -110,6 +111,7 @@ module alu_dec(
                 `EXE_BLTZAL :alucontrol <= `EXE_BLTZAL_OP   ;
                 `EXE_BGEZ   :alucontrol <= `EXE_BGEZ_OP     ;
                 `EXE_BGEZAL :alucontrol <= `EXE_BGEZAL_OP   ;
+                default     :alucontrol <= `EXE_NOP_OP      ;
             endcase
             // memory insts
             `EXE_LB     :alucontrol <= `EXE_LB_OP   ;
@@ -123,7 +125,13 @@ module alu_dec(
             // privileged inst
             // 此处特权指令全部都直接alu nop
             // 后续添加特权指令再进行审核与修改
-            6'b010000 :alucontrol   <= `EXE_NOP_OP  ;
+            6'b010000 : case (rs)
+                5'b00100 :  alucontrol   <= `EXE_MTC0_OP;
+                5'b00000 :  alucontrol   <= `EXE_MFC0_OP;
+                5'b00001 :  alucontrol   <= `EXE_ERET_OP;
+                default:    alucontrol   <= `EXE_NOP_OP ;
+            endcase
+             
             default : alucontrol    <= `EXE_NOP_OP  ;
         endcase
     end

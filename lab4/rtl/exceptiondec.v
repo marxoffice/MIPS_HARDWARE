@@ -78,6 +78,6 @@ module exceptiondec(
 		endcase
 	end
 
-	assign exceptionoccur = (exceptiontype); // 发生异常信号
+	assign exceptionoccur = (exceptiontype != 0); // 发生异常信号
 
 endmodule
