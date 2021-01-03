@@ -24,10 +24,17 @@ module mycpu_top (
 );
     assign inst_sram_wen = 4'b0;
     assign inst_sram_wdata = 32'b0;
-    wire[31:0] data_sram_addr_temp;
+    // wire[31:0] data_sram_addr_temp;
     
     // TODO inst_en = 1;
     // 如果需要 更改为inst_enF(inst_sram_en),
+
+    wire [31:0] cpu_inst_addr;
+    wire [31:0] cpu_data_addr;
+    wire no_dcache;
+
+    mmu my_addr_translate(.inst_vaddr(cpu_inst_addr),.inst_paddr(inst_sram_addr),
+    .data_vaddr(cpu_data_addr),.data_paddr(data_sram_addr),.no_dcache(no_dcache));
 
     flowmips datapath(
         .clk(~clk), .rst(~resetn), // low active
@@ -35,12 +42,12 @@ module mycpu_top (
 
         //inst
         .inst_sram_en(inst_sram_en),
-        .pc(inst_sram_addr),
+        .pc(cpu_inst_addr),
         .instr(inst_sram_rdata),
 
         //data
         .memwriteM(data_sram_en),
-        .aluoutM(data_sram_addr_temp),
+        .aluoutM(cpu_data_addr),
         .WriteDataM(data_sram_wdata),
         .readdata(data_sram_rdata),
         .selM(data_sram_wen),
@@ -51,6 +58,6 @@ module mycpu_top (
         .debug_wb_rf_wdata (debug_wb_rf_wdata )  
     );
 
-    // BUG fix for addr translate
-    assign data_sram_addr = data_sram_addr_temp[31:16] == 16'hbfaf ? {3'b0, data_sram_addr_temp[28:0]} : data_sram_addr_temp;
+    // BUG fix for addr translate 已找到参考资料中的mmu模块转换地址
+    // assign data_sram_addr = data_sram_addr_temp[31:16] == 16'hbfaf ? {3'b0, data_sram_addr_temp[28:0]} : data_sram_addr_temp;
 endmodule
