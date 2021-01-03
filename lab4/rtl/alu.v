@@ -45,6 +45,7 @@ module alu(
     wire [63:0] hilo_out_mul; // 用于连接mul、div模块结果
     wire [63:0] hilo_out_div; // 用于连接mul、div模块结果
     reg [63:0] hilo_out_move; // 用于连接mul、div模块结果
+    reg [31:0] num2_reg;
 
     // 根据实验图的要求.在实验1的alu基础上增加 zero值
 
@@ -77,12 +78,14 @@ module alu(
     end
 
     // overflow check
-    wire overflow_temp; // 用于检测溢出位
-    wire overflow_temp2;
-    assign overflow_temp = (ans[31] & (~num1[31] & ~num2[31])) 
-                || (~ans[31] & (num1[31] & num2[31]));
-    assign overflow_temp2 = (alucontrol == `EXE_ADD_OP || alucontrol == `EXE_SUB_OP || alucontrol == `EXE_ADDI_OP );
-    assign overflowE = overflow_temp && overflow_temp2;
+    wire overflow_add; // 用于检测溢出位
+    wire overflow_sub;
+    assign overflow_add = ( (ans[31] & (~num1[31] & ~num2[31])) 
+                || (~ans[31] & (num1[31] & num2[31]))) &&(alucontrol == `EXE_ADD_OP || alucontrol == `EXE_ADDI_OP );
+    assign overflow_sub = ( (alucontrol == `EXE_SUB_OP ) && 
+                ((ans[31] & (~num1[31] & ~num2_reg[31])) || (~ans[31] & (num1[31] & num2_reg[31]))) 
+                );
+    assign overflowE = overflow_add || overflow_sub;
     // always@(ans)begin
     //     if(overflowE == 1) ans = 0;
     // end
@@ -95,6 +98,7 @@ module alu(
                             (alucontrol == `EXE_SW && ans[1:0] != 2'b00)? 1: 0;
 
     always @(*) begin
+        num2_reg = 0;
         case (alucontrol)
             //logic op
             `EXE_AND_OP     :ans <= num1 & num2         ;
@@ -126,7 +130,10 @@ module alu(
             // Arithmetic inst
             `EXE_ADD_OP     :ans <= num1 + num2;
             `EXE_ADDU_OP    :ans <= num1 + num2                     ;
-            `EXE_SUB_OP     :ans <= num1 - num2;
+            `EXE_SUB_OP     :begin
+                num2_reg = {~num2[31],~num2[30:0]+1};
+                ans <= num1 + num2_reg;
+            end 
             `EXE_SUBU_OP    :ans <= num1 - num2                     ;
             `EXE_SLT_OP     :ans <= $signed(num1) < $signed(num2)   ;
             `EXE_SLTU_OP    :ans <= num1 < num2                     ;
