@@ -62,6 +62,8 @@ module flowmips(
     wire [31:0] pcexceptionM;
     wire [31:0] cp0aluin;  // mfc0的输入
 
+    wire [39:0] ascii;
+
     // 预测模块
     wire predictF,predictD, predictE, predict_wrong,predict_wrongM;
     wire actual_takeM, actual_takeE;
@@ -76,6 +78,8 @@ module flowmips(
     mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
     mux2 #(32) before_pc_jumpr(pc_temp5,pc_temp4,eq1,jumprD);   // TODO 注意这里可能有数据冒险 eq1是数据前推
 	mux2 #(32) before_pc_exception(pc_in,pc_temp5,pcexceptionM,exceptionoccur);
+
+    instdec my_instdec(instr,ascii); // instr ascii转换
 	
     assign inst_sram_en = ~stallF & ~div_stall;
     pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
