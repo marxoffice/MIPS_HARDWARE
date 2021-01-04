@@ -32,9 +32,10 @@ module alu(
     input wire flush_endE,  // 清除D->E阶段寄存器的信号，同时用于打断清除DIV的运算
     input wire stallM, // E->M中间寄存器的停顿信号，用于div的接收信号
     input wire [31:0] pc_add4E,
-	input  wire [31:0] cp0aluin,  // mfc0的输入
+	input wire [31:0] cp0aluin,  // mfc0的输入
+    input wire exceptionoccur, 
     output wire [31:0] real_ans,
-    output reg [63:0] hilo_out,
+    output wire [63:0] hilo_out,
     output wire overflowE,
     output wire zero,     // zero为1表示跳转 否则不跳
     output wire div_stallE,  // 除法运算的停顿
@@ -44,11 +45,12 @@ module alu(
     reg [31:0] ans;
     wire [63:0] hilo_out_mul; // 用于连接mul、div模块结果
     wire [63:0] hilo_out_div; // 用于连接mul、div模块结果
-    reg [63:0] hilo_out_move; // 用于连接mul、div模块结果
+    // reg [63:0] hilo_out_move; // 用于连接hilo输入
     reg [31:0] num2_reg;
+    reg [63:0] hilo;
 
     // initial hilo reg
-    initial hilo_out = {64{1'b0}};
+    initial hilo = {64{1'b0}};
 
     // 根据实验图的要求.在实验1的alu基础上增加 zero值
 
@@ -70,15 +72,6 @@ module alu(
     //        (op == 3'b001) ? num1 | num2 :                  // | or
     //        (op == 3'b100) ? ~num1 :                        // ! not
     //        (op == 3'b111) ? (num1 < num2) : 32'h00000000;  // slt if(num1 < num2) ans = 1; ans = 0;
-
-    // hilo
-    always@(*) begin
-        if(alucontrol == `EXE_MTHI_OP) begin
-            hilo_out_move <= {num1,lo};
-        end else if(alucontrol == `EXE_MTLO_OP) begin
-            hilo_out_move <= {hi,num1};
-        end else hilo_out_move <= {hi,lo};
-    end
 
     // overflow check
     wire overflow_add; // 用于检测溢出位
@@ -198,11 +191,11 @@ module alu(
     wire div_res_ready;
 
     assign div_res_ready = div_valid & ~stallM;  // E-M寄存器没有停顿
-    assign div_stallE = div_valid & ~div_res_valid;
+    assign div_stallE = div_valid & ~div_res_valid & ~exceptionoccur;
 
 	div_radix2 DIV(
 		.clk(clk),
-		.rst(rst | flush_endE),
+		.rst(rst | flush_endE | exceptionoccur),
 		.a(num1),         //divident
 		.b(num2),         //divisor
 		.sign(div_sign),    //1 signed
@@ -213,13 +206,29 @@ module alu(
 		.result(hilo_out_div)  // 计算结果
 	);
 
+    // hilo
     // always@(hilo_out_div,hilo_out_mul,hilo_out_move,div_res_valid) begin
-    always@(*) begin
-        if (rst) hilo_out = {64{1'b0}};
-        else hilo_out = (div_res_valid == 1)? hilo_out_div :
-                        (mul_valid == 1)   ? hilo_out_mul :
-                        hilo_out_move;
-    end
+    reg [2:0] choose;
+    reg chow2;
+    always@(clk) begin
+        if (rst) begin hilo <= {64{1'b0}}; choose <= 3'b001; end
+        else case(exceptionoccur)
+            1'b1: begin
+                hilo <= hilo;
+                choose <= 3'b010;
+            end
+            
+            1'b0: begin
+                chow2 <= 1;
 
+                if(div_res_valid == 1'b1) begin hilo <= hilo_out_div; choose <= 3'b011; end
+                else if(mul_valid == 1'b1) begin hilo <= hilo_out_mul; choose <= 3'b100;chow2 <= 0; end
+                else if(alucontrol == `EXE_MTHI_OP) begin hilo <= {num1,hilo[31:0]}; choose <= 3'b101; end 
+                else if(alucontrol == `EXE_MTLO_OP) begin hilo <= {hilo[63:32],num1}; choose <= 3'b110; end
+                else begin hilo <= hilo; choose <= 3'b111; end
+            end
+        endcase
+    end
+    assign hilo_out = hilo;
 
 endmodule

@@ -124,7 +124,7 @@ module main_dec(
                     main_signal <= 6'b000000;
                 end 
                 5'b00000: main_signal <= 6'b100000; // mtfc0
-                5'b00001: main_signal <= 6'b000000; // eret TODO: 参考代码中regwrite为1，这里不为1
+                5'b10000: main_signal <= 6'b000000; // eret TODO: 参考代码中regwrite为1，这里不为1
                 default: begin
                     invalid = 1;
                     main_signal <= 6'b000000;  // error op

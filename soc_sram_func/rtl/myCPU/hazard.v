@@ -23,6 +23,7 @@
 module hazard(
     input wire[4:0] rsD, rtD, rsE, rtE, rdE, rdM, writeregE, writeregM, writeregW,
     input wire regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,cp0writeM,
+    input wire exceptionoccur,
     output wire[1:0] forwardAE, forwardBE,
     output wire forwardAD, forwardBD, forwardcp0dataE,
     output wire stallF, stallD, flushE
@@ -55,5 +56,5 @@ module hazard(
     //                     jumprD & memtoregM & ((writeregM == rsD) | (writeregM == rtD));
     assign stallD = lwstall | jrstall;
     assign stallF = lwstall | jrstall;
-    assign flushE = lwstall | jrstall;
+    assign flushE = lwstall | jrstall | exceptionoccur; // TODO:exceptionoccur信号用于异常时清除所有的寄存器，还未完全测试
 endmodule

@@ -87,7 +87,7 @@ module flowmips(
     assign pcF = pc;
 
     //TODO: pc地址错误,syscallD,breakD,eretD,invalidD,overflowE,laddressError,saddressError
-    assign exceptF = (pc_in[1:0] == 2'b00) ? 8'b00000000 : 8'b10000000;//the addr error
+    assign exceptF = (pcF[1:0] == 2'b00) ? 8'b00000000 : 8'b10000000;//the addr error
 	assign is_in_delayslotF = (jumpD|jumprD|branchD);
 
     wire flushD;
@@ -180,7 +180,7 @@ module flowmips(
 
 
     alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
-                pc_add4E,cp0aluin,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
+                pc_add4E,cp0aluin,exceptionoccur,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
 
     // 处理写入SH、SB
     WriteData_handle my_WriteData_handle(alucontrolE,aluoutE,WriteDataE,selE,handled_WriteDataE);
@@ -256,6 +256,7 @@ module flowmips(
 
     hazard my_hazard_unit(rsD, rtD, rsE, RtE, RdE, RdM, WriteRegE, WriteRegM, WriteRegW,
     regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,cp0writeM,
+    exceptionoccur,
     forwardAE, forwardBE, forwardAD, forwardBD, forwardcp0dataE,
     stallF, stallD, flushE);
 

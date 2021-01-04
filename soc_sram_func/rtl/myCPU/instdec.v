@@ -110,7 +110,7 @@ module instdec(
                 endcase
             end
             6'b010000: begin 
-                if(instr==`ERET) begin
+                if(instr[25:21]==`ERET) begin
                     ascii<="ERET";
                 end else begin 
                     case (instr[25:21])
@@ -121,8 +121,8 @@ module instdec(
             end
             default: ascii<= "N-R";
        endcase
-    if(instr==`ERET)
-        ascii<= "ERET";
+    // if(instr==`ERET)
+    //     ascii<= "ERET";
     if(!instr)
         ascii<= "NOP";
     end
