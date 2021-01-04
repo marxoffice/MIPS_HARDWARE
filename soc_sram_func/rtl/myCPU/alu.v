@@ -47,6 +47,9 @@ module alu(
     reg [63:0] hilo_out_move; // 用于连接mul、div模块结果
     reg [31:0] num2_reg;
 
+    // initial hilo reg
+    initial hilo_out = {64{1'b0}};
+
     // 根据实验图的要求.在实验1的alu基础上增加 zero值
 
     // TODO 可以考虑将此功能独立成模块 branch_judge
@@ -212,7 +215,8 @@ module alu(
 
     // always@(hilo_out_div,hilo_out_mul,hilo_out_move,div_res_valid) begin
     always@(*) begin
-        hilo_out = (div_res_valid == 1)? hilo_out_div :
+        if (rst) hilo_out = {64{1'b0}};
+        else hilo_out = (div_res_valid == 1)? hilo_out_div :
                         (mul_valid == 1)   ? hilo_out_mul :
                         hilo_out_move;
     end

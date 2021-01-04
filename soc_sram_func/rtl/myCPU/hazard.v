@@ -43,16 +43,16 @@ module hazard(
     // mtc0 mfc0冲突
 	assign forwardcp0dataE = (rdE && (rdE == rdM) && cp0writeM);
 
-
     // 流水线暂停 lw操作需要读存储器 所以必须进行暂停操作
     wire lwstall, branchstall, jrstall;
-    // TODO 增加 lw--jumprD型指令的二次stall，未经测试
-    assign lwstall = (((rsD == rtE) | (rtD == rtE)) & memtoregE & ~memtoregD) | ((rsD != 5'b0) & (rsD == writeregM) & memtoregM & jumprD);
+    // TODO: 增加 lw--jumprD型指令的二次stall，未经测试   & ~memtoregD
+    assign lwstall = (((rsD == rtE) | (rtD == rtE)) & memtoregE) | ((rsD != 5'b0) & (rsD == writeregM) & memtoregM & jumprD);
     assign branchstall = branchD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
-                         branchD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
+                         branchD & memtoregM & ((writeregM == rsD) | (writeregM == rtD));
     
-    assign jrstall = jumprD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)) |
-                         jumprD & regwriteE & ((writeregM == rsD) | (writeregM == rtD));
+    // 由于branch已经由分支预测处理了 所以只需要使用lwstall单处理jumprD
+    assign jrstall = jumprD & regwriteE & ((writeregE == rsD) | (writeregE == rtD)); //|
+    //                     jumprD & memtoregM & ((writeregM == rsD) | (writeregM == rtD));
     assign stallD = lwstall | jrstall;
     assign stallF = lwstall | jrstall;
     assign flushE = lwstall | jrstall;

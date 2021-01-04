@@ -72,7 +72,7 @@ module flowmips(
     assign predict_wrong = (predictE != zeroE);
 
 	// flopr 1
-    mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E, predictE);
+    mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E+4, predictE);
     mux2 #(32) before_pc_wrong(pc_temp2,pc_add4F,pc_branchD, branchD & predictD);
     mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
     mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
@@ -82,10 +82,11 @@ module flowmips(
     instdec my_instdec(instr,ascii); // instr ascii转换
 	
     assign inst_sram_en = ~stallF & ~div_stall;
-    pc my_pc(clk,rst,~stallF & ~div_stall,pc_in,pc,inst_ce);
+    pc my_pc(clk,rst,~stallF & ~div_stall | exceptionoccur,pc_in,pc,inst_ce); 
 	adder my_adder_pc(inst_ce,32'b100,pc_add4F);
     assign pcF = pc;
 
+    //TODO: pc地址错误,syscallD,breakD,eretD,invalidD,overflowE,laddressError,saddressError
     assign exceptF = (pc_in[1:0] == 2'b00) ? 8'b00000000 : 8'b10000000;//the addr error
 	assign is_in_delayslotF = (jumpD|jumprD|branchD);
 
@@ -213,7 +214,7 @@ module flowmips(
 		.waddr_i 			(RdM 			    ),
 		.raddr_i 			(RdE 			    ),
 		.data_i 			(aluoutM 		    ),
-		.int_i 				(6'b0 			    ),
+		.int_i 				(int 			    ),
 		.excepttype_i 		(exceptiontypeM	    ),
 		.current_inst_addr_i(pcM 			    ),
 		.is_in_delayslot_i	(is_in_delayslotM   ),

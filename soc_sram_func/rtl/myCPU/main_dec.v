@@ -75,6 +75,8 @@ module main_dec(
                 
                 `EXE_MFHI, `EXE_MFLO: main_signal <= 6'b110000;
                 `EXE_MTHI, `EXE_MTLO: main_signal <= 6'b000000;
+                `EXE_SYSCALL,`EXE_BREAK : main_signal <= 6'b000000;
+                
 
                 // j inst
                 `EXE_JR:  main_signal <= 6'b000000;

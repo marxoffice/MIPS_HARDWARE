@@ -92,10 +92,10 @@ module alu(
     assign real_ans = (overflowE == 1) ? 0:ans;
 
     // addressError
-    assign laddressError = ( (alucontrol == `EXE_LH || alucontrol == `EXE_LHU) && (ans[0] != 0) )? 1:
-                            (alucontrol == `EXE_LW && ans[1:0] != 2'b00)? 1: 0;
-    assign saddressError = ( (alucontrol == `EXE_SH) && (ans[0] != 0) )? 1:
-                            (alucontrol == `EXE_SW && ans[1:0] != 2'b00)? 1: 0;
+    assign laddressError = ( (alucontrol == `EXE_LH_OP || alucontrol == `EXE_LHU_OP) && (ans[0] != 0) )? 1:
+                            (alucontrol == `EXE_LW_OP && ans[1:0] != 2'b00)? 1: 0;
+    assign saddressError = ( (alucontrol == `EXE_SH_OP) && (ans[0] != 0) )? 1:
+                            (alucontrol == `EXE_SW_OP && ans[1:0] != 2'b00)? 1: 0;
 
     always @(*) begin
         num2_reg = 0;
