@@ -206,6 +206,9 @@ module flowmips(
     exceptiondec exceptiondec (rst,exceptM,exceptM[1],exceptM[0],statusout,
                 causeout,epcout, exceptionoccur,exceptiontypeM,pcexceptionM);
     
+    wire [31:0]countout,compareout,configout,pridout,badvaddrout,bad_addr;
+    wire timerintout;
+    assign bad_addr = (exceptM[7])? pcM : aluoutM; // pc错误时，bad_addr_i为pcM，否则为计算出来的load store地址
     cp0_reg cp0 (
         // input
 		.clk 				(clk 			    ),
@@ -218,20 +221,20 @@ module flowmips(
 		.excepttype_i 		(exceptiontypeM	    ),
 		.current_inst_addr_i(pcM 			    ),
 		.is_in_delayslot_i	(is_in_delayslotM   ),
-		.bad_addr_i			(aluoutM		    ), // 出错的虚地址（load store)均为alu计算出的结果
+		.bad_addr_i			(bad_addr		    ), // 出错的虚地址（load store)均为alu计算出的结果
         // output
 		.data_o				(cp0dataoutE 	    ),
-		.count_o			(),//countout 		    
-		.compare_o			(),//compareout 	    
+		.count_o			(countout 	),//	    
+		.compare_o			(compareout ),//	    
         
 		.status_o			(statusout 		    ),    	
 		.cause_o			(causeout 		    ),
 		.epc_o				(epcout 		    ),
 
-		.config_o			(),//configout 		    
-		.prid_o				(),//pridout 		    
-		.badvaddr			(),//badvaddrout 	    
-		.timer_int_o		()//timerintout	    
+		.config_o			(configout 		),//    
+		.prid_o				(pridout 		),//    
+		.badvaddr			(badvaddrout 	),//    
+		.timer_int_o		(timerintout	)//    
 	);
 
 
