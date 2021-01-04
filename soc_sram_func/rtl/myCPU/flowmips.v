@@ -72,7 +72,7 @@ module flowmips(
     assign predict_wrong = (predictE != zeroE);
 
 	// flopr 1
-    mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E, predictE);
+    mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E+4, predictE);
     mux2 #(32) before_pc_wrong(pc_temp2,pc_add4F,pc_branchD, branchD & predictD);
     mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
     mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
