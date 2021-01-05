@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Jan  5 22:27:39 2021
+# Process ID: 16024
+# Current directory: E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/data_ram_synth_1
+# Command line: vivado.exe -log data_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source data_ram.tcl
+# Log file: E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/data_ram_synth_1/data_ram.vds
+# Journal file: E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/data_ram_synth_1\vivado.jou
+#-----------------------------------------------------------
+source data_ram.tcl -notrace

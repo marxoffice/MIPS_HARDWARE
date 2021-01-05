@@ -1,0 +1,2049 @@
+
+*** Running vivado
+    with args -log soc_lite_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_lite_top.tcl
+
+
+****** Vivado v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source soc_lite_top.tcl -notrace
+Command: synth_design -top soc_lite_top -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 12592 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 978.555 ; gain = 234.320
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'soc_lite_top' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/soc_lite_top.v:65]
+	Parameter SIMULATION bound to: 1'b0 
+INFO: [Synth 8-6157] synthesizing module 'clk_pll' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/synth_1/.Xil/Vivado-8396-DESKTOP-FICHOQQ/realtime/clk_pll_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (1#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/synth_1/.Xil/Vivado-8396-DESKTOP-FICHOQQ/realtime/clk_pll_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_top' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:61230]
+INFO: [Synth 8-6157] synthesizing module 'GND' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:14687]
+INFO: [Synth 8-6155] done synthesizing module 'GND' (2#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:14687]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (3#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6157] synthesizing module 'IBUF' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUF' (4#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+INFO: [Synth 8-6157] synthesizing module 'OBUF' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46211]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'OBUF' (5#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46211]
+INFO: [Synth 8-6157] synthesizing module 'LUT3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b10001010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3' (6#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_decode_stage' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16597]
+INFO: [Synth 8-6157] synthesizing module 'gr_heap_2r1w_32x32' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:100]
+INFO: [Synth 8-6157] synthesizing module 'LUT2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b1000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2' (7#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT6' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000100000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6' (8#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized0' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b0010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized0' (8#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'FDRE' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13708]
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_R_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDRE' (9#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13708]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized0' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized0' (9#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0000000000010000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized0' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized0' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111111111111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized1' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized1' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000010000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized2' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000000001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized3' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111100010001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized2' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111110001000100011111000100010001111100010001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized4' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized5' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1011101110111011101110111011101110111011101110111011101110111000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized5' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized6' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111101110111011111110111011101111111011101110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized6' (10#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111111111111111111100010001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5' (11#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized7' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101010101010101010101010101010100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized7' (11#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized8' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1011101110111011101110111011101110111011101110111011101110111010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized8' (11#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6155] done synthesizing module 'gr_heap_2r1w_32x32' (12#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:100]
+INFO: [Synth 8-6155] done synthesizing module 'ls132r_decode_stage' (13#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16597]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_ejtag_dcr' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16919]
+INFO: [Synth 8-6157] synthesizing module 'VCC' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:81656]
+INFO: [Synth 8-6155] done synthesizing module 'VCC' (14#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:81656]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1100111110101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized3' (14#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6155] done synthesizing module 'ls132r_ejtag_dcr' (15#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16919]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_ejtag_hb' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16982]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_ejtag_ib' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17148]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized9' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1000110000000000000000000000000010000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized9' (15#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized10' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111110000000000000000000000000001111100000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized10' (15#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized11' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000011000000000000001010000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized11' (15#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111100000001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized4' (15#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized12' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1010101011110000101010101111000010101010110011001010101000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized12' (15#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'CARRY4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1479]
+INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1479]
+WARNING: [Synth 8-7023] instance 'hb_dit1_carry' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17416]
+WARNING: [Synth 8-7023] instance 'hb_dit1_carry__0' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17422]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized13' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111100011110111000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized13' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized5' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1110110111011101 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized5' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17534]
+WARNING: [Synth 8-7023] instance 'hb_dit1_carry__1' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17532]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized0' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111000111101110000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized0' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b1110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized1' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+WARNING: [Synth 8-7023] instance 'ibs1_inferred__0/i__carry' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18247]
+WARNING: [Synth 8-7023] instance 'ibs1_inferred__0/i__carry__0' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18253]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18261]
+WARNING: [Synth 8-7023] instance 'ibs1_inferred__0/i__carry__1' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18259]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized14' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1000111110000000100011111000000010001111100000001000000010000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized14' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized6' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0000000001000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized6' (16#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6155] done synthesizing module 'ls132r_ejtag_ib' (17#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:17148]
+INFO: [Synth 8-6155] done synthesizing module 'ls132r_ejtag_hb' (18#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:16982]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_ejtag_tap' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18293]
+INFO: [Synth 8-6157] synthesizing module 'ejtag_tap_fsm' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:15]
+INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized0' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b11111011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized0' (18#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized7' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0110000011110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized7' (18#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized8' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0101010011001110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized8' (18#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized9' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0010101010110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized9' (18#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'FDCE' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13492]
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_CLR_INVERTED bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDCE' (19#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13492]
+INFO: [Synth 8-6155] done synthesizing module 'ejtag_tap_fsm' (20#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'ls132r_ejtag_tap' (21#1) [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18293]
+INFO: [Synth 8-6157] synthesizing module 'ls132r_execute_stage' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:18301]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b00000000000000000000000011010000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized1' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized10' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111011000000110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized10' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized15' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1000100010001000100010001000101010001000100010001000100010001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized15' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized16' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1010101010101111101011111010101010001000100010001000110010001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized16' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized11' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111100011001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized11' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized17' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000010000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized17' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111010111110101111111011111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized2' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized12' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111111111101111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized12' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b00000000000000001111111010101110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized3' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b00001110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized1' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized13' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0101011010100110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized13' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:22335]
+INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b10111000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized2' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized18' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111101111111100000000000000000000001000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized18' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized19' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111110111111111111111111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized19' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized14' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1111000011101110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized14' (21#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT1' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39089]
+	Parameter INIT bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'LUT1' (22#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39089]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized20' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110011001100110010001100110011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized20' (22#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'FDSE' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13844]
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_S_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDSE' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13844]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized15' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized15' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized2' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b1011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized2' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized16' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0000000010101000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized16' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized21' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1001000000001001000000000000000000000000000000001001000000001001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized21' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized17' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1001000000001001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized17' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:22785]
+WARNING: [Synth 8-7023] instance 'cr_cause_TI_reg_i_2' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:22783]
+WARNING: [Synth 8-7023] instance 'cr_cause_TI_reg_i_3' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:22789]
+WARNING: [Synth 8-7023] instance 'cr_cause_TI_reg_i_7' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:22795]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b00000000000000000000100000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized4' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized22' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111101111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized22' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized5' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111111111111110000100000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized5' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized23' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111101111111111100001000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized23' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized24' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000100000000000111111111111111100000000000000001111011111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized24' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:23620]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized25' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0100010001000100010001000100010001001111010001000100010001000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized25' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized6' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11110000111011101110111011101110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized6' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b11111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized3' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized26' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111110111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized26' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized3' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b0110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized3' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized27' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0100010011110100010001001111010011111111111111111111010011110100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized27' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized28' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111100000001111111110000000111111111111111111111111100000001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized28' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized29' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111010011110000111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized29' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized30' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111011111111111111111111111111111111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized30' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized7' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111111111111111111011111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized7' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized31' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111000101010000000100010101000000010001010100000001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized31' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized32' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111101111111111111111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized32' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized4' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b10000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized4' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized18' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b1011111110000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized18' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized33' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111110111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized33' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized34' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110101010101010101010101110101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized34' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized35' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101000100111101001111010001000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized35' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized8' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b10001011101110111000100010001011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized8' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized36' [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000001000011010100000001110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized36' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000100000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized37' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000010101100000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized38' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111011111111111111111111111111111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized39' (23#1) [E:/Vivado/201902/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter INIT bound to: 32'b00000000111101111111111111111111 
+	Parameter INIT bound to: 64'b0100000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0100010001000100010001000100010001000100010011110100010001000100 
+	Parameter INIT bound to: 64'b1111111111111111101111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1101111100000000010101010000000001010101000000000101010100000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111011111111111111 
+	Parameter INIT bound to: 64'b1100110011001100110000001100110010000000000000001000000000000000 
+	Parameter INIT bound to: 64'b1010101010101010100010001010100010001000100010001000100010001000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111101111111111111111111111111111 
+	Parameter INIT bound to: 8'b00000100 
+	Parameter INIT bound to: 64'b0000000000001000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b10111000111111111011100000000000 
+	Parameter INIT bound to: 64'b1110111011100010001000101110001000000000000000000000000000000000 
+	Parameter INIT bound to: 16'b0110111101100000 
+	Parameter INIT bound to: 64'b1110110011001100111011001100110000000000000000001110000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000001000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111110111111111111111111111111111111111 
+	Parameter INIT bound to: 8'b11101111 
+WARNING: [Synth 8-689] width (1) of port connection 'O' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:24978]
+WARNING: [Synth 8-7023] instance 'cr_depc_DEPC_reg[31]_i_3' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:24974]
+	Parameter INIT bound to: 32'b10111000101110111011100010001000 
+	Parameter INIT bound to: 16'b1000101110111000 
+	Parameter INIT bound to: 64'b0101010101010101011101010101010101010101010101010101010101010101 
+	Parameter INIT bound to: 64'b1111111011101110111111111111111111111110111011101111111011111111 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101010101010101010101110101010101010 
+	Parameter INIT bound to: 64'b1111111111111101111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 32'b11111111111110111111111100000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111110111111111111 
+	Parameter INIT bound to: 64'b1110001011111111111000101111111111111111111111111110001011111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100110010000000101111111111111111 
+	Parameter INIT bound to: 64'b1111101100001011111111111111111100001000000010001111111111111111 
+	Parameter INIT bound to: 16'b0000000010000000 
+	Parameter INIT bound to: 64'b0000000000000000000100000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000001000000000000000 
+	Parameter INIT bound to: 32'b10111111101110111000111110001000 
+	Parameter INIT bound to: 32'b00000000000000000000000000010000 
+	Parameter INIT bound to: 16'b1111111110000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111110001011100010111000101111111111100010 
+	Parameter INIT bound to: 64'b1011101110111011101110001000100010111000100010001011100010001000 
+	Parameter INIT bound to: 64'b0000000010001000000000000000000000000000100000000000000000000000 
+	Parameter INIT bound to: 8'b11100001 
+	Parameter INIT bound to: 8'b01010110 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000100000000000000000000 
+	Parameter INIT bound to: 8'b00110001 
+	Parameter INIT bound to: 32'b00000101000011111100010111001111 
+	Parameter INIT bound to: 16'b1011101110111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110101010101011001100110010101100 
+	Parameter INIT bound to: 16'b1111101111111111 
+	Parameter INIT bound to: 32'b11111111111110111111111111111111 
+	Parameter INIT bound to: 32'b00000001010100011111111010101110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111110101000 
+	Parameter INIT bound to: 32'b11011111111111111111111111111111 
+	Parameter INIT bound to: 32'b11111111110111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000100000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b00000000000000000000000000000100 
+	Parameter INIT bound to: 64'b0000000000000100000000000001010000001100000011000011110000111100 
+	Parameter INIT bound to: 64'b1111111101111111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000010000000000000001000000000000000100000000001111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000100010001000000010000000100 
+	Parameter INIT bound to: 64'b0000000000000000000000001111010001010000010100001110000011110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000111011001111111111111100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111011101111111001100110011001100 
+	Parameter INIT bound to: 64'b1000000010000000100000001000000010000000100000001000000011000000 
+	Parameter INIT bound to: 64'b1111010111110101111101001111111111110000111100001111000011111100 
+	Parameter INIT bound to: 64'b0000010000000000111111111111111100000100000000000000010000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000001111010001110000011100001100000011110100 
+	Parameter INIT bound to: 32'b00000000000000000000010000000000 
+	Parameter INIT bound to: 64'b0000111111111111000011100000000011111111111111111111111100000000 
+	Parameter INIT bound to: 64'b1010101110101111101010101010101010111011101111111010101011111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000001000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111000000110000001011111111111111111111111111111111 
+	Parameter INIT bound to: 16'b0000000000001000 
+	Parameter INIT bound to: 32'b10000000100000001000000000000000 
+	Parameter INIT bound to: 64'b0111000001010000011100000101000001111111010111111111111111111111 
+	Parameter INIT bound to: 32'b11111111101111111111111111111111 
+	Parameter INIT bound to: 32'b00000000010000001111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000001000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111000111110001111100011111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000010000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000011100000000000001110000000000000111000000001111111111111111 
+	Parameter INIT bound to: 64'b1011000010111011101110111011101110111011101110111011101110111011 
+	Parameter INIT bound to: 64'b0000111100000000000100010000000000000000000000000001000100000000 
+	Parameter INIT bound to: 64'b0101010101010100111111111111111101010101010101000101010101010100 
+	Parameter INIT bound to: 32'b11111111111111111000100011111000 
+	Parameter INIT bound to: 32'b00000100000101000001010000000000 
+	Parameter INIT bound to: 64'b0100010011110100010001001111010011111111111111110100010011110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110100111101001111111111110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111110010010000000000 
+	Parameter INIT bound to: 64'b1111111111111111001001000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111111110010010000000000 
+	Parameter INIT bound to: 32'b01000000111111110100000001000000 
+	Parameter INIT bound to: 64'b0001111110001111000111111000111100010000000000000000000010000000 
+	Parameter INIT bound to: 16'b1111110100000000 
+	Parameter INIT bound to: 4'b0001 
+	Parameter INIT bound to: 64'b0000000010101110011101010000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1101000011011101110111011101110111011101110111011101110111011101 
+	Parameter INIT bound to: 32'b10101011101010111010101111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111110111111101111111111111110 
+	Parameter INIT bound to: 16'b1111111100110010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111010111111111011101010111010 
+	Parameter INIT bound to: 32'b11111111111111111110111011111110 
+	Parameter INIT bound to: 8'b01000111 
+	Parameter INIT bound to: 16'b0100111101000100 
+	Parameter INIT bound to: 64'b1111010001000100111101000100010011110100111111111111010001000100 
+	Parameter INIT bound to: 64'b0100000000000000111111111111111101000000000000000100000000000000 
+	Parameter INIT bound to: 32'b10111010100010100000000000000000 
+	Parameter INIT bound to: 32'b00000000000000000010011001100000 
+	Parameter INIT bound to: 64'b0100010001001111010001000100111111111111111111110100010001001111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111101010111010101110101011111111 
+	Parameter INIT bound to: 32'b11111110111111101111111111111110 
+	Parameter INIT bound to: 64'b0100111101000100010001000100010001000100010001000100010001000100 
+	Parameter INIT bound to: 64'b1111111111110001111111111111000111111111111111111111111111110001 
+	Parameter INIT bound to: 64'b1110101010101010111111111111111111101010101010101110101010101010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111111110000000010000000 
+	Parameter INIT bound to: 32'b11111111111111110010001011110010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110100111111111111010011110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111011111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000001000000000000000001000000 
+	Parameter INIT bound to: 8'b11011111 
+	Parameter INIT bound to: 64'b1111111111111111001000101111001000100010111100100010001011110010 
+	Parameter INIT bound to: 64'b1111111111110100111101001111010011110100111101001111010011110100 
+	Parameter INIT bound to: 32'b00001000101000000000100000000000 
+	Parameter INIT bound to: 16'b1111001111110111 
+	Parameter INIT bound to: 64'b1111001000100010111100101111111111110010001000101111001000100010 
+	Parameter INIT bound to: 16'b0100010001001111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111110010001011110010 
+	Parameter INIT bound to: 8'b00100000 
+	Parameter INIT bound to: 32'b11111110111111111111111011111110 
+	Parameter INIT bound to: 64'b0000110000001100000011001010111011111111000011000000110010101110 
+	Parameter INIT bound to: 16'b1000111110001000 
+	Parameter INIT bound to: 64'b1010110011110000101011000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111011111110111111101110111011101110111011101111111011101110 
+	Parameter INIT bound to: 32'b11111111110111111111111111111100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111110111111111111111111111011 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111011111111111111101111111111111110 
+	Parameter INIT bound to: 64'b1111111011101110111111111111111111111110111011101111111011101110 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101010101010101010001010101010101010 
+	Parameter INIT bound to: 32'b10101110101011101111111110101110 
+	Parameter INIT bound to: 32'b00000000000000000010011001101000 
+	Parameter INIT bound to: 32'b01001111010001000100010001000100 
+	Parameter INIT bound to: 64'b1111111110111010111111111011101011111111111111111111111110111010 
+	Parameter INIT bound to: 64'b0101010101010101110101010101010100000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111000000001000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000010000000000000001000000000100000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0010000000100000001000100000000000100000001000000000000000000000 
+	Parameter INIT bound to: 32'b01001111010011111111111101001111 
+	Parameter INIT bound to: 64'b1000100010001000100010001000100010001011100010001000100010001000 
+	Parameter INIT bound to: 64'b0000000000000000000010000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000011100000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111011111111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1000000010000000000000001000000010100000101000001010000010100000 
+	Parameter INIT bound to: 64'b1011111110111111111111111011111110101111101011111010111110101111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111101110101010 
+	Parameter INIT bound to: 16'b1010100000001000 
+	Parameter INIT bound to: 64'b1110111111101110111011101110111010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b0100010001000100010001010100010001000100010001000100010001000100 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000000000000001000000000000000 
+	Parameter INIT bound to: 64'b1111111101000100111111110100010001000100010001001111010001000100 
+	Parameter INIT bound to: 32'b00010000111111110001000000010000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111110111111111111111011111110 
+	Parameter INIT bound to: 64'b0101010101010101010101010101010100000000000000000100000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111111111101111111111111 
+	Parameter INIT bound to: 64'b1111000001000100111100000100010011111111111111111111000001000100 
+	Parameter INIT bound to: 64'b1111111111111110111111111111111011111111111111111111111111111110 
+	Parameter INIT bound to: 64'b1111111111111111000000000000000000000001000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111111000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111110111010 
+	Parameter INIT bound to: 16'b1010001010101010 
+	Parameter INIT bound to: 16'b0101000101010101 
+	Parameter INIT bound to: 32'b00001111111111110001111111111111 
+	Parameter INIT bound to: 64'b1010111010101110101011101010111000001100000011001111111100001100 
+	Parameter INIT bound to: 4'b0111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111011101110111010101110101010 
+	Parameter INIT bound to: 32'b11010000111111111101000011010000 
+	Parameter INIT bound to: 64'b0011001100110010001000110011001100100010001000100010001000100010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111111111110011100000000 
+	Parameter INIT bound to: 16'b0001000100010000 
+	Parameter INIT bound to: 64'b0000000001110000000000000000000000000000000000001110000000000000 
+	Parameter INIT bound to: 16'b1110011100000000 
+	Parameter INIT bound to: 64'b1111000001110000111100001111000011110000111100001110000011110000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111110101111111010101010101010 
+	Parameter INIT bound to: 16'b0001000100011111 
+	Parameter INIT bound to: 64'b1111111111101110111111111111111111111111111000001111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000000000000111001100000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111000111111111111100011111000 
+	Parameter INIT bound to: 64'b1111010001000100111101000100010011111111010001001111010001000100 
+	Parameter INIT bound to: 64'b1111111111111110111111111111111011111111111111101111111111111111 
+	Parameter INIT bound to: 64'b1000100010101000100010001000100010001000100010001000100010001000 
+	Parameter INIT bound to: 64'b0000000000000000100000000000000010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1111010001000100111101000100010011111111111111111111010001000100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111110010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000001010101000001010000000000 
+	Parameter INIT bound to: 16'b1111010001000100 
+	Parameter INIT bound to: 32'b00000000000000000000000000001000 
+	Parameter INIT bound to: 16'b0000000011111101 
+	Parameter INIT bound to: 32'b00000001000000000000000001000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000001000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000001010101010101011101010101010101 
+	Parameter INIT bound to: 32'b00000000000000001110110000100000 
+	Parameter INIT bound to: 8'b10111010 
+	Parameter INIT bound to: 16'b1000100010000000 
+	Parameter INIT bound to: 32'b11111111111111111010110010100000 
+	Parameter INIT bound to: 16'b1111111111011111 
+	Parameter INIT bound to: 64'b1111111111111110111111101111111011111111111111101111111111111110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111000010000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000010000000100010001000000000000000 
+	Parameter INIT bound to: 64'b1110111111101110111111111111111111101111111011101110111111101110 
+	Parameter INIT bound to: 64'b1111111111111111101010101110101010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b11111111111111110100010011110100 
+	Parameter INIT bound to: 64'b0010000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 8'b00001000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111110101110 
+	Parameter INIT bound to: 64'b1010101010001010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b10011001100110011111111110011111 
+	Parameter INIT bound to: 64'b1111111111111111000000000100000000000000000000000000000001000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000111011101110111011101110111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011110111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111011111110111011101111111011101110111111101110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111011111111111111111111111 
+	Parameter INIT bound to: 16'b1000101000000000 
+	Parameter INIT bound to: 32'b11111111111111111111111111111000 
+	Parameter INIT bound to: 16'b0000000000000001 
+	Parameter INIT bound to: 16'b1000110111001100 
+	Parameter INIT bound to: 32'b11110100111101001111111111110100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111011111111111 
+	Parameter INIT bound to: 16'b1111111111110100 
+	Parameter INIT bound to: 16'b1111111011111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111110001 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111011111111 
+	Parameter INIT bound to: 16'b1111111101010100 
+	Parameter INIT bound to: 32'b11111111111111111111111111101111 
+	Parameter INIT bound to: 64'b0100010001000100010001001111010011111111010001000100010011110100 
+	Parameter INIT bound to: 32'b10101010000000000010101000001000 
+	Parameter INIT bound to: 32'b11111111111110001111100011111000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000000000000111100000100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111110111011101111 
+	Parameter INIT bound to: 16'b0000111100000010 
+	Parameter INIT bound to: 64'b0001000100010001000111111111111100010001000100010001000100010001 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111011100000000000 
+	Parameter INIT bound to: 64'b1111010011111111111111110100010011110100111101001111010001000100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000010000000100000001000000000000 
+	Parameter INIT bound to: 64'b1111001111110111111111011111111111111111111111111111110111111111 
+	Parameter INIT bound to: 64'b1101110100001101110111010000110100000000000000001101110100001101 
+	Parameter INIT bound to: 64'b0000000000000000000000000000100000000000000000000000000000001011 
+	Parameter INIT bound to: 32'b10101110101010101010101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111110100111101000100 
+	Parameter INIT bound to: 32'b10100000101000000010000010101000 
+	Parameter INIT bound to: 64'b0000000000000000000000000010000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1010101010101010001010101010101011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000010000000000 
+	Parameter INIT bound to: 64'b1110000000000000111111111111111111100000000000001110000000000000 
+	Parameter INIT bound to: 64'b0100000000000000010000000000000011111111111111110100000000000000 
+	Parameter INIT bound to: 8'b00000001 
+	Parameter INIT bound to: 16'b1011101111111011 
+	Parameter INIT bound to: 64'b1010101010101111000000000000110010101010101011100000000011000000 
+	Parameter INIT bound to: 32'b01100000111111110110000001100000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111100000101000001110110011101100 
+	Parameter INIT bound to: 8'b00000010 
+	Parameter INIT bound to: 64'b1100110011001100110011001100110011101110111111101110111011101110 
+	Parameter INIT bound to: 64'b1111111111000100110001001100010011000100110001001100010011000100 
+	Parameter INIT bound to: 64'b1111111111111111000011111111111111111111111111110000101110111011 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111010001000100 
+	Parameter INIT bound to: 32'b00000001000000000000000000001000 
+	Parameter INIT bound to: 64'b1111111110110000111111111011000011111111111111111111111110110000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011100000111000001111000011100000 
+	Parameter INIT bound to: 32'b11111111111111111110111011101111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000000000010011001100000 
+	Parameter INIT bound to: 64'b1111111101000000111111110100000011111111111111111111111101000000 
+	Parameter INIT bound to: 64'b0000000011100000111111111111111100000000111000000000000011100000 
+	Parameter INIT bound to: 64'b1010111010101110111111111010111011111111101011101010111010101110 
+	Parameter INIT bound to: 32'b11111111111111111000100010111000 
+	Parameter INIT bound to: 32'b00000001000001100000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101000000010000001111111101000000 
+	Parameter INIT bound to: 32'b11111110111111101111111011111111 
+	Parameter INIT bound to: 32'b11111111111111111111111111101010 
+	Parameter INIT bound to: 32'b11111111111111111111001000100010 
+	Parameter INIT bound to: 64'b1100110011001100110011000000000011001100110011001100110000000100 
+	Parameter INIT bound to: 64'b0111111101111111011111110111111101111111011111110111111100111111 
+	Parameter INIT bound to: 64'b0000000000000000010000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000001000000000000000000000000 
+	Parameter INIT bound to: 64'b0101000000001100010100000000110011111111111111110101000000001100 
+	Parameter INIT bound to: 16'b0000001000100010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111010101110101111111110111010 
+	Parameter INIT bound to: 32'b11111111111111111110111111101110 
+	Parameter INIT bound to: 64'b1111111111111111000000010011001000000010001000000000001000100000 
+	Parameter INIT bound to: 64'b1111111111110001111100011111000111111111111100011111111111110001 
+	Parameter INIT bound to: 64'b1111111111101010111111111110101011111111111111111111111111101010 
+	Parameter INIT bound to: 16'b0000010000000000 
+	Parameter INIT bound to: 64'b1100110000001000111111111111111111001100000010001100110000001000 
+	Parameter INIT bound to: 32'b01000100010011110100010001000100 
+	Parameter INIT bound to: 64'b0001000100011111000100010001111111111111111111110001000100011111 
+	Parameter INIT bound to: 32'b00000000000000000000000010000000 
+	Parameter INIT bound to: 32'b11111110111110101111111011111110 
+	Parameter INIT bound to: 8'b01111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111100001101 
+	Parameter INIT bound to: 64'b0101010101010101010101010001010101010101000101010101010101010101 
+	Parameter INIT bound to: 64'b1010100010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b11111111111111110000000000010000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b0000000011100000000000001100000000000010111000000000001011000000 
+	Parameter INIT bound to: 64'b1111101100000000111110110000000011111011111111111111101100000000 
+	Parameter INIT bound to: 32'b11101111111111110001000000000000 
+	Parameter INIT bound to: 64'b0000000010101010001010101010101000000000101010101010101010101010 
+	Parameter INIT bound to: 64'b1010000010100000101000001001000001010000100100000101000010010000 
+	Parameter INIT bound to: 32'b00001000000000000000000000000000 
+	Parameter INIT bound to: 32'b01001111010000000000000000000000 
+	Parameter INIT bound to: 64'b1100110011001100000000000000000011001100110011000000001000000000 
+	Parameter INIT bound to: 64'b0000000000000000000011101110111000000000111011100000111011101110 
+	Parameter INIT bound to: 64'b1111111110001000110011001000100011111111100000001100000010000000 
+	Parameter INIT bound to: 32'b00000000000000000010000000000000 
+	Parameter INIT bound to: 32'b11111111111111110111111111111111 
+	Parameter INIT bound to: 32'b11111111111111111111110111111111 
+	Parameter INIT bound to: 16'b1101111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111011111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000100000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000010000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000100000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000010000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000001000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000100000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000100000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000010000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000001000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000100000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000010000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111010011111011000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1110110111101101111011011101110111101101110111011110110111011101 
+	Parameter INIT bound to: 64'b1111010011111011000000000000000000000000000000001111010011111011 
+	Parameter INIT bound to: 32'b11111111111111111111100000000000 
+	Parameter INIT bound to: 32'b10000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111111111111111111111111111111 
+	Parameter INIT bound to: 32'b00000000000000000000001000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000100010000000000010101000 
+	Parameter INIT bound to: 64'b1111111111111111111110111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1000100011001000100010001100000010001000000000001000100011000000 
+	Parameter INIT bound to: 16'b0101010001000100 
+	Parameter INIT bound to: 32'b00000001000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111001111111111111111111100001010000010100000101000001010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000001000000000000 
+	Parameter INIT bound to: 16'b1111111100000100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000100000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111011111111101111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111011101110101011101110111010101110111011101010 
+	Parameter INIT bound to: 64'b1010101010101010000000001010101000100000001000000010000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110001000100010001101110010001000 
+	Parameter INIT bound to: 8'b10101110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110010111111111111111111111111 
+	Parameter INIT bound to: 8'b00001011 
+	Parameter INIT bound to: 8'b10101100 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000000000000001111110000001100 
+	Parameter INIT bound to: 16'b1110010000000000 
+	Parameter INIT bound to: 16'b1110010011111111 
+	Parameter INIT bound to: 64'b1111111111111111000000000000000001000100010001000000000001000000 
+	Parameter INIT bound to: 64'b0111111111111111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 32'b00010000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111001011110000000000100000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111011101010100000100010101010 
+WARNING: [Synth 8-7023] instance 'inst_sram_addr_OBUF[21]_inst_i_10' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:36291]
+	Parameter INIT bound to: 64'b1111111100000101111111110000010100000000100100000011001100001001 
+	Parameter INIT bound to: 32'b00000000000000001101001011011101 
+WARNING: [Synth 8-7023] instance 'inst_sram_addr_OBUF[21]_inst_i_14' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:36325]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111010111111101111111111110111 
+	Parameter INIT bound to: 64'b1111111111110000111111111111111011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000011111010000000001111101011111111011011111100110011110110 
+	Parameter INIT bound to: 64'b1111111111111111111011110001111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1011101110111111101010101011111011101110111111101010101010111110 
+	Parameter INIT bound to: 8'b10101000 
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:36552]
+WARNING: [Synth 8-7023] instance 'inst_sram_addr_OBUF[21]_inst_i_6' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:36550]
+	Parameter INIT bound to: 64'b0000000000000000000011000101000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111110111111111111111111111111 
+	Parameter INIT bound to: 16'b0000100000000000 
+	Parameter INIT bound to: 64'b1011101110111000101110111011101110001011100010001000100010001000 
+	Parameter INIT bound to: 64'b1111111111111111111011110100000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1100110010001000110011000000100011001100100010001100110010001000 
+	Parameter INIT bound to: 32'b11111111111111111111111111111101 
+	Parameter INIT bound to: 64'b0101000000000000010100110000000010100011000000001010000000000000 
+	Parameter INIT bound to: 8'b10110000 
+	Parameter INIT bound to: 64'b1111111111101111111011101110111010101010111010101110111011101110 
+	Parameter INIT bound to: 64'b1111111111111111000000000000000011101111010000001110111101000000 
+	Parameter INIT bound to: 64'b0000000001000000010000000100000011000000110000001100000011000000 
+	Parameter INIT bound to: 64'b1111111011111110111111101111111011111111111111101111111011111110 
+	Parameter INIT bound to: 64'b0111000000000000011101110111011101110111011101110111011101110111 
+	Parameter INIT bound to: 16'b0000100010001000 
+	Parameter INIT bound to: 64'b0000000000000000101010101010101011111110101010101010101010101010 
+	Parameter INIT bound to: 64'b1000100010001000100011111111111110001111111111111000111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000010001000100000001000100010000000100010001 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0111011101110100011101110111011101000111010001000100010001000100 
+	Parameter INIT bound to: 64'b0000000011110000000000001111000000000000111100001101110111110000 
+	Parameter INIT bound to: 64'b0011000001110100001100000111010000110000011101000011000000110000 
+	Parameter INIT bound to: 64'b0000000011111111000111011111111100000000111111111111111111111111 
+	Parameter INIT bound to: 64'b0001111100111111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111110101111111111111111111111111111101011111110111111101111 
+	Parameter INIT bound to: 64'b1111111110001010111111111111111101110101000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111011101010111010000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000100000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111111111111111111011 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101010100010101010001000000000000 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000000000000001111000011110011 
+	Parameter INIT bound to: 64'b1011101110111011100010001011100010111011101110111011101110111011 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111011111111111111101111110011 
+	Parameter INIT bound to: 64'b1000100010001000100010101000100010001000100010001000101010101010 
+	Parameter INIT bound to: 32'b11111111111011101111000011101110 
+	Parameter INIT bound to: 32'b00000000000001001111000011110111 
+	Parameter INIT bound to: 32'b01010000010100000101001101010101 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111011111111111111100011111111 
+	Parameter INIT bound to: 32'b00000001000000001111000111110011 
+	Parameter INIT bound to: 64'b1111111111111111000000000000000010111010100010101011101010001010 
+	Parameter INIT bound to: 16'b1011101010001010 
+	Parameter INIT bound to: 16'b1011100010111011 
+	Parameter INIT bound to: 32'b00000000000000000100000001110000 
+	Parameter INIT bound to: 32'b00000000000100010000111100010001 
+	Parameter INIT bound to: 64'b1111111111110111000000000000000011111111111101111111111111110111 
+	Parameter INIT bound to: 64'b0000000001000100000000000111011100000000000000110000000000000011 
+	Parameter INIT bound to: 32'b11101110111111111110111011110000 
+	Parameter INIT bound to: 16'b0111000001110111 
+	Parameter INIT bound to: 64'b0011101011111111001110100000000000111010111111110011101011111111 
+	Parameter INIT bound to: 64'b0000000001000000111111111111111100000000010000000000000001000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000010101111101011101010001110101110 
+	Parameter INIT bound to: 32'b00000000000001010000001100000000 
+	Parameter INIT bound to: 64'b0101110011111111010111000000000001011100111111110101110011111111 
+	Parameter INIT bound to: 64'b1101110111011101110111011101110100010001000100010001000111010001 
+	Parameter INIT bound to: 64'b1000100010001000100010001011101110001000100010111000100010001011 
+	Parameter INIT bound to: 64'b1010101010101000101010101010100010101010101010000000101000001000 
+	Parameter INIT bound to: 16'b0000001100010001 
+	Parameter INIT bound to: 64'b0010001000100010001011110010001011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000001011111010111010101001101011101 
+	Parameter INIT bound to: 64'b1110111011101110111011101110111011110000111011101111111111101110 
+	Parameter INIT bound to: 32'b00000000000001000000000000110100 
+	Parameter INIT bound to: 32'b10101010101010101010101011101010 
+	Parameter INIT bound to: 64'b0000000100110001000000010011000100000001001100011100110111111101 
+	Parameter INIT bound to: 32'b11111111111111111100111110101111 
+	Parameter INIT bound to: 64'b0000001100010001111111111111111100000011000100010000000000000000 
+	Parameter INIT bound to: 32'b00000100000101011111111111111111 
+	Parameter INIT bound to: 64'b1110111011101110000011101111111011101110111011101111111011111110 
+	Parameter INIT bound to: 16'b0000110111011101 
+	Parameter INIT bound to: 32'b00111111001100000000010100000101 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000011000000110000001111111111 
+	Parameter INIT bound to: 32'b00000101000000000000001100000000 
+	Parameter INIT bound to: 64'b1111111111111111000011011101110111111111111111111111111111111111 
+	Parameter INIT bound to: 8'b00110010 
+	Parameter INIT bound to: 64'b1111111111111111011100000111011111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011110111111111111111011111110011 
+	Parameter INIT bound to: 64'b1000100010001010100010001000101010001000100010101010101010101010 
+	Parameter INIT bound to: 64'b0000010000000100111111110000010011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111101110111111111111111111111110000011101111111000011110000 
+	Parameter INIT bound to: 32'b11001101110011001100110111001111 
+	Parameter INIT bound to: 32'b00001010000000000000001100000000 
+	Parameter INIT bound to: 64'b1101000111111111110100011101000111010001000000001101000111010001 
+	Parameter INIT bound to: 32'b11110101111111111111110011111111 
+	Parameter INIT bound to: 64'b0001000100010001110111011101110100010001000111010001000100011101 
+	Parameter INIT bound to: 64'b1010101110101010101010111010101010101011101010101111101111111010 
+	Parameter INIT bound to: 64'b0111000001110111000000000000000001110000011101111111111111111111 
+	Parameter INIT bound to: 64'b0000000010000000111111111111111100000000100000000000000010000000 
+	Parameter INIT bound to: 64'b1111111100000000110100011101000111111111000000001111111100000000 
+	Parameter INIT bound to: 32'b00110000001111110000010100000101 
+	Parameter INIT bound to: 64'b0001000111110001000000001111000000010001111100011111111111110000 
+	Parameter INIT bound to: 32'b11001111110000001111101011111010 
+	Parameter INIT bound to: 64'b0101000001110010010100000111001001010000011100101111111101110010 
+	Parameter INIT bound to: 64'b0101001111111111010100110101001101010011000000000101001101010011 
+	Parameter INIT bound to: 8'b11010001 
+	Parameter INIT bound to: 8'b01010011 
+	Parameter INIT bound to: 64'b0101000011010000000000001100000001010000110100001111111111000000 
+	Parameter INIT bound to: 64'b1111111100000000010100110101001111111111000000001111111100000000 
+	Parameter INIT bound to: 64'b1010111110100000110011111100111110101111101000001100000011000000 
+	Parameter INIT bound to: 64'b1000110111001100111111111111111110001101110011000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111011111111110011101111 
+	Parameter INIT bound to: 64'b0011111100111111001110100011001100110000001100000011101000110011 
+	Parameter INIT bound to: 32'b00000100000000001111010011110011 
+	Parameter INIT bound to: 64'b1111101011110011000010100000001111111111111111110000000000000000 
+	Parameter INIT bound to: 32'b00001000000000001111100011110011 
+	Parameter INIT bound to: 64'b1010111110100000110000001100000010101111101000001100111111001111 
+	Parameter INIT bound to: 32'b11111110111111110000111000001100 
+	Parameter INIT bound to: 64'b0000000000000000111111111111111100000000000100000000000000010000 
+	Parameter INIT bound to: 64'b0000000000000010000010100000001010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b00000010000000001111001011110011 
+	Parameter INIT bound to: 64'b1011000111110000111111111111111110110001111100000000000000000000 
+	Parameter INIT bound to: 64'b1111010111110101111111001111111100000101000001010000110000000000 
+	Parameter INIT bound to: 16'b0111010101000101 
+	Parameter INIT bound to: 64'b1100110000000000110011001100000001010101010101010101010101010101 
+	Parameter INIT bound to: 32'b11010000000011011101110111011101 
+	Parameter INIT bound to: 64'b1111101111111000111110111111101100001011000010000000100000001000 
+	Parameter INIT bound to: 64'b1011101010101010101110111011101110111010101010101011101010101010 
+	Parameter INIT bound to: 64'b1000100010001000000000001000000000000000100000000000000010000000 
+	Parameter INIT bound to: 32'b01100000011000001111111101100000 
+	Parameter INIT bound to: 64'b1111000011110000111100001111000011111111000000001011100010111000 
+	Parameter INIT bound to: 32'b01010101000000010101010100110001 
+	Parameter INIT bound to: 16'b0101010100110101 
+	Parameter INIT bound to: 64'b1111111111111111101110101000101011111111111111111111111111111111 
+	Parameter INIT bound to: 32'b00000000000010001111000011111011 
+	Parameter INIT bound to: 16'b1010101000111010 
+	Parameter INIT bound to: 64'b1010101010111010101010101011101010101010101110101010111110111111 
+	Parameter INIT bound to: 64'b1111101011111111111110101111111111111100111111111111101011111111 
+	Parameter INIT bound to: 64'b1010101010101011101010101010101110101010101010111111101011111011 
+	Parameter INIT bound to: 64'b1111111111111111000100001111111100000000000000000001000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000100000001000000000000000000000001011110010 
+	Parameter INIT bound to: 64'b0000010000000100000001000011011111111111111111111111111111111111 
+	Parameter INIT bound to: 16'b0000000011110100 
+	Parameter INIT bound to: 8'b10111111 
+	Parameter INIT bound to: 8'b00000111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000100010001000100010111100100010 
+	Parameter INIT bound to: 64'b1011101011111111101110101111111110111010111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111000000000000000000011111111111111111111111111111111 
+	Parameter INIT bound to: 16'b0001000000000000 
+	Parameter INIT bound to: 8'b01101010 
+	Parameter INIT bound to: 16'b0110101010101010 
+	Parameter INIT bound to: 32'b01101010101010101010101010101010 
+	Parameter INIT bound to: 32'b11100000000000001111111111111111 
+	Parameter INIT bound to: 64'b0110101010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b10001111100011111111111110001111 
+	Parameter INIT bound to: 64'b0100111101000100010011110100111101001111010001000100010001000100 
+	Parameter INIT bound to: 32'b11110100111111111111010000000000 
+	Parameter INIT bound to: 64'b0111010001110100011101001011100001110100101110000111010010111000 
+	Parameter INIT bound to: 32'b01010110011001101010101010101010 
+	Parameter INIT bound to: 64'b0100111101000100111111111111111101001111010001000000000000000000 
+	Parameter INIT bound to: 64'b0011001100111100001111000011110010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000111111111111011111111111 
+	Parameter INIT bound to: 32'b11111111010011110100010001000100 
+	Parameter INIT bound to: 8'b01000000 
+	Parameter INIT bound to: 64'b1000111110001000111111111111111110001111100010000000000000000000 
+	Parameter INIT bound to: 64'b0100011101000111010001111000101101000111100010110100011110001011 
+	Parameter INIT bound to: 32'b10101010111111001010101011001100 
+	Parameter INIT bound to: 32'b10001011101110111000101110001000 
+	Parameter INIT bound to: 16'b1010000010100010 
+	Parameter INIT bound to: 32'b11111111111111111111101111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000100000000000000010001 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000000000010001010101010101010 
+	Parameter INIT bound to: 32'b00000000000000100000000000000000 
+	Parameter INIT bound to: 32'b11111111111111011111111111111111 
+	Parameter INIT bound to: 32'b00000000000000000000000000100000 
+WARNING: [Synth 8-689] width (3) of port connection 'O' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:42650]
+	Parameter INIT bound to: 32'b10001000101110111011100010111000 
+	Parameter INIT bound to: 16'b0000000101010001 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101000000010000000100000001010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111100111111111111111111111111111111111 
+	Parameter INIT bound to: 32'b00010000000100000001000011111111 
+	Parameter INIT bound to: 64'b1110111011100000111011101110111000010001000111111110111011101110 
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:44039]
+	Parameter INIT bound to: 8'b11010000 
+	Parameter INIT bound to: 32'b00000000010000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000010000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111101111111011111110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111110001111100011111000 
+	Parameter INIT bound to: 64'b1111111111111000111111111111111111111111111110000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111111111111111111110 
+	Parameter INIT bound to: 64'b1111111111111110111111111111111111111111111111100000000000000000 
+	Parameter INIT bound to: 64'b1111100000000000111110000000000011111000111111111111100000000000 
+	Parameter INIT bound to: 64'b1111110111111101111111011111110111111101111111011111110111101100 
+	Parameter INIT bound to: 16'b1111111111110001 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101010101010101010101010101000000 
+	Parameter INIT bound to: 64'b1110111111111111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111001010101010101010101010101010100 
+	Parameter INIT bound to: 64'b1111111111111111101110111011101111111111111111111011101010101010 
+	Parameter INIT bound to: 32'b11111000111111111111100000000000 
+	Parameter INIT bound to: 64'b1111111011101110111111111111111111111110111011100000000000000000 
+	Parameter INIT bound to: 32'b11110000010000000000000000000000 
+	Parameter INIT bound to: 64'b1000100010001011111111111111111110001000100010110000000000000000 
+	Parameter INIT bound to: 64'b1011100010111000101110001011100011111111001100111100110000000000 
+	Parameter INIT bound to: 32'b10001111100010001000000010001000 
+	Parameter INIT bound to: 64'b1111111100110011110011000000000010111000101110001011100010111000 
+	Parameter INIT bound to: 32'b11111111000000001011100010111000 
+	Parameter INIT bound to: 64'b1100101000001010110010101100101011001010000010100000101000001010 
+	Parameter INIT bound to: 16'b0000000010111000 
+	Parameter INIT bound to: 64'b1111111111111111010101010100010111111111111111110101010101000100 
+	Parameter INIT bound to: 16'b0010111100100000 
+	Parameter INIT bound to: 16'b1010101010101000 
+	Parameter INIT bound to: 64'b0000010111110000000001011111000000000101111111000000010111110000 
+	Parameter INIT bound to: 32'b10111000101110001011100010001000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0110010101101010011001010110101001101010011010100110010101101010 
+	Parameter INIT bound to: 32'b00000100111101111111011111110111 
+	Parameter INIT bound to: 32'b01000111000000001011100000000000 
+	Parameter INIT bound to: 64'b1111111111111111111100100010001011110010001000101111001000100010 
+	Parameter INIT bound to: 64'b1111111111111111000000000100000000000000010000000000000001000000 
+	Parameter INIT bound to: 64'b0111011101110111011101110111011101110111000001110111011101110111 
+	Parameter INIT bound to: 64'b1011111101001111101111110100111110110000010011111011000001000000 
+	Parameter INIT bound to: 32'b10101010101010101010101010101110 
+	Parameter INIT bound to: 64'b1110101011111111111010101110101011101010111010101110101011101010 
+	Parameter INIT bound to: 64'b1111111000000010000000100000001011111110111111101111111011111110 
+	Parameter INIT bound to: 64'b0101010101010101010101010101010110100101011001011010011001101010 
+	Parameter INIT bound to: 64'b1111111111111111100010001111100010001000111110001000100011111000 
+	Parameter INIT bound to: 64'b1001010101011001100101010101100110100101011010011010011001101010 
+	Parameter INIT bound to: 64'b1111100010001000111110001000100011111111111111111111100010001000 
+	Parameter INIT bound to: 64'b1000100010001000100010001000100010001111100010001000100010001000 
+	Parameter INIT bound to: 64'b1110101011101010111111111110101011101010111010101110101011101010 
+	Parameter INIT bound to: 32'b00111111001111110101010100111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000000001011100000000000 
+	Parameter INIT bound to: 16'b1110001000000000 
+	Parameter INIT bound to: 64'b0101101001011010010101010110101010100101101001010101010101101010 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101010101010101110111010101010101011 
+	Parameter INIT bound to: 32'b00010001000100000001000100000001 
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:48896]
+WARNING: [Synth 8-689] width (1) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:49221]
+WARNING: [Synth 8-7023] instance 'tbuf_r_reg[66]_i_23' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:49219]
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:49580]
+WARNING: [Synth 8-689] width (1) of port connection 'O' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:49597]
+WARNING: [Synth 8-7023] instance 'tbuf_r_reg[95]_i_2' of module 'CARRY4' has 6 connections declared, but only 5 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:49593]
+	Parameter INIT bound to: 64'b0000000000000010000000000000000000000000000000100000000000000010 
+	Parameter INIT bound to: 64'b1111111111110100111111111111111111111111111101001111111111110100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111111111101111111110111 
+	Parameter INIT bound to: 64'b0000101000001010000010001000101000000000000010100000000010001010 
+	Parameter INIT bound to: 32'b00100000111111110010000000000000 
+	Parameter INIT bound to: 64'b1010101110101010101110111011101110101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1000101010001000100010101000100000000000000000001000101010001000 
+	Parameter INIT bound to: 64'b0101010101010101111111111111011101010101010101011111111111110101 
+	Parameter INIT bound to: 64'b0000000000000000000000000000101000000000000000000000000000001000 
+	Parameter INIT bound to: 64'b0010000000100010001000000010001000100000001000100000000000000000 
+	Parameter INIT bound to: 32'b11111111111111111111111110100010 
+	Parameter INIT bound to: 64'b0000000000000000000000000011001000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0010001100001111000000000000000000100011000000110000000000000000 
+WARNING: [Synth 8-689] width (2) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:51474]
+WARNING: [Synth 8-689] width (3) of port connection 'O' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:51477]
+	Parameter INIT bound to: 64'b1010101010111111101010101010101011111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000001111001000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111110000001000100010 
+	Parameter INIT bound to: 64'b1111111111111111111111101111111011111111111111101111111011111110 
+	Parameter INIT bound to: 16'b0000000010100010 
+	Parameter INIT bound to: 64'b1111111111111111111011101110000011111111111000001110111011100000 
+	Parameter INIT bound to: 64'b0000000000000000111110111111100000000000000000001010101010101000 
+	Parameter INIT bound to: 64'b1010101011100010000000000000000010101010111000101010101011100010 
+	Parameter INIT bound to: 64'b1111111111111110111111111110111100000000000001000000000001000000 
+	Parameter INIT bound to: 32'b11111110111110110000001000001000 
+	Parameter INIT bound to: 8'b00010010 
+	Parameter INIT bound to: 64'b1111111111111111000000100000000000000000000000000000000000000000 
+	Parameter INIT bound to: 16'b0000001100100000 
+	Parameter INIT bound to: 32'b00110010001110110000000000111011 
+	Parameter INIT bound to: 32'b10101010101000100000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110101010101111101010101010101010 
+	Parameter INIT bound to: 32'b10101010101010100011000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000111000000000000000000000 
+	Parameter INIT bound to: 64'b0000010000000100000001000000010000000000000000000000010000000000 
+WARNING: [Synth 8-689] width (3) of port connection 'CO' does not match port width (4) of module 'CARRY4' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/cpu132/gs132_verilog.v:53029]
+	Parameter INIT bound to: 64'b1011100010001000101110111011101110111000100010001000100010001000 
+	Parameter INIT bound to: 64'b0101010100000000010101000000000001000101000000000000000000000000 
+	Parameter INIT bound to: 64'b1010101011101010101010101110101011111111111111111010101011101010 
+	Parameter INIT bound to: 64'b1111110111101111111111011111111111101101111110001111110111111101 
+	Parameter INIT bound to: 64'b1000100010001000100010001000100010001000100000001000000010000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110100111111111111010011110101 
+	Parameter INIT bound to: 64'b1111111111111111010011110100111111111111111111110100111101000100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000100000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000011111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110001111100010000000000000000000 
+	Parameter INIT bound to: 64'b0001000100010000000000000000000000011001000000010000000000000000 
+	Parameter INIT bound to: 64'b0000000010000100000000000000000000000000000000000000010000001000 
+	Parameter INIT bound to: 64'b0010001000100010001000100010001000100000001000100010001000100010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000110000000000000101010100000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100001000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000111111111111111111111111010111111111111111111111111111110111 
+	Parameter INIT bound to: 16'b1111111111110111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011011111011100001111111111111111 
+	Parameter INIT bound to: 64'b0000000100000000000000000000000000000100000001000000000100000000 
+	Parameter INIT bound to: 64'b1111111110110011111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 32'b00000000000000001111111011111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111010101010111010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111001111111111110111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111011101000000000001110100 
+	Parameter INIT bound to: 64'b0000001111111111111111111111111100000011111111111010111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000100010101010001010101010101010 
+	Parameter INIT bound to: 64'b0000010100000101000001010000010100000101000001000000010100000001 
+	Parameter INIT bound to: 32'b00000000000000000000000100000000 
+	Parameter INIT bound to: 16'b1000100010111000 
+	Parameter INIT bound to: 64'b1000100000000000000000000000000000000000110000000000000000000000 
+	Parameter INIT bound to: 64'b1111111010101010111111101010101011111111111111111111111011111010 
+	Parameter INIT bound to: 64'b0000000000000000101000000000000000000000000000000011000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000001101 
+	Parameter INIT bound to: 32'b11110000111100101111000011110000 
+	Parameter INIT bound to: 64'b0000000000000110000000100000001000000010000001100000001010000010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111110111111101111111111111110111 
+	Parameter INIT bound to: 32'b10101010101010100000001010101010 
+	Parameter INIT bound to: 16'b0000000000000100 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101010101010111010101010101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111010101010111010101010101010 
+	Parameter INIT bound to: 32'b11111111111111111011101010101010 
+	Parameter INIT bound to: 32'b11111111111111110000000000100000 
+	Parameter INIT bound to: 16'b1111111100001000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000000010 
+	Parameter INIT bound to: 64'b0000000000000000000001000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111111110101010101010 
+	Parameter INIT bound to: 64'b1111111011101110111111101110111011111111111111111111111111101110 
+	Parameter INIT bound to: 64'b0000000000000001000000000000000000000000000000010000000000000001 
+	Parameter INIT bound to: 64'b1000000010000000111100001111111110000000100000001111000011110000 
+	Parameter INIT bound to: 64'b0000000000000001000000000000000100000000000000000000000100000010 
+	Parameter INIT bound to: 64'b0000000100000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b00000000000000000100000000000000 
+	Parameter INIT bound to: 32'b00000000000000001101111111111111 
+	Parameter INIT bound to: 16'b0100010000000100 
+	Parameter INIT bound to: 8'b00010000 
+	Parameter INIT bound to: 64'b1111111111111110111111111111111111111111111111101111111111111110 
+	Parameter INIT bound to: 64'b1111111111111111111111111000000011111111100000001111111110000000 
+	Parameter INIT bound to: 32'b01010101010101010101010100000100 
+	Parameter INIT bound to: 32'b00000000000000000000000000000010 
+	Parameter INIT bound to: 32'b11111111111111110000000011110010 
+	Parameter INIT bound to: 64'b1111111010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1111001100001000000000000000100000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b00000100000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000010100000000000000001000000000 
+	Parameter INIT bound to: 64'b0000000000001000000000100000000000000011000000000000000000000000 
+	Parameter INIT bound to: 64'b1110101010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000001000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000010000000001000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000100000000000000000000 
+	Parameter INIT bound to: 64'b1000000000000000111111111111111110000000000000001000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000001000000000000000000 
+	Parameter INIT bound to: 32'b00000000100000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111101000000000000000000000000000000 
+	Parameter INIT bound to: 32'b00000010000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000001000000000000000000000001000000010000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111111000000000000000 
+	Parameter INIT bound to: 32'b10101011101010101010101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111110101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111000100010001000100010001000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111110111010101010101010101010101010 
+	Parameter INIT bound to: 64'b1010101010101010111010101010111110101010101010101110101010101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111111101 
+	Parameter INIT bound to: 64'b1111111111110111111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111110111111001111110011111100111111001111110011111100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000010000000000000000000000 
+	Parameter INIT bound to: 64'b1111111011101110111011101110111011101110111011101110111011101110 
+	Parameter INIT bound to: 32'b00001000000000001000000000000000 
+	Parameter INIT bound to: 16'b0000000000000010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000010000000000000000 
+	Parameter INIT bound to: 16'b1010101011101010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000010000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111000000000000000000000000111000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111000000001110000000000000111000000000000011100000 
+	Parameter INIT bound to: 64'b1111111111111111111101000100010011110100010001001111010001000100 
+	Parameter INIT bound to: 64'b1010111110101110101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 32'b00000000001000000000000000000000 
+	Parameter INIT bound to: 32'b00000000000000010000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111110111011111110 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000100000001000000000001000000 
+	Parameter INIT bound to: 32'b11111111111111110000010000000000 
+	Parameter INIT bound to: 64'b1010111010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1110111011101110111011101110111011111110111011101110111011101110 
+	Parameter INIT bound to: 32'b11101110111011101110111011111110 
+	Parameter INIT bound to: 64'b1100000000000000000000001000100000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111010001000100010001000100010000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000001000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111110100000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100000000000000000000010000000000 
+	Parameter INIT bound to: 64'b1010101010101010101011101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1011101010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 64'b1110101010111110101010101010101010101010101111101010101010101010 
+	Parameter INIT bound to: 32'b11111111111111111010101011101010 
+	Parameter INIT bound to: 32'b00000000000000000000000000000001 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000010000000000010 
+	Parameter INIT bound to: 32'b11110111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000001100000000000100010000000000000011000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111100100000000000000000000000000000 
+	Parameter INIT bound to: 32'b01000000000000000000000000000100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000001011101010000000000000000 
+	Parameter INIT bound to: 64'b0000000101001101000000000000000000000000000001000000000000000000 
+	Parameter INIT bound to: 64'b0000000000010000000000000000000000000000000010000000000000000000 
+	Parameter INIT bound to: 16'b1011111111111111 
+	Parameter INIT bound to: 64'b1000100010111000101110111011101110001000101110001000100010001000 
+	Parameter INIT bound to: 64'b0000010000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111110100011110111000 
+	Parameter INIT bound to: 32'b11110100010101001111111101010100 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111100000 
+	Parameter INIT bound to: 32'b00000000000000001000000000000000 
+	Parameter INIT bound to: 64'b0000010000100000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111100111111101111110011111100111111001111110011111100 
+	Parameter INIT bound to: 64'b1111111111111111111110011001111111111001100111111111111111111111 
+	Parameter INIT bound to: 32'b11111011111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000001001000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000001000 
+	Parameter INIT bound to: 64'b0000000000000000000000010000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000001000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000100000000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111000011110101111100001111000011110000111101011111001111110011 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000001010100000001000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000010101000000010000000000000000000 
+	Parameter INIT bound to: 64'b0000100000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000100000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000100010001 
+	Parameter INIT bound to: 64'b1110111111100000111011111110111111101111111000001110000011100000 
+	Parameter INIT bound to: 64'b1000101010001010100010101000000010000000100000001000101010000000 
+	Parameter INIT bound to: 64'b1111011110100010011101110010001011010101100000000101010100000000 
+	Parameter INIT bound to: 32'b10111010111110101010101010101010 
+	Parameter INIT bound to: 64'b0100010001000100010001000100010011101110111001000100010011100100 
+	Parameter INIT bound to: 32'b11100100111011101110010001000100 
+	Parameter INIT bound to: 64'b0000000011000000000000000000000010100000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000110000001010000000000000 
+	Parameter INIT bound to: 64'b0010000011111111000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000101000000000000000000000110000000000000000000000 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111101010 
+	Parameter INIT bound to: 64'b1111111111111111110111111101110111101110111011101100111011001100 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000001010100000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000010101000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000010101000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011111111111110111111111111111111 
+	Parameter INIT bound to: 64'b1111111111111011111111111111111100000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0010001000100010001000100000001000100010001000100010001000100010 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111110111111111 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111011000010100000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000001000000000000000000000000000000010000000100 
+	Parameter INIT bound to: 32'b11111111111111110000000010000000 
+	Parameter INIT bound to: 64'b1111111110000000100000001000000010000000100000001000000010000000 
+	Parameter INIT bound to: 32'b01110011111111111111111111111111 
+	Parameter INIT bound to: 64'b1000000010000000101010101000000010000000100000001000000010000000 
+	Parameter INIT bound to: 64'b0010101000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000010000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000101010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000100010100000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000100000000000001000000000000000000000000 
+	Parameter INIT bound to: 64'b0001000100010001000100010000000100010001000100010001000100010001 
+	Parameter INIT bound to: 64'b1000100010001000100010000000100010001000100010001000100010001000 
+	Parameter INIT bound to: 64'b0110111000100010000000000000000001001100000000000000000000000000 
+	Parameter INIT bound to: 64'b0101000000010000010101010101010101010101010101010101010101010101 
+	Parameter INIT bound to: 32'b11111010111110101111111111111110 
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111011111110111111101 
+	Parameter INIT bound to: 16'b1110111100000000 
+	Parameter INIT bound to: 16'b0000001010100010 
+	Parameter INIT bound to: 64'b1111111111111111010001111011100001000111101110001111111111111111 
+	Parameter INIT bound to: 64'b0000000011100010111111111111111111111111111111110000000011100010 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000001110111111111111111011111111111 
+	Parameter INIT bound to: 16'b0000010011110111 
+	Parameter INIT bound to: 16'b1111101100001000 
+	Parameter INIT bound to: 32'b00000000000000000100010100000000 
+	Parameter INIT bound to: 64'b1010101010101010101010101010101010101010101010101010101010111010 
+	Parameter INIT bound to: 64'b0000000000101010000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000101010000000000000000000000000 
+	Parameter INIT bound to: 64'b0100010001000100010001001111010001000100010001000100010001000100 
+	Parameter INIT bound to: 64'b1111111111111110111111111111111111111111111111111111111111111111 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000001000101 
+	Parameter INIT bound to: 16'b0000000011011111 
+	Parameter INIT bound to: 32'b00001000100000000000000010001000 
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000100000001010000000000000000 
+	Parameter INIT bound to: 64'b1101110111011101110111011101110111111111111111001111110011111100 
+	Parameter INIT bound to: 16'b0010011110101111 
+	Parameter INIT bound to: 32'b11111000000000000000100000000000 
+	Parameter INIT bound to: 16'b0010101001111111 
+	Parameter INIT bound to: 64'b0101010111111100010101011111110011111111111111110101010111111100 
+	Parameter INIT bound to: 32'b01011100010111001111111101011100 
+	Parameter INIT bound to: 32'b11111111111111111101010110000000 
+	Parameter INIT bound to: 32'b10111000101110111011100010111000 
+	Parameter INIT bound to: 64'b0111111101110111011101110111011100000000000000000000000000000000 
+	Parameter INIT bound to: 32'b11111111111111110000000000001000 
+	Parameter INIT bound to: 64'b0000000000001100000000000000000000001000000011000000100010001000 
+	Parameter INIT bound to: 32'b10101010101010101010101010101000 
+WARNING: [Synth 8-689] width (4) of port connection 'wea' does not match port width (1) of module 'inst_ram' [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/soc_lite_top.v:168]
+	Parameter SIMULATION bound to: 1'b0 
+WARNING: [Synth 8-7023] instance 'confreg' of module 'confreg' has 17 connections declared, but only 14 given [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/soc_lite_top.v:209]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[31]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[30]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[29]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[28]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[27]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[26]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[25]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[24]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[23]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[22]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[21]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[20]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[19]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[18]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[17]
+WARNING: [Synth 8-3331] design confreg has unconnected port conf_addr[16]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1123.672 ; gain = 379.438
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1131.195 ; gain = 386.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1131.195 ; gain = 386.961
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.122 . Memory (MB): peak = 1131.195 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 102 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/data_ram/data_ram/data_ram_in_context.xdc] for cell 'data_ram'
+Finished Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/data_ram/data_ram/data_ram_in_context.xdc] for cell 'data_ram'
+Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/inst_ram/inst_ram/inst_ram_in_context.xdc] for cell 'inst_ram'
+Finished Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/inst_ram/inst_ram/inst_ram_in_context.xdc] for cell 'inst_ram'
+Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'pll.clk_pll'
+Finished Parsing XDC File [e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'pll.clk_pll'
+Parsing XDC File [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc]
+WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc:5]
+Finished Parsing XDC File [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/soc_lite_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/soc_lite_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1222.766 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1222.766 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 5).
+Applied set_property DONT_TOUCH = true for data_ram. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for inst_ram. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for \pll.clk_pll . (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'confreg'
+INFO: [Synth 8-5544] ROM "num_csn" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "num_a_g" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE4 |                           000001 |                              000
+                  iSTATE |                           100000 |                              001
+                 iSTATE0 |                           010000 |                              010
+                 iSTATE1 |                           001000 |                              011
+                 iSTATE2 |                           000100 |                              100
+                 iSTATE3 |                           000010 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'confreg'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 20    
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 16    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 13    
+	   6 Input     16 Bit        Muxes := 1     
+	  17 Input     16 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   6 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 6     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 10    
+	   6 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module soc_lite_top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module bridge_1x2 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module confreg 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 20    
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 13    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 13    
+	   6 Input     16 Bit        Muxes := 1     
+	  17 Input     16 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   6 Input      6 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 6     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 10    
+	   6 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[3]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[3]' (FDRE) to 'confreg/btn_key_r_reg[11]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[4]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[4]' (FDRE) to 'confreg/btn_key_r_reg[0]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[1]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[1]' (FDRE) to 'confreg/btn_key_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[16]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[2]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[2]' (FDRE) to 'confreg/btn_key_r_reg[12]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[11]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[11]' (FDRE) to 'confreg/btn_key_r_reg[10]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[10]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[10]' (FDRE) to 'confreg/btn_key_r_reg[7]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[18]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[26]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[19]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[27]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[12]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[12]' (FDRE) to 'confreg/btn_key_r_reg[5]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[29]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[30]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[7]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[7]' (FDRE) to 'confreg/btn_key_r_reg[6]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[20]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[28]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[5]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[5]' (FDRE) to 'confreg/btn_key_r_reg[13]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[21]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[13]' (FDRE) to 'confreg/simu_flag_reg[31]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[13]' (FDRE) to 'confreg/btn_key_r_reg[9]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[31]' (FDRE) to 'confreg/simu_flag_reg[25]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[6]' (FDRE) to 'confreg/simu_flag_reg[25]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[6]' (FDRE) to 'confreg/btn_key_r_reg[14]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[22]' (FDRE) to 'confreg/simu_flag_reg[25]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[14]' (FDRE) to 'confreg/simu_flag_reg[25]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[14]' (FDRE) to 'confreg/btn_key_r_reg[15]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[25]' (FDRE) to 'confreg/simu_flag_reg[24]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[9]' (FDRE) to 'confreg/simu_flag_reg[24]'
+INFO: [Synth 8-3886] merging instance 'confreg/btn_key_r_reg[9]' (FDRE) to 'confreg/btn_key_r_reg[8]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[17]' (FDRE) to 'confreg/simu_flag_reg[24]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[8]' (FDRE) to 'confreg/simu_flag_reg[24]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\confreg/btn_key_r_reg[8] )
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[24]' (FDRE) to 'confreg/simu_flag_reg[23]'
+INFO: [Synth 8-3886] merging instance 'confreg/FSM_onehot_state_reg[4]' (FDRE) to 'confreg/FSM_onehot_state_reg[2]'
+INFO: [Synth 8-3886] merging instance 'confreg/FSM_onehot_state_reg[3]' (FDRE) to 'confreg/FSM_onehot_state_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\confreg/FSM_onehot_state_reg[2] )
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[23]' (FDRE) to 'confreg/simu_flag_reg[15]'
+INFO: [Synth 8-3886] merging instance 'confreg/simu_flag_reg[15]' (FDRE) to 'confreg/simu_flag_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\confreg/btn_key_r_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\confreg/simu_flag_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\confreg/btn_key_r_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[0]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[10]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[11]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[12]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[13]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[14]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[15]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[16]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[17]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[18]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[19]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[20]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[21]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[22]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[23]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[24]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[25]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[26]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[27]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[28]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[29]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[2]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[30]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[31]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[3]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[4]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[5]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[6]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[7]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[8]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_pc_OBUF[9]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[0]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[10]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[11]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[12]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[13]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[14]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[15]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[16]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[17]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[18]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[19]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[20]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[21]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[22]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[23]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[24]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[25]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[26]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[27]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[28]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[29]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[2]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[30]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[31]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[3]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[4]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[5]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[6]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[7]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[8]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wdata_OBUF[9]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wen_OBUF[0]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wen_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wen_OBUF[2]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wen_OBUF[3]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wnum_OBUF[0]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wnum_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wnum_OBUF[2]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wnum_OBUF[3]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/debug_wb_rf_wnum_OBUF[4]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[0]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[19]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[20]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[21]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[22]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[23]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[24]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[25]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[26]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[27]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[28]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[29]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[30]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_addr_OBUF[31]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_wen_OBUF[1]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_wen_OBUF[2]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (cpu/inst_sram_wen_OBUF[3]_inst) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (confreg/FSM_onehot_state_reg[5]) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (confreg/FSM_onehot_state_reg[2]) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (confreg/FSM_onehot_state_reg[1]) is unused and will be removed from module soc_lite_top.
+WARNING: [Synth 8-3332] Sequential element (confreg/FSM_onehot_state_reg[0]) is unused and will be removed from module soc_lite_top.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-565] redefining clock 'clk'
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_pll       |         1|
+|2     |inst_ram      |         1|
+|3     |data_ram      |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |clk_pll  |     1|
+|2     |data_ram |     1|
+|3     |inst_ram |     1|
+|4     |BUFG     |     1|
+|5     |CARRY4   |   125|
+|6     |GND      |     1|
+|7     |LUT1     |   105|
+|8     |LUT2     |   250|
+|9     |LUT3     |   330|
+|10    |LUT4     |   994|
+|11    |LUT5     |  1075|
+|12    |LUT6     |  2045|
+|13    |MUXF7    |     4|
+|14    |VCC      |     1|
+|15    |FDCE     |     4|
+|16    |FDRE     |  2509|
+|17    |FDSE     |    37|
+|18    |IBUF     |    81|
+|19    |OBUF     |   155|
++------+---------+------+
+
+Report Instance Areas: 
++------+-----------------+---------------------+------+
+|      |Instance         |Module               |Cells |
++------+-----------------+---------------------+------+
+|1     |top              |                     |  7783|
+|2     |  bridge_1x2     |bridge_1x2           |    34|
+|3     |  confreg        |confreg              |   996|
+|4     |  cpu            |ls132r_top           |  6642|
+|5     |    u_decode     |ls132r_decode_stage  |  1864|
+|6     |      u0_gr_heap |gr_heap_2r1w_32x32   |  1864|
+|7     |    u_ejtag_dcr  |ls132r_ejtag_dcr     |     4|
+|8     |    u_ejtag_hb   |ls132r_ejtag_hb      |   117|
+|9     |      ib_ins     |ls132r_ejtag_ib      |   117|
+|10    |    u_ejtag_tap  |ls132r_ejtag_tap     |    10|
+|11    |      fsm        |ejtag_tap_fsm        |    10|
+|12    |    u_execute    |ls132r_execute_stage |  3223|
+|13    |    u_fetch      |ls132r_fetch_stage   |  1070|
+|14    |    u_interface  |ls132r_interface     |    42|
++------+-----------------+---------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 96 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:44 . Memory (MB): peak = 1222.766 ; gain = 386.961
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 1222.766 ; gain = 478.531
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.109 . Memory (MB): peak = 1222.766 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 129 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/clk_IBUF_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[0]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[10]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[11]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[12]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[13]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[14]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[15]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[16]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[17]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[18]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[19]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[1]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[20]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[21]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[22]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[23]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[24]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[25]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[26]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[27]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[28]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[29]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[2]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[30]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[31]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[3]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[4]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[5]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[6]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[7]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[8]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/data_sram_rdata_IBUF[9]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[0]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[10]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[11]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[12]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[13]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[14]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[15]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[16]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[17]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[18]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[19]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[1]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[20]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[21]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[22]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[23]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[24]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[25]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[26]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[27]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[28]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[29]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[2]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[30]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[31]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[3]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[4]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[5]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[6]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[7]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[8]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/inst_sram_rdata_IBUF[9]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[0]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[1]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[2]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[3]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[4]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/int_n_i_IBUF[5]_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. cpu/resetn_IBUF_inst 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[0]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[10]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[11]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[12]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[13]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[14]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[15]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[16]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[17]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[18]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[19]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[1]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[20]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[21]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[22]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[23]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[24]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[25]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[26]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[27]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[28]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[29]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[2]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[30]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[31]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[3]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[4]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[5]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[6]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[7]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[8]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_addr_OBUF[9]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_en_OBUF_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[15]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[0]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[10]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[11]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[12]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[13]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[14]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[15]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[16]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[17]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[18]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[19]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[1]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[20]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[21]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[22]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[23]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[24]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[25]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[26]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[27]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[28]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[29]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[2]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[30]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[31]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[3]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[4]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[5]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[6]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[7]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[8]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wdata_OBUF[9]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wen_OBUF[0]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wen_OBUF[1]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wen_OBUF[2]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/data_sram_wen_OBUF[3]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[10]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[11]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[12]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[13]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[14]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[15]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[16]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[17]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[18]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[2]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[3]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[4]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[5]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[6]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[7]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[8]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_addr_OBUF[9]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_en_OBUF_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[16]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[17]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[18]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[19]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[1]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[20]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wen_OBUF[0]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[9]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[8]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[7]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[6]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. cpu/inst_sram_wdata_OBUF[5]_inst 
+Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
+INFO: [Common 17-14] Message 'Opt 31-33' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1227.648 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+272 Infos, 318 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 1227.648 ; gain = 770.562
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1227.648 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/project_1/project_1.runs/synth_1/soc_lite_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file soc_lite_top_utilization_synth.rpt -pb soc_lite_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Jan  5 22:54:04 2021...
