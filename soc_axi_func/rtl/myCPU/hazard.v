@@ -66,7 +66,7 @@ module hazard(
     assign stallW = longest_stall;
 
     assign flushF = 1'b0;
-    assign flushD = ((branchD & predict_wrong) | exceptionoccur) & (~longest_stall);
+    assign flushD = ((branchE & predict_wrong) | exceptionoccur) & (~longest_stall);
     assign flushE = (lwstall | jrstall         | exceptionoccur) & (~longest_stall); // TODO:exceptionoccur信号用于异常时清除所有的寄存器，还未完全测试
     assign flushM = (exceptionoccur                            ) & (~longest_stall);
     assign flushW = (exceptionoccur                            ) & (~longest_stall);
