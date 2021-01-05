@@ -29,7 +29,7 @@ module alu(
     input wire [7:0] alucontrol,
     input wire [31:0] hi,
     input wire [31:0] lo,
-    input wire flush_endE,  // 清除D->E阶段寄存器的信号，同时用于打断清除DIV的运算
+    input wire flushE,  // 清除D->E阶段寄存器的信号，同时用于打断清除DIV的运算
     input wire stallM, // E->M中间寄存器的停顿信号，用于div的接收信号
     input wire [31:0] pc_add4E,
 	input wire [31:0] cp0aluin,  // mfc0的输入
@@ -195,7 +195,7 @@ module alu(
 
 	div_radix2 DIV(
 		.clk(clk),
-		.rst(rst | flush_endE | exceptionoccur),
+		.rst(rst | flushE | exceptionoccur),
 		.a(num1),         //divident
 		.b(num2),         //divisor
 		.sign(div_sign),    //1 signed

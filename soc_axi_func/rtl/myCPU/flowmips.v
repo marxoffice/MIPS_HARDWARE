@@ -199,7 +199,7 @@ module flowmips(
     mux2 #(32) forwardcp0datamux (cp0aluin,cp0dataoutE,aluoutM,forwardcp0dataE);
 
 
-    alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flush_endE,1'b0,
+    alu my_alu(clk,rst,SrcAE,SrcBE,saE,alucontrolE,hilo_o[63:32],hilo_o[31:0], flushE,1'b0,
                 pc_add4E,cp0aluin,exceptionoccur,aluoutE,hilo_o,overflowE,zeroE,div_stall,laddressError,saddressError);
 
     // 处理写入SH、SB
