@@ -67,6 +67,12 @@ module branch_predict_global (
             GHR_value_old <= GHR_value;
             GHR_value <= {GHR_value << 1, pred_takeD};
         end
+
+        else if(pred_wrong && branchM) begin // 得到预测检查结果后，如果预测是错的(memory 阶段)
+            GHR_value <= {GHR_value_old <<1, actual_takeM};
+            GHR_value_old <= GHR_value;
+        end
+
     end
 
     always @(posedge clk) begin
@@ -82,13 +88,12 @@ module branch_predict_global (
         end
     end
 
-    always@(posedge clk) begin 
-        if(pred_wrong && branchM) begin // 得到预测检查结果后，如果预测是错的(memory 阶段)
-            GHR_value <= {GHR_value_old <<1, actual_takeM};
-            GHR_value_old <= GHR_value;
-            
-        end
-    end
+    // always@(posedge clk) begin 
+    //     if(pred_wrong && branchM) begin // 得到预测检查结果后，如果预测是错的(memory 阶段)
+    //         GHR_value <= {GHR_value_old <<1, actual_takeM};
+    //         GHR_value_old <= GHR_value;
+    //     end
+    // end
 // ---------------------------------------BHT初始化以及更新结束
 
     assign update_PHT_index = GHR_value_old_M ^ pcM[9:2];
