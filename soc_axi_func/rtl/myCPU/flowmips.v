@@ -226,9 +226,19 @@ module flowmips(
     flopenrc #(1)  fp4_13(clk, rst, ~stallM, flushM,  is_in_delayslotE,is_in_delayslotM);
     flopenrc #(5)  fp4_14(clk, rst, ~stallM, flushM, RdE,RdM);
     flopenrc #(1)  fp4_15(clk, rst, ~stallM, flushM, cp0writeE,cp0writeM);
+
+    wire [31:0] cause_o,real_causeout,real_pcM;
+
+    assign cause_o[9:8] = aluoutM[9:8];
+	assign cause_o[23] = aluoutM[23];
+	assign cause_o[22] = aluoutM[22];
+
+    assign real_causeout = (RdM == 5'b01101 && cp0writeM) ? cause_o:causeout;
+    assign real_pcM = (RdM == 5'b01101 && cp0writeM) ? pcE : pcM;
+
     // 异常处理模块
     exceptiondec exceptiondec (rst,exceptM,exceptM[1],exceptM[0],statusout,
-                causeout,epcout, exceptionoccur,exceptiontypeM,pcexceptionM);
+                real_causeout,epcout, exceptionoccur,exceptiontypeM,pcexceptionM);
     
     wire [31:0]countout,compareout,configout,pridout,badvaddrout,bad_addr;
     wire timerintout;
@@ -243,7 +253,7 @@ module flowmips(
 		.data_i 			(aluoutM 		    ),
 		.int_i 				(int 			    ),
 		.excepttype_i 		(exceptiontypeM	    ),
-		.current_inst_addr_i(pcM 			    ),
+		.current_inst_addr_i(real_pcM 			),
 		.is_in_delayslot_i	(is_in_delayslotM   ),
 		.bad_addr_i			(bad_addr		    ), // 出错的虚地址（load store)均为alu计算出的结果
         // output
@@ -283,7 +293,7 @@ module flowmips(
 
     hazard my_hazard_unit(rsD, rtD, rsE, RtE, RdE, RdM, WriteRegE, WriteRegM, WriteRegW,
     regwriteE, regwriteM, regwriteW, memtoregD, memtoregE,memtoregM, branchD, jumprD,cp0writeM,
-    exceptionoccur,div_stall,i_stall,d_stall,branchE,predict_wrong,
+    exceptionoccur,div_stall,i_stall,d_stall,
     forwardAE, forwardBE, forwardAD, forwardBD, forwardcp0dataE,
     stallF, stallD, stallE, stallM, stallW,
     flushF, flushD, flushE, flushM, flushW,
