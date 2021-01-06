@@ -151,25 +151,25 @@ module flowmips(
     // ! 修复分支预测模块忽略延迟槽的问题
 
     // flopr 3
-    flopenrc #(13)  fp3_1(clk, rst, ~stallE, flushE | exceptionoccur, {regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
-    flopenrc #(32)  fp3_2(clk, rst, ~stallE, flushE | exceptionoccur, SrcAD,defaultSrcAE);
-    flopenrc #(32)  fp3_3(clk, rst, ~stallE, flushE | exceptionoccur, writedataD,defaultWriteDataE);
-    flopenrc #(5)   fp3_4(clk, rst, ~stallE, flushE | exceptionoccur, rsD,rsE);
-    flopenrc #(5)   fp3_5(clk, rst, ~stallE, flushE | exceptionoccur, rtD,RtE);
-    flopenrc #(5)   fp3_6(clk, rst, ~stallE, flushE | exceptionoccur, rdD,RdE);
-    flopenrc #(32)  fp3_7(clk, rst, ~stallE, flushE | exceptionoccur, SignImmD,SignImmE);
-    flopenrc #(32)  fp3_8(clk, rst, ~stallE,  1'b0 | exceptionoccur, pc_add4D,pc_add4E); // 不受flush影响 TODO: 分支预测 模块 有可能不要flush
-    flopenrc #(1)   fp3_9(clk, rst, ~stallE, flushE | exceptionoccur, pcsrcD,pcsrcE);
-    flopenrc #(32) fp3_10(clk, rst, ~stallE, flushE | exceptionoccur, pc_branchD,pc_branchE);
-    flopenrc #(1)  fp3_11(clk, rst, ~stallE, flushE | exceptionoccur, EqualD, EqualE);
-    flopenrc #(1)  fp3_12(clk, rst, ~stallE, flushE | exceptionoccur, predictD, predictE);
-    flopenrc #(1)  fp3_13(clk, rst, ~stallE, flushE | exceptionoccur, branchD, branchE);
-    flopenrc #(32) fp3_14(clk, rst, ~stallE, flushE | exceptionoccur, pcD, pcE);
-    flopenrc #(5)  fp3_15(clk, rst, ~stallE, flushE | exceptionoccur, saD, saE);
-    flopenrc #(1)  fp3_16(clk, rst, ~stallE,  1'b0 | exceptionoccur, write_alD, write_alE); // 不受flush影响
-	flopenrc #(8)  fp3_17(clk, rst, ~stallE, flushE | exceptionoccur, {exceptD[7],syscallD,breakD,eretD,invalidD,exceptD[2:0]},exceptE);
-    flopenrc #(1)  fp3_18(clk, rst, ~stallE, flushE | exceptionoccur, is_in_delayslotD, is_in_delayslotE); // 不受flush影响
-    flopenrc #(1)  fp3_19(clk, rst, ~stallE, flushE | exceptionoccur, cp0writeD, cp0writeE);
+    flopenrc #(13)  fp3_1(clk, rst, ~stallE, flushE, {regwriteD,memtoregD,memwriteD,alucontrolD,alusrcD,regdstD},{regwriteE,memtoregE,memwriteE,alucontrolE,alusrcE,regdstE});
+    flopenrc #(32)  fp3_2(clk, rst, ~stallE, flushE, SrcAD,defaultSrcAE);
+    flopenrc #(32)  fp3_3(clk, rst, ~stallE, flushE, writedataD,defaultWriteDataE);
+    flopenrc #(5)   fp3_4(clk, rst, ~stallE, flushE, rsD,rsE);
+    flopenrc #(5)   fp3_5(clk, rst, ~stallE, flushE, rtD,RtE);
+    flopenrc #(5)   fp3_6(clk, rst, ~stallE, flushE, rdD,RdE);
+    flopenrc #(32)  fp3_7(clk, rst, ~stallE, flushE, SignImmD,SignImmE);
+    flopenrc #(32)  fp3_8(clk, rst, ~stallE, 1'b0  , pc_add4D,pc_add4E); // 不受flush影响 TODO: 分支预测 模块 有可能不要flush
+    flopenrc #(1)   fp3_9(clk, rst, ~stallE, flushE, pcsrcD,pcsrcE);
+    flopenrc #(32) fp3_10(clk, rst, ~stallE, flushE, pc_branchD,pc_branchE);
+    flopenrc #(1)  fp3_11(clk, rst, ~stallE, flushE, EqualD, EqualE);
+    flopenrc #(1)  fp3_12(clk, rst, ~stallE, flushE, predictD, predictE);
+    flopenrc #(1)  fp3_13(clk, rst, ~stallE, flushE, branchD, branchE);
+    flopenrc #(32) fp3_14(clk, rst, ~stallE, flushE, pcD, pcE);
+    flopenrc #(5)  fp3_15(clk, rst, ~stallE, flushE, saD, saE);
+    flopenrc #(1)  fp3_16(clk, rst, ~stallE, 1'b0  , write_alD, write_alE); // 不受flush影响
+	flopenrc #(8)  fp3_17(clk, rst, ~stallE, flushE, {exceptD[7],syscallD,breakD,eretD,invalidD,exceptD[2:0]},exceptE);
+    flopenrc #(1)  fp3_18(clk, rst, ~stallE, flushE, is_in_delayslotD, is_in_delayslotE); // 不受flush影响
+    flopenrc #(1)  fp3_19(clk, rst, ~stallE, flushE, cp0writeD, cp0writeE);
 
 
     // 信号数据
@@ -288,10 +288,18 @@ module flowmips(
     branchD, branchM, actual_takeM, actual_takeE,
     predict_wrongM, predictD, predictF);
     
+    reg[31:0] wb_pc;
+    always @(posedge clk) begin
+        wb_pc   <= rst ? 0 : 
+                    (flushW) ? pcW : wb_pc;
+    end
+
+    // dbug pipe
+
 
     // DEBUG OUTPUT
     assign debug_wb_pc          = pcW;
-    assign debug_wb_rf_wen      = {4{regwriteW & ~stallW & ~exceptionoccur}};
+    assign debug_wb_rf_wen      = {4{regwriteW & ~stallW}};
     assign debug_wb_rf_wnum     = WriteRegW;
     assign debug_wb_rf_wdata    = ResultW;
 
