@@ -1,0 +1,211 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Tue Jan  5 22:57:26 2021
+| Host         : DESKTOP-FICHOQQ running 64-bit major release  (build 9200)
+| Command      : report_methodology -file soc_lite_top_methodology_drc_routed.rpt -pb soc_lite_top_methodology_drc_routed.pb -rpx soc_lite_top_methodology_drc_routed.rpx
+| Design       : soc_lite_top
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 34
++-----------+----------+--------------------------------------------------------+------------+
+| Rule      | Severity | Description                                            | Violations |
++-----------+----------+--------------------------------------------------------+------------+
+| TIMING-16 | Warning  | Large setup violation                                  | 32         |
+| XDCC-1    | Warning  | Scoped Clock constraint overwritten with the same name | 1          |
+| XDCC-7    | Warning  | Scoped Clock constraint overwritten on the same source | 1          |
++-----------+----------+--------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[16]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[17]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[18]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.491 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[19]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.577 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[20]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.577 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[21]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.577 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[22]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.577 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[23]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.601 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[12]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.601 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[13]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.601 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[14]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -1.601 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[15]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -1.639 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[24]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -1.639 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[25]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -1.639 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[26]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -1.639 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[27]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -1.717 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[28]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -1.717 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[29]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -1.717 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[30]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -1.717 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[31]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -1.720 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[4]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -1.720 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[5]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -1.720 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[6]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -1.720 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[7]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -1.725 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[0]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -1.725 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[1]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -1.725 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[2]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -1.725 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[3]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -1.742 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[10]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -1.742 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[11]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -1.742 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[8]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -1.742 ns between cpu_resetn_reg/C (clocked by cpu_clk_clk_pll) and confreg/timer_reg[9]/R (clocked by timer_clk_clk_pll). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+XDCC-1#1 Warning
+Scoped Clock constraint overwritten with the same name  
+A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk] (Source: E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc (Line: 5))
+Previous: create_clock -period 10.000 [get_ports clk] (Source: e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll.xdc (Line: 56))
+Related violations: <none>
+
+XDCC-7#1 Warning
+Scoped Clock constraint overwritten on the same source  
+A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk] (Source: E:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/run_vivado/soc_lite.xdc (Line: 5))
+Previous: create_clock -period 10.000 [get_ports clk] (Source: e:/Study/Term5/hardware/n4ddr/func_test_v0.01/cpu132_gettrace/rtl/xilinx_ip/clk_pll/clk_pll.xdc (Line: 56))
+Related violations: <none>
+
+
