@@ -128,7 +128,7 @@ module alu(
             `EXE_ADDU_OP    :ans <= num1 + num2                     ;
             `EXE_SUB_OP     :begin
                 num2_reg = -num2;
-                ans <= num1 + num2_reg;
+                ans = num1 + num2_reg;
             end 
             `EXE_SUBU_OP    :ans <= num1 - num2                     ;
             `EXE_SLT_OP     :ans <= $signed(num1) < $signed(num2)   ;

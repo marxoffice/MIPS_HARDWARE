@@ -38,6 +38,8 @@ module flowmips(
     wire [4:0] rsD,rsE,rtD,RtE,RdE,rdD,saD,saE,RdM;
     wire [3:0] selE;
 
+    wire branch_take;
+
     // stall信号太乱 统一接口到hazard中
     wire stallF,stallD,stallE,stallM,stallW;
     wire flushF,flushD,flushE,flushM,flushW; 
@@ -78,13 +80,14 @@ module flowmips(
     wire actual_takeM, actual_takeE;
     // assign predictD = 1'b1;
     // assign predictD = 1'b0;
-    assign predict_wrong = (predictE != zeroE);
+    // assign predict_wrong = (predictE != zeroE);
 
 	// flopr 1
-    mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E+4, predictE);
-    mux2 #(32) before_pc_wrong(pc_temp2,pc_add4F,pc_branchD, branchD & predictD);
-    mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
-    mux2 #(32) before_pc_jump(pc_temp4,pc_temp3,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
+    // TODO: predict 删除 fix it
+    // mux2 #(32) before_pc_which_wrong(pc_temp1,pc_branchE,pc_add4E+4, predictE);
+    mux2 #(32) before_pc_wrong(pc_temp2,pc_add4F,pc_branchD, branchD & branch_take);
+    // mux2 #(32) before_pc_predict(pc_temp3,pc_temp2,pc_temp1,predict_wrong & branchE);
+    mux2 #(32) before_pc_jump(pc_temp4,pc_temp2,{pc_add4D[31:28],instrD[25:0],2'b00},jumpD);
     mux2 #(32) before_pc_jumpr(pc_temp5,pc_temp4,eq1,jumprD);   // TODO 注意这里可能有数据冒险 eq1是数据前推
 	mux2 #(32) before_pc_exception(pc_in,pc_temp5,pcexceptionM,exceptionoccur);
 
@@ -140,6 +143,8 @@ module flowmips(
     mux2 #(32) forward1_1(eq1,SrcAD,aluoutM,forwardAD);
     mux2 #(32) forward1_2(eq2,writedataD,aluoutM,forwardBD);
 
+    branch_judge my_branch_judge(eq1,eq2,alucontrolD,branch_take);
+
     // 异常判断
     assign syscallD = (instrD[31:26] == 6'b000000 && instrD[5:0] == 6'b001100);
 	assign breakD = (instrD[31:26] == 6'b000000 && instrD[5:0] == 6'b001101);
@@ -162,7 +167,7 @@ module flowmips(
     flopenrc #(1)   fp3_9(clk, rst, ~stallE, flushE, pcsrcD,pcsrcE);
     flopenrc #(32) fp3_10(clk, rst, ~stallE, flushE, pc_branchD,pc_branchE);
     flopenrc #(1)  fp3_11(clk, rst, ~stallE, flushE, EqualD, EqualE);
-    flopenrc #(1)  fp3_12(clk, rst, ~stallE, flushE, predictD, predictE);
+    // flopenrc #(1)  fp3_12(clk, rst, ~stallE, flushE, predictD, predictE);
     flopenrc #(1)  fp3_13(clk, rst, ~stallE, flushE, branchD, branchE);
     flopenrc #(32) fp3_14(clk, rst, ~stallE, flushE, pcD, pcE);
     flopenrc #(5)  fp3_15(clk, rst, ~stallE, flushE, saD, saE);
@@ -214,7 +219,7 @@ module flowmips(
     flopenrc #(1)  fp4_6(clk,  rst, ~stallM, flushM,  branchE, branchM);
     flopenrc #(32) fp4_7(clk,  rst, ~stallM, flushM, pcE,pcM);
     flopenrc #(1)  fp4_8(clk,  rst, ~stallM, flushM,  actual_takeE, actual_takeM);
-    flopenrc #(1)  fp4_9(clk,  rst, ~stallM, flushM,  predict_wrong,predict_wrongM);
+    // flopenrc #(1)  fp4_9(clk,  rst, ~stallM, flushM,  predict_wrong,predict_wrongM);
     flopenrc #(4)  fp4_10(clk, rst, ~stallM, flushM,  selE,selM);
     flopenrc #(8)  fp4_11(clk, rst, ~stallM, flushM,  alucontrolE,alucontrolM);
     flopenrc #(8)  fp4_12(clk, rst, ~stallM, flushM, {exceptE[7:3],overflowE,laddressError,saddressError},exceptM);
@@ -284,9 +289,9 @@ module flowmips(
     flushF, flushD, flushE, flushM, flushW,
     longest_stall);
 
-    compete_predict branch_predict(clk, rst, flushD, stallD, pcF, pcM,
-    branchD, branchM, actual_takeM, actual_takeE,
-    predict_wrongM, predictD, predictF);
+    // compete_predict branch_predict(clk, rst, flushD, stallD, pcF, pcM,
+    // branchD, branchM, actual_takeM, actual_takeE,
+    // predict_wrongM, predictD, predictF);
     
     reg[31:0] wb_pc;
     always @(posedge clk) begin
