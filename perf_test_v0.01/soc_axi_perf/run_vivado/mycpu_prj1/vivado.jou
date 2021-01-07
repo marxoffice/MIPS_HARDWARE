@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Wed Jan  6 21:20:03 2021
+# Process ID: 16108
+# Current directory: D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2696 D:\0_now_pro\hardware_mips_cpu\MIPS_HARDWARE\perf_test_v0.01\soc_axi_perf\run_vivado\mycpu_prj1\mycpu.xpr
+# Log file: D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/vivado.log
+# Journal file: D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.xpr
+update_compile_order -fileset sources_1
+add_files -norecurse {D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/defines2.vh D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/defines.vh}
+add_files -norecurse {D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/cache.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/div_radix2.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/main_dec.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/alu_dec.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/signext.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/bridge_2x1.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/flowmips.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/mux2.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/mux3.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/regfile.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/d_sram2sraml.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/branch_predict_global.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/controller.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/alu.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/exceptiondec.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/instdec.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/mmu.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/hazard.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/d_cache.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/flopenrc.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/i_cache.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/branch_predict_local.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/i_sram2sraml.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/mycpu_top.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/adder.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/ReadData_handle.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/sl2.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/bridge_1x2.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/cpu_axi_interface.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/my_mul.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/compete_predict.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/mycpu.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/pc.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/WriteData_handle.v D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/myCPU/cp0_reg.v}
+update_compile_order -fileset sources_1
+set_property -dict [list CONFIG.Coe_File {D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soft/perf_func/obj/allbench/axi_ram.coe}] [get_ips axi_ram]
+generate_target all [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/clk_pll/clk_pll.xci]
+export_ip_user_files -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/clk_pll/clk_pll.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/clk_pll/clk_pll.xci] -directory D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/sim_scripts -ip_user_files_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files -ipstatic_source_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/../Modeltech_pe_edu_10.4a/xilinx_lib} {questa=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/questa} {riviera=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/riviera} {activehdl=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+generate_target all [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_ram/axi_ram.xci]
+export_ip_user_files -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_ram/axi_ram.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_ram/axi_ram.xci] -directory D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/sim_scripts -ip_user_files_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files -ipstatic_source_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/../Modeltech_pe_edu_10.4a/xilinx_lib} {questa=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/questa} {riviera=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/riviera} {activehdl=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+generate_target all [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci]
+export_ip_user_files -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci] -directory D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/sim_scripts -ip_user_files_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files -ipstatic_source_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/../Modeltech_pe_edu_10.4a/xilinx_lib} {questa=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/questa} {riviera=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/riviera} {activehdl=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+generate_target all [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_clock_converter/axi_clock_converter.xci]
+export_ip_user_files -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_clock_converter/axi_clock_converter.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/rtl/xilinx_ip/axi_clock_converter/axi_clock_converter.xci] -directory D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/sim_scripts -ip_user_files_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files -ipstatic_source_dir D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/../Modeltech_pe_edu_10.4a/xilinx_lib} {questa=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/questa} {riviera=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/riviera} {activehdl=D:/0_now_pro/hardware_mips_cpu/MIPS_HARDWARE/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+launch_run {clk_pll_synth_1 axi_ram_synth_1 axi_crossbar_1x2_synth_1 axi_clock_converter_synth_1}
+wait_on_run clk_pll_synth_1
+
+wait_on_run clk_pll_synth_1
+wait_on_run axi_ram_synth_1
+
+wait_on_run clk_pll_synth_1
+wait_on_run axi_ram_synth_1
+wait_on_run axi_crossbar_1x2_synth_1
+
+wait_on_run clk_pll_synth_1
+wait_on_run axi_ram_synth_1
+wait_on_run axi_crossbar_1x2_synth_1
+wait_on_run axi_clock_converter_synth_1
+
+launch_simulation
+launch_simulation
+launch_simulation
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+source tb_top.tcl
+run all
+set_param general.maxThreads 8
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+close_sim

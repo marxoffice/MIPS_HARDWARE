@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Jan  7 16:45:03 2021
+# Process ID: 1916
+# Current directory: C:/Users/49393/Desktop/perf_test_v0.03/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.runs/synth_1
+# Command line: vivado.exe -log soc_axi_lite_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_axi_lite_top.tcl
+# Log file: C:/Users/49393/Desktop/perf_test_v0.03/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.vds
+# Journal file: C:/Users/49393/Desktop/perf_test_v0.03/perf_test_v0.01/soc_axi_perf/run_vivado/mycpu_prj1/mycpu.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source soc_axi_lite_top.tcl -notrace
