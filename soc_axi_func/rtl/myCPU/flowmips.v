@@ -227,11 +227,21 @@ module flowmips(
     flopenrc #(5)  fp4_14(clk, rst, ~stallM, flushM, RdE,RdM);
     flopenrc #(1)  fp4_15(clk, rst, ~stallM, flushM, cp0writeE,cp0writeM);
 
-    wire [31:0] cause_o,real_causeout,real_pcM;
+    wire [31:0] real_causeout,real_pcM;
+    reg [31:0] cause_o;
 
-    assign cause_o[9:8] = aluoutM[9:8];
-	assign cause_o[23] = aluoutM[23];
-	assign cause_o[22] = aluoutM[22];
+    always@(*) begin
+        if(rst) cause_o = 32'b0;
+        else begin
+            cause_o[9:8] = aluoutM[9:8];
+	        cause_o[23] = aluoutM[23];
+	        cause_o[22] = aluoutM[22];
+        end
+    end
+
+    // assign cause_o[9:8] = aluoutM[9:8];
+	// assign cause_o[23] = aluoutM[23];
+	// assign cause_o[22] = aluoutM[22];
 
     assign real_causeout = (RdM == 5'b01101 && cp0writeM) ? cause_o:causeout;
     assign real_pcM = (RdM == 5'b01101 && cp0writeM) ? pcE : pcM;
